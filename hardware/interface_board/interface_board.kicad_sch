@@ -1,0 +1,879 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "f507a18c-603d-5a41-95b1-1003c6ea9e58")
+	(paper "A4")
+	(title_block
+		(title "Energica Ego BMS interface board")
+		(date "2026-10-11")
+		(rev "0.1")
+		(company "Energica Ego replacement battery")
+		(comment 1 "Interface board: s-BMS BMCU <-> 4 x DALY active balancer")
+		(comment 2 "Generated draft - review before layout")
+	)
+	(lib_symbols)
+	(text "Emulates the 10 Lithium Balance LMU slave boards on the BMCU RS485 bus, using cell data"
+		(exclude_from_sim no)
+		(at 25 32 0)
+		(effects
+			(font
+				(size 1.6 1.6)
+			)
+			(justify left bottom)
+		)
+		(uuid "025b521c-ad35-54bd-aad1-23672d751f53")
+	)
+	(text "Balancer #1: module 1 + 4 cells of module 2 (24S)\nBalancer #2: module 2 + 4 cells of module 3 (24S)\nBalancer #3: module 3 + 4 cells of module 4 (24S)\nBalancer #4: module 4 (20S)"
+		(exclude_from_sim no)
+		(at 30 160 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "497fe0cb-325d-5e75-8b40-9fd84f2aaf75")
+	)
+	(text "Energica Ego (2018) replacement battery - interface board"
+		(exclude_from_sim no)
+		(at 25 25 0)
+		(effects
+			(font
+				(size 2.5 2.5)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "9681eef8-a03d-5548-a96b-5c85202a00bf")
+	)
+	(text "read from 4 DALY active balancers over isolated UARTs. See README.md for the system description."
+		(exclude_from_sim no)
+		(at 25 37 0)
+		(effects
+			(font
+				(size 1.6 1.6)
+			)
+			(justify left bottom)
+		)
+		(uuid "d715d83b-c94d-5a9b-8ec5-7a57a8479cb8")
+	)
+	(wire
+		(pts
+			(xy 190.5 69.85) (xy 185.42 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ae7bfce-42a0-5da2-8d79-e89f328c6fd7")
+	)
+	(wire
+		(pts
+			(xy 190.5 40.64) (xy 185.42 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "357bc561-d869-542a-93f0-6bff636aeb6f")
+	)
+	(wire
+		(pts
+			(xy 190.5 144.78) (xy 185.42 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "449c56e4-7b8e-57d8-9b8c-2042b61a869e")
+	)
+	(wire
+		(pts
+			(xy 190.5 139.7) (xy 185.42 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63043452-7f2a-5825-b01e-76d5a29de739")
+	)
+	(wire
+		(pts
+			(xy 190.5 110.49) (xy 185.42 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "786d9a11-109f-5506-a600-6294734efdec")
+	)
+	(wire
+		(pts
+			(xy 190.5 74.93) (xy 185.42 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "86d77658-56e2-54b4-b97d-58c1b764c974")
+	)
+	(wire
+		(pts
+			(xy 190.5 35.56) (xy 185.42 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9c34608-8851-5bce-959b-4879b5963678")
+	)
+	(wire
+		(pts
+			(xy 190.5 105.41) (xy 185.42 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f40abc85-d38a-5ed4-b9e2-75f84703895c")
+	)
+	(global_label "BAL3_RX"
+		(shape passive)
+		(at 185.42 110.49 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "247fe685-d088-5190-9d7c-201e68687821")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 185.42 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "BAL3_TX"
+		(shape passive)
+		(at 185.42 105.41 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4a40f02d-cda9-58d2-ae34-b4a77e930d08")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 185.42 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "BAL4_RX"
+		(shape passive)
+		(at 185.42 144.78 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4def3255-0bcc-5579-bb28-0ba556fadf36")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 185.42 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "BAL1_TX"
+		(shape passive)
+		(at 185.42 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4eb76e34-8762-5316-9a05-c93c45dea7e0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 185.42 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "BAL2_RX"
+		(shape passive)
+		(at 185.42 74.93 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5292487b-2665-5c17-9f87-19a8c0511c47")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 185.42 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "BAL2_TX"
+		(shape passive)
+		(at 185.42 69.85 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "76072c73-32d6-5a30-bec4-357256954e1f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 185.42 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "BAL1_RX"
+		(shape passive)
+		(at 185.42 40.64 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "be666e67-44ac-541b-ac27-c5e2af82486c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 185.42 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "BAL4_TX"
+		(shape passive)
+		(at 185.42 139.7 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f006098f-8137-5c23-90fb-4c667e190192")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 185.42 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(sheet
+		(at 90.17 85.09)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "012c92d1-7bfb-52d1-b672-86adfa41e261")
+		(property "Sheetname" "Temperatures"
+			(at 90.17 84.39 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "temperatures.kicad_sch"
+			(at 90.17 105.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90.17 49.53)
+		(size 45.085 20.32)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "1f141fbb-501a-4485-bf5d-2b7d6e34262d")
+		(property "Sheetname" "FANs"
+			(at 90.17 48.8184 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "fans.kicad_sch"
+			(at 90.17 70.4346 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "11")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30.48 49.53)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "27dd7ea1-d2cb-5745-9327-d6b1887ff18a")
+		(property "Sheetname" "Power"
+			(at 30.48 48.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 30.48 70.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90.17 119.38)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "54258374-367e-59b8-aba1-80765931205f")
+		(property "Sheetname" "CAN"
+			(at 90.17 118.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "can.kicad_sch"
+			(at 90.17 139.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30.48 119.38)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "5d8e78b5-243b-5345-98a1-611cfe935844")
+		(property "Sheetname" "BMCU"
+			(at 30.48 118.6684 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "rs485_bmcu.kicad_sch"
+			(at 30.48 139.9646 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 190.5 100.33)
+		(size 50 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "6587e2cf-bc14-5238-a45d-f1fb904d32b3")
+		(property "Sheetname" "Balancer 3"
+			(at 190.5 99.63 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "balancer_channel.kicad_sch"
+			(at 190.5 120.93 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "UART_TX" input
+			(at 190.5 105.41 180)
+			(uuid "989f0322-5496-5fc5-8cb2-c1e30ab0981b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "UART_RX" output
+			(at 190.5 110.49 180)
+			(uuid "b0ed1970-a707-5e7e-aea6-e62b85c3a735")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "9")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 190.5 64.77)
+		(size 50 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "65e73a1c-a317-5358-b010-b258019f4abe")
+		(property "Sheetname" "Balancer 2"
+			(at 190.5 64.07 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "balancer_channel.kicad_sch"
+			(at 190.5 85.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "UART_TX" input
+			(at 190.5 69.85 180)
+			(uuid "d59a7f1e-2eec-5627-aa6c-e15857f8a8bf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "UART_RX" output
+			(at 190.5 74.93 180)
+			(uuid "efec0ab1-97ca-5c4b-9c7d-fe519df2ce61")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 190.5 134.62)
+		(size 50 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "a7ee76c2-f67d-5875-9216-cda069e49d89")
+		(property "Sheetname" "Balancer 4"
+			(at 190.5 133.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "balancer_channel.kicad_sch"
+			(at 190.5 155.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "UART_TX" input
+			(at 190.5 139.7 180)
+			(uuid "3a663776-a33a-59a3-82e4-bd0d6af88a88")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "UART_RX" output
+			(at 190.5 144.78 180)
+			(uuid "51964fd5-36dc-5739-a042-fb1705369baf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "10")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 190.5 30.48)
+		(size 50 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "d96bff5c-e7fd-5be8-a1af-292688b99d3c")
+		(property "Sheetname" "Balancer 1"
+			(at 190.5 29.78 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "balancer_channel.kicad_sch"
+			(at 190.5 51.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "UART_TX" input
+			(at 190.5 35.56 180)
+			(uuid "a60e9edc-8430-5883-a2a2-72917f985d86")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "UART_RX" output
+			(at 190.5 40.64 180)
+			(uuid "ecff7fbd-9828-59ba-9b04-0f9d2b5c8a74")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30.48 85.09)
+		(size 45 20)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "f6d89ab4-f55f-5607-9f5b-aebcf2dfe121")
+		(property "Sheetname" "MCU"
+			(at 30.48 84.39 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 30.48 105.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

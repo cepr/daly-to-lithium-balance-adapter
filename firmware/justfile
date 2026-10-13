@@ -1,0 +1,34 @@
+# Interface board firmware. Run `just` for the list of recipes.
+
+default:
+    @just --list
+
+# Run the protocol / mapping tests on the PC
+test:
+    cd core && cargo test
+
+# Build the firmware (release)
+build:
+    cd board && cargo build --release
+
+# Flash the board through an ST-LINK and show the defmt log
+run:
+    cd board && cargo run --release
+
+# Build the firmware for the NUCLEO-G0B1RE dev board
+build-nucleo:
+    cd board && cargo build --release --no-default-features --features nucleo
+
+# Flash the NUCLEO-G0B1RE and show the defmt log
+run-nucleo:
+    cd board && cargo run --release --no-default-features --features nucleo --config 'target.thumbv6m-none-eabi.runner="probe-rs run --chip STM32G0B1RETx"'
+
+# Lint both crates, for both targets
+lint:
+    cd core && cargo clippy --all-targets -- -D warnings
+    cd board && cargo clippy --release -- -D warnings
+    cd board && cargo clippy --release --no-default-features --features nucleo -- -D warnings
+
+# Flash and RAM usage
+size: build
+    cd board && cargo size --release

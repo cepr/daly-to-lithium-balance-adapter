@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="540" viewBox="0 0 1000 540" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="#fde7c4"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#e8a33d" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="540" fill="#ffffff"/>
+
+  <!-- BMCU -->
+  <rect x="30" y="225" width="170" height="110" rx="10" fill="#dbe8f7" stroke="#2f5d8a" stroke-width="2"/>
+  <text x="115" y="262" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3b5a">Lithium Balance</text>
+  <text x="115" y="283" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3b5a">s-BMS BMCU</text>
+  <text x="115" y="308" text-anchor="middle" font-size="12" fill="#1d3b5a">PIC18F4680 · FW 6.18.0</text>
+
+  <!-- RS485 link -->
+  <line x1="200" y1="280" x2="300" y2="280" stroke="#444" stroke-width="2.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="250" y="262" text-anchor="middle" font-size="12" fill="#333">RS485</text>
+  <text x="250" y="300" text-anchor="middle" font-size="11" fill="#555">38400 baud</text>
+  <text x="250" y="314" text-anchor="middle" font-size="11" fill="#555">slave bus</text>
+
+  <!-- Interface board -->
+  <rect x="300" y="200" width="190" height="160" rx="10" fill="#dcf0de" stroke="#2e7d3a" stroke-width="2"/>
+  <text x="395" y="240" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b4d24">Interface board</text>
+  <text x="395" y="260" text-anchor="middle" font-size="12" fill="#1b4d24">(microcontroller)</text>
+  <text x="395" y="290" text-anchor="middle" font-size="12" fill="#1b4d24">emulates 10 LMUs</text>
+  <text x="395" y="307" text-anchor="middle" font-size="12" fill="#1b4d24">addresses 01–0A</text>
+  <text x="395" y="324" text-anchor="middle" font-size="12" fill="#1b4d24">8 cells each = 80 cells</text>
+
+  <!-- UART links -->
+  <g stroke="#444" stroke-width="2" fill="none">
+    <polyline points="490,230 545,230 545,75 600,75" marker-end="url(#a)" marker-start="url(#a)"/>
+    <polyline points="490,260 560,260 560,185 600,185" marker-end="url(#a)" marker-start="url(#a)"/>
+    <polyline points="490,300 560,300 560,295 600,295" marker-end="url(#a)" marker-start="url(#a)"/>
+    <polyline points="490,330 545,330 545,405 600,405" marker-end="url(#a)" marker-start="url(#a)"/>
+  </g>
+  <text x="545" y="470" text-anchor="middle" font-size="12" fill="#333">UART · 9600 baud</text>
+  <text x="545" y="485" text-anchor="middle" font-size="11" fill="#555">one link per balancer</text>
+
+  <!-- Balancers -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="600" y="45" width="150" height="60" rx="8" fill="#f9dcdc" stroke="#b03030" stroke-width="2"/>
+    <text x="675" y="70" font-weight="bold" fill="#6e1a1a">DALY balancer #4</text>
+    <text x="675" y="90" font-size="12" fill="#6e1a1a">20S · cells 61–80</text>
+    <rect x="600" y="155" width="150" height="60" rx="8" fill="#f9dcdc" stroke="#b03030" stroke-width="2"/>
+    <text x="675" y="180" font-weight="bold" fill="#6e1a1a">DALY balancer #3</text>
+    <text x="675" y="200" font-size="12" fill="#6e1a1a">24S · cells 41–64</text>
+    <rect x="600" y="265" width="150" height="60" rx="8" fill="#f9dcdc" stroke="#b03030" stroke-width="2"/>
+    <text x="675" y="290" font-weight="bold" fill="#6e1a1a">DALY balancer #2</text>
+    <text x="675" y="310" font-size="12" fill="#6e1a1a">24S · cells 21–44</text>
+    <rect x="600" y="375" width="150" height="60" rx="8" fill="#f9dcdc" stroke="#b03030" stroke-width="2"/>
+    <text x="675" y="400" font-weight="bold" fill="#6e1a1a">DALY balancer #1</text>
+    <text x="675" y="420" font-size="12" fill="#6e1a1a">24S · cells 1–24</text>
+  </g>
+
+  <!-- Modules (pack: module 1 at the bottom / pack negative) -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="830" y="30" width="140" height="90" rx="6" fill="#ececec" stroke="#555" stroke-width="2"/>
+    <rect x="831" y="101" width="138" height="18" fill="url(#hatch)"/>
+    <text x="900" y="62" font-weight="bold" fill="#222">Module 4</text>
+    <text x="900" y="80" font-size="12" fill="#333">20S NMC · 61–80</text>
+
+    <rect x="830" y="140" width="140" height="90" rx="6" fill="#ececec" stroke="#555" stroke-width="2"/>
+    <rect x="831" y="211" width="138" height="18" fill="url(#hatch)"/>
+    <text x="900" y="172" font-weight="bold" fill="#222">Module 3</text>
+    <text x="900" y="190" font-size="12" fill="#333">20S NMC · 41–60</text>
+
+    <rect x="830" y="250" width="140" height="90" rx="6" fill="#ececec" stroke="#555" stroke-width="2"/>
+    <rect x="831" y="321" width="138" height="18" fill="url(#hatch)"/>
+    <text x="900" y="282" font-weight="bold" fill="#222">Module 2</text>
+    <text x="900" y="300" font-size="12" fill="#333">20S NMC · 21–40</text>
+
+    <rect x="830" y="360" width="140" height="90" rx="6" fill="#ececec" stroke="#555" stroke-width="2"/>
+    <text x="900" y="392" font-weight="bold" fill="#222">Module 1</text>
+    <text x="900" y="410" font-size="12" fill="#333">20S NMC · 1–20</text>
+  </g>
+
+  <!-- Series links and pack terminals -->
+  <g stroke="#222" stroke-width="3">
+    <line x1="900" y1="120" x2="900" y2="140"/>
+    <line x1="900" y1="230" x2="900" y2="250"/>
+    <line x1="900" y1="340" x2="900" y2="360"/>
+    <line x1="900" y1="30" x2="900" y2="12"/>
+    <line x1="900" y1="450" x2="900" y2="468"/>
+  </g>
+  <text x="890" y="22" text-anchor="end" font-size="13" font-weight="bold" fill="#b03030">+ pack (80S)</text>
+  <text x="890" y="468" text-anchor="end" font-size="13" font-weight="bold" fill="#2f5d8a">− pack</text>
+
+  <!-- Sense harnesses: 20 ch to own module -->
+  <g stroke="#b03030" stroke-width="3">
+    <line x1="750" y1="75" x2="830" y2="75"/>
+    <line x1="750" y1="185" x2="830" y2="185"/>
+    <line x1="750" y1="295" x2="830" y2="295"/>
+    <line x1="750" y1="405" x2="830" y2="405"/>
+  </g>
+  <!-- Overlap: 4 ch to cells 1–4 of next module up -->
+  <g stroke="#e8a33d" stroke-width="3" stroke-dasharray="7,4" fill="none">
+    <polyline points="750,165 790,165 790,110 830,110"/>
+    <polyline points="750,275 790,275 790,220 830,220"/>
+    <polyline points="750,385 790,385 790,330 830,330"/>
+  </g>
+
+  <!-- Legend -->
+  <g font-size="12" fill="#333">
+    <line x1="30" y1="512" x2="70" y2="512" stroke="#b03030" stroke-width="3"/>
+    <text x="78" y="516">sense + balance harness, 20 channels on own module</text>
+    <line x1="400" y1="512" x2="440" y2="512" stroke="#e8a33d" stroke-width="3" stroke-dasharray="7,4"/>
+    <text x="448" y="516">overlap, channels 21–24</text>
+    <rect x="620" y="503" width="40" height="18" fill="url(#hatch)" stroke="#e8a33d"/>
+    <text x="668" y="516">cells 1–4 shared with the balancer below</text>
+  </g>
+</svg>

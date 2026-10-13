@@ -1,0 +1,5 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "lithium_balance") (type "KiCad") (uri "${KIPRJMOD}/lithium_balance.pretty") (options "") (descr ""))
+	(lib (name "Molex") (type "KiCad") (uri "${KIPRJMOD}/Molex.pretty") (options "") (descr ""))
+)
