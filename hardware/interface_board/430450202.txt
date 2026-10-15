@@ -1,0 +1,10 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"33-16012026-074394";"";
+"REFERENCE";"430450202";"";
+"TraceParts.PartTitle";"Micro-Fit 3.0";"";
+"TraceParts.InstanceId";"33-16012026-0743945XTP1M008M6YNILCE1IKMNZY5";"";
+"SUPPLIER";"Molex";"";
+"DESIGN";"Micro-Fit 3.0 Right-Angle Header, 3.00mm Pitch, Dual Row, 2 Circuits, with Snap-in Plastic Peg PCB Lock, 0.76µm Gold Plating, Glow-Wire Capable, Black";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.PartVersion";"1.1.5";"";

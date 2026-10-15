@@ -1,0 +1,10 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"33-15012026-084010";"";
+"REFERENCE";"430450206";"";
+"TraceParts.PartTitle";"Micro-Fit 3.0";"";
+"TraceParts.InstanceId";"33-15012026-0840103RH7EMGOYPUEQ059V3WQ18IYY";"";
+"SUPPLIER";"Molex";"";
+"DESIGN";"Micro-Fit 3.0 Right-Angle Header, 3.00mm Pitch, Dual Row, 2 Circuits, with PCB Press-fit Metal Retention Clip, 1.52µm Matte Tin Plating, Glow-Wire Capable, Black, Tape and Reel";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.PartVersion";"1.1.6";"";
