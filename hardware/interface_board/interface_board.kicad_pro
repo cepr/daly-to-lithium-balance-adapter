@@ -76,7 +76,28 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "lib_footprint_mismatch|78000000|120000000|4da8fd7d-992d-4af7-8675-47499a9349e4|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "lib_footprint_mismatch|93000000|108977500|8c21065b-f5e7-4080-91e7-5d8629055e6c|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "silk_edge_clearance|68000000|46000000|07c5c306-3d12-4c5a-b11e-f58902c654b9|310ea57c-77ae-4606-8306-6aa891205c60",
+          ""
+        ],
+        [
+          "silk_overlap|80958400|99995000|13948a62-c6d8-4677-a288-1fcabe29e815|dbadf516-dbe9-46af-b60b-6daf635c2480",
+          ""
+        ],
+        [
+          "silk_overlap|81285000|100332599|dbadf516-dbe9-46af-b60b-6daf635c2480|f567575c-1bb1-4a03-aa4e-d63b110be8bb",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -709,7 +730,7 @@
         "uuid": "f507a18c-603d-5a41-95b1-1003c6ea9e58"
       }
     ],
-    "used_designators": "#PWR1,#PWR4,#PWR6,#PWR8,#PWR11,#PWR13,#PWR15,#PWR18,#PWR20,#PWR23,#PWR25,#PWR34-35,#PWR57-58,#PWR63,#PWR68,#PWR73,#PWR98-116,C1-2,C204,D104,F102-109,H105-106,J1-22,Q1-2,R202-205,U1,X1",
+    "used_designators": "#PWR1,#PWR4,#PWR6,#PWR8,#PWR11,#PWR13,#PWR15,#PWR18,#PWR20,#PWR23,#PWR25,#PWR34-35,#PWR37-38,#PWR57-58,#PWR63,#PWR68,#PWR73,#PWR98-116,C1-2,C204,D104,F102-109,H105-106,J1-26,Q1-2,R202-205,U1,X1",
     "variants": []
   },
   "sheets": [

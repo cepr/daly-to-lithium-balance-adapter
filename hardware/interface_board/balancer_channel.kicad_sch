@@ -1898,104 +1898,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_02x02_Top_Bottom")
-		(at 256.54 96.52 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "032688e4-2bed-40fc-b6d1-64d359adb03b")
-		(property "Reference" "J7"
-			(at 257.81 90.17 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Molex Mini Fit Jr"
-			(at 257.81 92.71 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5569-04A2_2x02_P4.20mm_Horizontal"
-			(at 256.54 96.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 256.54 96.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 256.54 96.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "8d39ff5a-0f13-433e-b17f-5bee9451646b")
-		)
-		(pin "4"
-			(uuid "be65545c-e564-450c-b5cd-2020a8da7004")
-		)
-		(pin "2"
-			(uuid "b8f67ea1-b72a-4a38-88fa-ad53add6557c")
-		)
-		(pin "1"
-			(uuid "9e959291-e5a0-4d1b-b2b4-aa6d8414d2a7")
-		)
-		(instances
-			(project "interface_board"
-				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58/6587e2cf-bc14-5238-a45d-f1fb904d32b3"
-					(reference "J9")
-					(unit 1)
-				)
-				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58/65e73a1c-a317-5358-b010-b258019f4abe"
-					(reference "J8")
-					(unit 1)
-				)
-				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58/a7ee76c2-f67d-5875-9216-cda069e49d89"
-					(reference "J10")
-					(unit 1)
-				)
-				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58/d96bff5c-e7fd-5be8-a1af-292688b99d3c"
-					(reference "J7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3V3")
 		(at 137.16 85.09 90)
 		(unit 1)
@@ -2534,6 +2436,104 @@
 				)
 				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58/d96bff5c-e7fd-5be8-a1af-292688b99d3c"
 					(reference "#PWR082")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_02x02_Top_Bottom")
+		(at 256.54 96.52 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b0793b0b-3ca8-4ae0-a265-75e5eea82968")
+		(property "Reference" "J23"
+			(at 257.81 90.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Molex 430450400"
+			(at 257.81 92.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Molex:Molex_Micro-Fit_3.0_43045-0400_2x02_P3.00mm_Horizontal"
+			(at 256.54 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 256.54 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, double row, 02x02, top/bottom pin numbering scheme (row 1: 1...pins_per_row, row2: pins_per_row+1 ... num_pins), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 256.54 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "d4243f29-5d80-4432-84c3-88a265d591b7")
+		)
+		(pin "1"
+			(uuid "1ccf217a-e70d-4123-8d59-3fe00f93f86d")
+		)
+		(pin "4"
+			(uuid "514725e9-6fec-4a05-969e-764fa22ba743")
+		)
+		(pin "3"
+			(uuid "ab7129f3-b192-4555-9eee-9082e5ce5b6b")
+		)
+		(instances
+			(project "interface_board"
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58/6587e2cf-bc14-5238-a45d-f1fb904d32b3"
+					(reference "J25")
+					(unit 1)
+				)
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58/65e73a1c-a317-5358-b010-b258019f4abe"
+					(reference "J24")
+					(unit 1)
+				)
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58/a7ee76c2-f67d-5875-9216-cda069e49d89"
+					(reference "J26")
+					(unit 1)
+				)
+				(path "/f507a18c-603d-5a41-95b1-1003c6ea9e58/d96bff5c-e7fd-5be8-a1af-292688b99d3c"
+					(reference "J23")
 					(unit 1)
 				)
 			)
