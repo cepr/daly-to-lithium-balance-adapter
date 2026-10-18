@@ -181,6 +181,45 @@
 				)
 			)
 		)
+		(property "MPN" "SSA34-E3/61T"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a68d6f01-2842-4416-a3c5-595f087b5e3f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "854926b1-48f7-4be1-938f-a32a1c19b435")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "SSA34-E3/61TGICT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8136cda5-22a7-4827-9ac2-a620be5b0dc4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "TO-???* *_Diode_* *SingleDiode* D_*")
 		(path "/27dd7ea1-d2cb-5745-9327-d6b1887ff18a/2d0d2a21-f047-5c41-bda0-0cf88e38c6df")
 		(sheetname "/Power/")
@@ -457,6 +496,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5efc2235-d361-4b8d-88b7-5eeb2dc3c88e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "eee195aa-8b79-4881-9044-2d616e69cfeb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a065b0dc-ec9a-4376-ac5c-97c1256a6c97")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/27dd7ea1-d2cb-5745-9327-d6b1887ff18a/38e812c6-33e8-5488-b3c9-14b493f2bf0b")
 		(sheetname "/Power/")
@@ -602,6 +680,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "NUP2105LT1G"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5a105336-f64b-494a-a57e-992274fc0a53")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "onsemi"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "126b4f48-8b3f-446c-acc9-c464375e5ce5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "4878-NUP2105LCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d9b3a1f4-65f9-4cdd-a621-e6a4bcb2e8c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -942,7 +1059,7 @@
 				)
 			)
 		)
-		(property "Value" "Molex 26013143"
+		(property "Value" "Molex 0039301060"
 			(at 4.2 8.55 90)
 			(layer "F.Fab")
 			(uuid "001673f0-dfd2-4703-ab41-e2048f111d38")
@@ -975,12 +1092,38 @@
 				)
 			)
 		)
-		(property "DigiKey" "0026013143-ND"
+		(property "DigiKey" "WM1353-ND"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "95b9051c-d175-4bf7-8690-e11b897f2a92")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0039301060"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d0a35c87-b7b9-4d74-90ed-f335b0141a99")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b9a6446c-75d2-443a-839f-694559b50448")
 			(effects
 				(font
 					(size 1 1)
@@ -1341,7 +1484,7 @@
 				)
 			)
 		)
-		(property "Value" "Molex 26013143"
+		(property "Value" "Molex 0039301060"
 			(at 4.2 8.55 0)
 			(layer "F.Fab")
 			(uuid "1bb22463-3554-4122-a47e-7b0bac4a2434")
@@ -1374,12 +1517,38 @@
 				)
 			)
 		)
-		(property "DigiKey" "0026013143-ND"
+		(property "DigiKey" "WM1353-ND"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8a853286-cd5e-435b-b26c-904ee580ae98")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0039301060"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b17c2916-d0a0-4b2c-bbc9-01c6ff64d895")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "92b868e4-59a8-417e-86f3-4efa1d3603a3")
 			(effects
 				(font
 					(size 1 1)
@@ -1773,6 +1942,45 @@
 				)
 			)
 		)
+		(property "MPN" "ISO7721DWVR"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "22d305a5-1630-4764-a9c0-f6e2d627e316")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "eb8d2287-2b70-41fc-80e3-abce183957b7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "296-50304-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "22f43844-e69f-4318-ac2c-0b32da0fb9a5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*SOIC*7.5x5.85mm*P1.27mm*")
 		(path "/65e73a1c-a317-5358-b010-b258019f4abe/d20d5234-a95a-5a65-9ca2-bc3faf0f0d46")
 		(sheetname "/Balancer 2/")
@@ -2094,6 +2302,45 @@
 				)
 			)
 		)
+		(property "MPN" "R-78E5.0-0.5"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9892d146-a3e6-4dc4-8b4a-e66f8186489a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "RECOM"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "259385a7-152f-461c-bd3d-d415abaced4e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "945-1648-5-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b1af5c66-c0f3-4258-ad4f-6c40288a2dcb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Converter*DCDC*RECOM*R*78E*0.5*")
 		(path "/27dd7ea1-d2cb-5745-9327-d6b1887ff18a/3eb4b978-25e9-5d0a-b360-588b1628e38b")
 		(sheetname "/Power/")
@@ -2331,6 +2578,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "THVD1450DR"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a66b862d-8d7e-4496-b543-7ed0d813634f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ab7ada9b-f1c6-45f5-a873-ce402fa382c2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "296-49500-ND"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b422f887-4aa7-418d-93b8-2181efc0b2c1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -2704,6 +2990,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2829468e-780f-4224-9f70-07a0b6ec6493")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "34d09661-fcc4-49f4-a416-7bf4ead17020")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "baebde26-aaa1-4996-abf8-ccc107c95d2d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/a7ee76c2-f67d-5875-9216-cda069e49d89/cb0891b9-620f-5837-a836-9a04e14caa84")
 		(sheetname "/Balancer 4/")
@@ -2849,6 +3174,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0c1c3a67-8ee1-4cb6-9ede-446ca97276b2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b730e6bf-491c-4ffb-9aa9-ce318f3c1a48")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7abc85da-bec4-496a-b6ca-f9bf5fdd9e1e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -3000,6 +3364,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "55f33415-065e-45d9-87ef-6b7cfc1d2fec")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c317d9d2-a126-49e5-acd9-843e991c072f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c66f98cf-706a-447c-a502-ea442523d2f5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6587e2cf-bc14-5238-a45d-f1fb904d32b3/f6eab1cb-d79f-4de2-b924-0a7a273b0ba9")
 		(sheetname "/Balancer 3/")
@@ -3145,6 +3548,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d169fb1b-f588-4e3d-ab3d-546994f9d96d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "19584ab3-2a58-418d-a2b8-6c448411b937")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "69451aa9-cc5c-4e65-9ef9-ce351c786b1d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -3309,6 +3751,32 @@
 				)
 			)
 		)
+		(property "MPN" "0ZCF0200AF2C"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f930975d-dac1-45f6-bf8c-92fbc6ed90be")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Bel Fuse"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d4b38234-2ce6-4c78-bb44-ffed47b3d1ca")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*polyfuse* *PTC*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/3447e7c5-1abe-4a64-a07a-51afbafbd6ec")
 		(sheetname "/FANs/")
@@ -3454,6 +3922,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4a36f7f8-e9ce-415e-b32d-0ed5f1cb5162")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f8b419b1-b308-44d8-983f-689b4f6ef0f9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6c714a09-fb14-41f7-a7a0-32d685695696")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -3611,6 +4118,32 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9abbf752-aed5-42c9-a8f2-0c6993b0ebf3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0430450202"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8cecafb4-9030-4888-b1ac-6df676efe208")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8dc327b9-4934-4fa0-92dc-cf6fcfbb2d29")
 			(effects
 				(font
 					(size 1 1)
@@ -3961,6 +4494,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "65299c64-7f17-4971-b351-4db2caf2e4c1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "10064058-a02e-447d-aa84-ce3431c44992")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c46e4343-80ea-4de4-9eab-97187a200a7c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/6587e2cf-bc14-5238-a45d-f1fb904d32b3/cb0891b9-620f-5837-a836-9a04e14caa84")
 		(sheetname "/Balancer 3/")
@@ -4106,6 +4678,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "00d1c8ef-3198-431d-8429-6f81cf3ee5b5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a7b813b5-c9f2-4f88-b3c4-1a3df549bca5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ccfa245c-e850-46e7-8a2a-7c79905528ae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -4257,6 +4868,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-071KL"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6b004a2a-8fb6-4357-a9d1-9f588e177a8f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c6ebd629-5bf4-4211-b90d-a0545907722a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P1.0KDCT-ND"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f1deb133-9eca-4d5c-8a87-f6314b9e197b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/f6d89ab4-f55f-5607-9f5b-aebcf2dfe121/61390ac1-a2a4-535f-ae5f-5d2c88bcb970")
 		(sheetname "/MCU/")
@@ -4402,6 +5052,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "588a3a1b-0d57-46d4-b860-4467f2c9a3d9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b925637b-f90e-486b-8b69-b8beaf2077b4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e6af5d83-4bb0-4b1d-9e85-b2b4b6b08509")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -4553,6 +5242,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "15dc1a8e-999b-4d6c-b0d9-9e0f5b1038ee")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cd3aabc7-3172-4995-9493-f7c1eea77c1e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "87cdf042-4101-4af1-8838-586902b7186f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/f6d89ab4-f55f-5607-9f5b-aebcf2dfe121/8e2980fe-6a2d-5b92-a9db-4985a55d16df")
 		(sheetname "/MCU/")
@@ -4701,6 +5429,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9ef72916-9087-4d17-b2c5-8dd12abb97a3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e241a3a0-c9e0-482a-8309-eecf0e2f610b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d9fa2b6f-c99b-496c-b0cf-e19700113a27")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/5d8e78b5-243b-5345-98a1-611cfe935844/1a0a70b6-4f60-583d-86d6-e10801cc6aee")
 		(sheetname "/BMCU/")
@@ -4799,14 +5566,14 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:CP_Elec_6.3x7.7"
+	(footprint "Capacitor_SMD:CP_Elec_6.3x5.8"
 		(layer "F.Cu")
 		(uuid "4da8fd7d-992d-4af7-8675-47499a9349e4")
 		(at 78 120 -90)
-		(descr "SMD capacitor, aluminum electrolytic, Nichicon, 6.3x7.7mm")
+		(descr "SMD capacitor, aluminum electrolytic, Nichicon, 6.3x5.8mm")
 		(tags "capacitor electrolytic")
 		(property "Reference" "C2"
-			(at 0 4.5 90)
+			(at 0 -4.35 90)
 			(layer "F.SilkS")
 			(uuid "2a660ec2-cc92-47f4-9444-8d14f60cbfcd")
 			(effects
@@ -4817,7 +5584,7 @@
 			)
 		)
 		(property "Value" "47uF / 35V"
-			(at 0 4.349999 90)
+			(at 0 4.35 90)
 			(layer "F.Fab")
 			(uuid "63552581-6ce1-4777-bcc5-b4c9a2341215")
 			(effects
@@ -4849,6 +5616,45 @@
 				)
 			)
 		)
+		(property "MPN" "EEE-FK1V470P"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d9aad090-ed5f-4686-8b92-0a69ac72a648")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Panasonic"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "030f4bd1-750e-4685-a3b1-0580c279b3a1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "PCE3842CT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "53782ba0-e951-4162-8783-e6a52c8d99ec")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "CP_*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/15e4a76a-4974-4c45-8daf-07774c8576df")
 		(sheetname "/FANs/")
@@ -4862,7 +5668,7 @@
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -2.345563 3.410001)
+			(start -2.345563 3.41)
 			(end 3.41 3.41)
 			(stroke
 				(width 0.12)
@@ -4882,17 +5688,17 @@
 			(uuid "e6246380-9706-48e8-8f33-59739e2ea520")
 		)
 		(fp_line
-			(start -3.410001 2.345563)
-			(end -2.345563 3.410001)
+			(start -3.41 2.345563)
+			(end -2.345563 3.41)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "52bc5050-979a-4c9b-a6ea-d88f45ffe8b0")
+			(uuid "7bb0760f-fdd1-4b46-9155-8cd041617277")
 		)
 		(fp_line
-			(start -3.410001 2.345563)
+			(start -3.41 2.345563)
 			(end -3.41 1.06)
 			(stroke
 				(width 0.12)
@@ -4913,7 +5719,7 @@
 		)
 		(fp_line
 			(start -4.04375 -2.24125)
-			(end -4.043751 -1.45375)
+			(end -4.04375 -1.45375)
 			(stroke
 				(width 0.12)
 				(type solid)
@@ -4922,7 +5728,7 @@
 			(uuid "7ef23a77-9e22-49bd-83bf-ad405efa28a4")
 		)
 		(fp_line
-			(start -3.410001 -2.345563)
+			(start -3.41 -2.345563)
 			(end -3.41 -1.06)
 			(stroke
 				(width 0.12)
@@ -4932,14 +5738,24 @@
 			(uuid "3ad68f7f-b2a0-40e7-bb74-e67c4406bed5")
 		)
 		(fp_line
-			(start -3.410001 -2.345563)
-			(end -2.345563 -3.410001)
+			(start -3.41 -2.345563)
+			(end -2.345563 -3.41)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "7bb0760f-fdd1-4b46-9155-8cd041617277")
+			(uuid "52bc5050-979a-4c9b-a6ea-d88f45ffe8b0")
+		)
+		(fp_line
+			(start -2.345563 -3.41)
+			(end 3.41 -3.41)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "11824882-0887-4303-9528-c0db6ae79ade")
 		)
 		(fp_line
 			(start 3.41 -3.41)
@@ -4950,16 +5766,6 @@
 			)
 			(layer "F.SilkS")
 			(uuid "04669cff-8ec4-4c76-845c-d885f64e8eea")
-		)
-		(fp_line
-			(start -2.345563 -3.410001)
-			(end 3.41 -3.41)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "11824882-0887-4303-9528-c0db6ae79ade")
 		)
 		(fp_line
 			(start -2.4 3.55)
@@ -5183,7 +5989,7 @@
 		)
 		(fp_circle
 			(center 0 0)
-			(end 3.149999 0)
+			(end 3.15 0)
 			(stroke
 				(width 0.1)
 				(type solid)
@@ -5222,7 +6028,7 @@
 			(uuid "a4cabe14-0b7e-4935-864c-484e0f479e23")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/CP_Elec_6.3x7.7.step"
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/CP_Elec_6.3x5.8.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5281,6 +6087,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C2012X5R1E475K125AB"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d217dd75-0b22-46fe-b247-db820539ba5c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "TDK"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "80e5d6eb-8753-4fdf-b1e7-5c841212cda3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "445-7882-1-ND"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "53a67412-23a3-4d8a-8f96-c27766d059f9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -5429,6 +6274,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "BAV99-E3-08"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "35c950f2-b910-4728-9a28-eebcfb25d02e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d46fab78-24c5-41f2-83e8-279b0efd6af9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "BAV99-FDICT-ND"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b0b8eccf-2da4-4216-84c7-2cce29d6cc55")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -5802,6 +6686,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-071KL"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "39ba0195-1c7e-4ab3-bc4a-4f5c6ac80227")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3d6434c2-e55e-4b85-842e-d71d61b79e05")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P1.0KDCT-ND"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "76f356c4-6a74-4660-ad1e-e343dd2bfab0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/012c92d1-7bfb-52d1-b672-86adfa41e261/04843ad5-febc-5076-acf8-8b60a26b1636")
 		(sheetname "/Temperatures/")
@@ -5947,6 +6870,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ea9d1dc6-3743-4eb5-8d38-c4c2764d4628")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "319a69a2-63e6-474c-8104-f88761ac7986")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "af62f0c9-e118-4cec-a8fc-06c01c184c10")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -6098,6 +7060,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "af4b9009-af06-41dd-99b2-0d9b8e91c722")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5f01e854-df6e-4b2b-a1ed-475b26159d29")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1f456b88-bb8e-480d-bb20-8987063891c9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/54258374-367e-59b8-aba1-80765931205f/dda8c652-a082-5e2e-9ad0-9084f54bc46e")
 		(sheetname "/CAN/")
@@ -6243,6 +7244,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TSW-102-07-G-S"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ce0a102a-6aff-40ac-95ac-9c32feca0f31")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Samtec"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5fc67605-5e09-487f-8247-b03928c87c8d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "-"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a66b20a1-dc0b-492e-9e98-8fd9593628e4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -6495,6 +7535,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c904fd05-cfdb-4d56-8121-93320b742590")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "13904cd0-435e-46d4-b22e-8349bbcf58cb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f27bf755-30f8-47fe-abe3-ee2b09523520")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/744f5a46-7eaf-4f30-973b-030c7a4c5556")
 		(sheetname "/FANs/")
@@ -6640,6 +7719,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "BAV99-E3-08"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e431444a-2379-4feb-a35f-58f95e9d9d59")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "56dc1781-2fcc-4f76-84f0-64bef052a097")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "BAV99-FDICT-ND"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "95a45c8b-6b04-4a34-92a0-e7eae7c84f9b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -7010,6 +8128,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SM06B-GHS-TB(LF)(SN)"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3048cc71-41ad-4df2-9fae-5455771eebcb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "JST"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "30cdcba8-c88c-4dc1-a713-6b9432a97f15")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "455-1568-1-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e2a129a2-1339-4951-a7e0-f432bb227ae1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -7472,6 +8629,32 @@
 				)
 			)
 		)
+		(property "MPN" "0ZCF0200AF2C"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3057ef1f-7ee8-408a-b253-e985efbf3669")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Bel Fuse"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5329bc32-d2f8-439f-b65f-9fb0a41b29a7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*polyfuse* *PTC*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/4014652e-91e8-4639-8bc0-044f842a15b5")
 		(sheetname "/FANs/")
@@ -7617,6 +8800,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b7259efd-a570-4a83-9479-ad3b3d99971b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6124670c-fabf-4b74-b8a2-70a08212ac97")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3780ff82-a18e-4da9-aea9-2482bca3ca6c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -7768,6 +8990,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0b5a930a-2f3e-47ae-8d52-ea336dbebc1e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "503b2524-bc50-4c20-a4d4-7aae6206d726")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "df132e8e-5b53-41d4-9fe3-b360c7fcb744")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/d96bff5c-e7fd-5be8-a1af-292688b99d3c/cb0891b9-620f-5837-a836-9a04e14caa84")
 		(sheetname "/Balancer 1/")
@@ -7916,6 +9177,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "274eab01-b15b-40d0-92f9-b156ef337026")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9e015983-f159-4860-8098-6aa0ddced538")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "369c268c-21bb-4c24-89b1-3b190519f273")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/d96bff5c-e7fd-5be8-a1af-292688b99d3c/754620f6-bfb8-5c74-8f23-73d7d044c20c")
 		(sheetname "/Balancer 1/")
@@ -8031,7 +9331,7 @@
 				)
 			)
 		)
-		(property "Value" "Molex 26013143"
+		(property "Value" "Molex 0039301060"
 			(at 4.2 8.55 0)
 			(layer "F.Fab")
 			(uuid "e9b9a681-5d50-4d12-baa7-6ede14d07d02")
@@ -8064,12 +9364,38 @@
 				)
 			)
 		)
-		(property "DigiKey" "0026013143-ND"
+		(property "DigiKey" "WM1353-ND"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "079acf99-e2de-40c1-824b-621f623194cb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0039301060"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9cdbb808-f35a-4893-ab99-848e3619d890")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b069868d-7add-47e1-9447-2239b97c6f54")
 			(effects
 				(font
 					(size 1 1)
@@ -8460,6 +9786,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SM06B-GHS-TB(LF)(SN)"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c41f210c-ce89-4928-99f5-04e5b2d5314d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "JST"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "89c0a945-8bfb-450d-886c-ea7a6bee0eab")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "455-1568-1-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4e2b1d98-5e01-4b54-9d64-fc5efe0be895")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -8909,6 +10274,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5161ae9c-e0b0-4d44-83d3-1ae32a47b12a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b021402e-4cfe-42ab-b467-f04fbf450e9e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "762e603b-c633-484d-a4da-150fcf1dbd00")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/012c92d1-7bfb-52d1-b672-86adfa41e261/8c1d64f3-aef9-5f76-9ff1-2794d12b17e4")
 		(sheetname "/Temperatures/")
@@ -9057,6 +10461,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cb9d43e5-089a-44af-844a-f13d7d50235d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cce5d513-501a-4d76-ba2d-ec9ba50244cc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "aa43a3cf-c3ea-494d-b4d7-a6b9825dad66")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/54258374-367e-59b8-aba1-80765931205f/ae63b831-9b8e-50c5-af95-2524a99d3485")
 		(sheetname "/CAN/")
@@ -9202,6 +10645,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SM06B-GHS-TB(LF)(SN)"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f2c3906c-fd39-422d-a96f-abbca72a8846")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "JST"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c8ba5449-51bf-4ada-96e8-cde4d088a6cd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "455-1568-1-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "66e8be57-f782-4d6e-b6a7-18420581894f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -9651,6 +11133,45 @@
 				)
 			)
 		)
+		(property "MPN" "ISO7721DWVR"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e2198cd5-c8aa-46c5-8514-f808407ffdc6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "82b87a53-6b18-4763-9016-be27432cedf3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "296-50304-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4ed20815-5420-454f-a109-b47512515630")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*SOIC*7.5x5.85mm*P1.27mm*")
 		(path "/6587e2cf-bc14-5238-a45d-f1fb904d32b3/d20d5234-a95a-5a65-9ca2-bc3faf0f0d46")
 		(sheetname "/Balancer 3/")
@@ -9972,6 +11493,45 @@
 				)
 			)
 		)
+		(property "MPN" "08055C105KAT2A"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0f0047de-e4c0-43c1-82d1-eda6ac6c5fc8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "KYOCERA AVX"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1088e9a2-92ef-405a-ae29-3fc45762c843")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "478-KGM21AR71H105KUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9fbd9b8a-7910-4f52-b1ef-4b4ce9442fde")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/d96bff5c-e7fd-5be8-a1af-292688b99d3c/d845524f-a04e-5557-9b22-3a3919729d8b")
 		(sheetname "/Balancer 1/")
@@ -10117,6 +11677,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d3fcc8cb-20c2-42e7-a021-aa403255b339")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4fc81d89-bbc8-494a-a90f-cd4c5a60b74f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "39a5a12a-e2b8-4207-b0c3-af1ab99b7e12")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -10268,6 +11867,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "66697087-d739-456b-bcc0-f3902d8dde40")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "58e04d0c-1ff0-496b-b0bf-cb0ced9c9558")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b782a776-4ec3-4bff-a437-c462cb563457")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/012c92d1-7bfb-52d1-b672-86adfa41e261/a6b34925-b5d7-5496-9128-3600e329c2f9")
 		(sheetname "/Temperatures/")
@@ -10383,7 +12021,7 @@
 				)
 			)
 		)
-		(property "Value" "Molex 26013143"
+		(property "Value" "Molex 0039301060"
 			(at 4.2 8.55 0)
 			(layer "F.Fab")
 			(uuid "a7848f28-580c-4f37-aa92-a964c0dc6562")
@@ -10416,12 +12054,38 @@
 				)
 			)
 		)
-		(property "DigiKey" "0026013143-ND"
+		(property "DigiKey" "WM1353-ND"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b08de7ed-c263-4550-a5da-698070a775d7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0039301060"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4d7280e8-4ed5-4d26-8a08-d228815ef781")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1922ae5c-c72a-4c25-ac3f-48192fb54e84")
 			(effects
 				(font
 					(size 1 1)
@@ -10815,6 +12479,45 @@
 				)
 			)
 		)
+		(property "MPN" "APT2012SGC"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0e056122-8b0d-49ba-b936-dcc9297ec9c5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Kingbright"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9b3e86a5-930e-4e13-8e89-64057ccae6d5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "754-1131-1-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "edfc41bd-f7d1-4cdf-9810-b4b95f2666b3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/27dd7ea1-d2cb-5745-9327-d6b1887ff18a/ce3f9ef4-f342-55ed-a8c5-138bed2b9828")
 		(sheetname "/Power/")
@@ -11013,6 +12716,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-071KL"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6e307460-f819-4f26-bc3a-e79d5a986b67")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7d925632-7de4-409f-ac32-56b6ac627c8b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P1.0KDCT-ND"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "653888e3-fbb8-468b-bba9-6f3a343a5491")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/012c92d1-7bfb-52d1-b672-86adfa41e261/f11ca102-a547-5cf2-9d6d-14d300f0dfbd")
 		(sheetname "/Temperatures/")
@@ -11111,14 +12853,14 @@
 			)
 		)
 	)
-	(footprint "Diode_SMD:D_SMB"
+	(footprint "Diode_SMD:D_SMB_Handsoldering"
 		(layer "F.Cu")
 		(uuid "7502c8d7-6b69-4276-aadd-d499f0cf7707")
 		(at 100.5 89.5 -90)
-		(descr "Diode SMB (DO-214AA)")
-		(tags "Diode SMB (DO-214AA)")
+		(descr "Diode SMB (DO-214AA) Handsoldering")
+		(tags "Diode SMB (DO-214AA) Handsoldering")
 		(property "Reference" "D101"
-			(at 6 0 90)
+			(at 0 -3 90)
 			(layer "F.SilkS")
 			(uuid "d28bf87a-9c12-4a78-bea9-28abb7095502")
 			(effects
@@ -11129,7 +12871,7 @@
 			)
 		)
 		(property "Value" "SMBJ18A"
-			(at 0 3.1 90)
+			(at 0 3 90)
 			(layer "F.Fab")
 			(uuid "904c87f4-4be1-41fe-99cc-5a7ef6c8a281")
 			(effects
@@ -11165,6 +12907,45 @@
 				)
 			)
 		)
+		(property "MPN" "SMBJ18A"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "68cb5890-6a36-4384-88d4-ab3b3b9dd387")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Littelfuse"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bbfe7caf-035a-40db-af5b-e44cf5d02aa2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "SMBJ18ALFCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cf6d7681-5ee7-4079-848f-4ffc8410be03")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "TO-???* *_Diode_* *SingleDiode* D_*")
 		(path "/27dd7ea1-d2cb-5745-9327-d6b1887ff18a/e67cfb42-2b3e-59ad-9ea2-0ff7b243626a")
 		(sheetname "/Power/")
@@ -11178,28 +12959,8 @@
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -3.66 2.15)
-			(end 2.15 2.15)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "7f118191-5ed4-49ed-892a-83c9942ef9b0")
-		)
-		(fp_line
-			(start -3.66 -2.15)
-			(end -3.66 2.15)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "be57d2f5-3067-4977-8ff4-8f1179bf4f9f")
-		)
-		(fp_line
-			(start -3.66 -2.15)
-			(end 2.15 -2.15)
+			(start -4.71 2.15)
+			(end 2.7 2.15)
 			(stroke
 				(width 0.12)
 				(type solid)
@@ -11208,18 +12969,28 @@
 			(uuid "677756bd-e97c-49cf-bec4-bed6131923da")
 		)
 		(fp_line
-			(start -3.65 2.25)
-			(end -3.65 -2.25)
+			(start -4.71 -2.15)
+			(end -4.71 2.15)
 			(stroke
-				(width 0.05)
+				(width 0.12)
 				(type solid)
 			)
-			(layer "F.CrtYd")
-			(uuid "6469c577-2273-48d4-af59-93189ef54445")
+			(layer "F.SilkS")
+			(uuid "7f118191-5ed4-49ed-892a-83c9942ef9b0")
 		)
 		(fp_line
-			(start 3.65 2.25)
-			(end -3.65 2.25)
+			(start -4.71 -2.15)
+			(end 2.7 -2.15)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "be57d2f5-3067-4977-8ff4-8f1179bf4f9f")
+		)
+		(fp_line
+			(start -4.7 2.25)
+			(end -4.7 -2.25)
 			(stroke
 				(width 0.05)
 				(type solid)
@@ -11228,24 +12999,34 @@
 			(uuid "35595029-dd1e-4871-be5b-921775847b9b")
 		)
 		(fp_line
-			(start -3.65 -2.25)
-			(end 3.65 -2.25)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "c634ee37-2a41-42bb-b713-266be2322c06")
-		)
-		(fp_line
-			(start 3.65 -2.25)
-			(end 3.65 2.25)
+			(start 4.7 2.25)
+			(end -4.7 2.25)
 			(stroke
 				(width 0.05)
 				(type solid)
 			)
 			(layer "F.CrtYd")
 			(uuid "348be320-93ef-464d-93d4-704290fe7886")
+		)
+		(fp_line
+			(start -4.7 -2.25)
+			(end 4.7 -2.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "6469c577-2273-48d4-af59-93189ef54445")
+		)
+		(fp_line
+			(start 4.7 -2.25)
+			(end 4.7 2.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "c634ee37-2a41-42bb-b713-266be2322c06")
 		)
 		(fp_line
 			(start -2.3 2)
@@ -11318,7 +13099,7 @@
 			(uuid "8abb65f5-d56b-4a48-b596-2af1104e80f8")
 		)
 		(fp_line
-			(start -0.64944 -0.799079)
+			(start -0.64944 -0.79908)
 			(end -0.64944 0.80112)
 			(stroke
 				(width 0.1)
@@ -11359,8 +13140,8 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -2.150001 0 270)
-			(size 2.5 2.3)
+			(at -2.7 0 270)
+			(size 3.5 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.1086956522)
 			(net "/Power/12V_FUSED")
@@ -11369,8 +13150,8 @@
 			(uuid "a9d36a2b-b122-4603-9745-e2ab48a38fb7")
 		)
 		(pad "2" smd roundrect
-			(at 2.150001 0 270)
-			(size 2.5 2.3)
+			(at 2.7 0 270)
+			(size 3.5 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.1086956522)
 			(net "GND")
@@ -11447,6 +13228,32 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d4e5f18f-b44e-4e7d-8674-c632048a210d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0ZCF0200AF2C"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "08bedf28-56f6-4390-9b8b-eb1b51786589")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Bel Fuse"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bab1b40f-5ebd-451a-a009-2985964fab9d")
 			(effects
 				(font
 					(size 1 1)
@@ -11602,6 +13409,45 @@
 				)
 			)
 		)
+		(property "MPN" "UMK325BJ106MM-T"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4ec2d6a4-a6d3-47d8-a159-57beb324b499")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Taiyo Yuden"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "931bf66f-502d-4bcd-b325-9ea2caf3facc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "587-2225-1-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "70064de2-a400-43b3-a40b-6abc6766ae88")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/27dd7ea1-d2cb-5745-9327-d6b1887ff18a/af2bf8a9-e2b7-5d8b-bb7a-096d33242a2e")
 		(sheetname "/Power/")
@@ -11747,6 +13593,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "19f132fc-f69b-4d04-b37a-9fab7578e33f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cd8fa805-a9c4-4c8f-81b8-0d998dd98894")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "49a7915f-b9da-41a5-8278-288cddb474b3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -11898,6 +13783,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "87043ac6-fbe2-4e20-909f-36a70c0fb203")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ff248fac-fcd5-4ac6-8b13-8b9cfaa72268")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c0625a37-e8b5-4cb3-b4cb-25f4c794a0e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/65e73a1c-a317-5358-b010-b258019f4abe/f6eab1cb-d79f-4de2-b924-0a7a273b0ba9")
 		(sheetname "/Balancer 2/")
@@ -12043,6 +13967,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "BAV99-E3-08"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "19a59fdf-71f5-42af-878b-a407286ec033")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d81140c0-ab96-4266-85ce-f5a7efdbe126")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "BAV99-FDICT-ND"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f7819f92-bf6e-4078-baff-7ba7ef71693b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -12429,6 +14392,32 @@
 				)
 			)
 		)
+		(property "MPN" "ASE-8.000MHZ-LC-T"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "01f9bdf5-c9d1-429b-b6aa-3109d9f12970")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Abracon"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0ec387b1-1f30-4c71-bd90-d677fc093eb8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Oscillator*SMD*Abracon*ASE*3.2x2.5mm*")
 		(path "/f6d89ab4-f55f-5607-9f5b-aebcf2dfe121/23a33782-6111-4f5c-b3d9-6f481b306582")
 		(sheetname "/MCU/")
@@ -12620,6 +14609,32 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0dbb001e-5dbf-40a8-b160-de13f97b88d9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "SMBJ18A"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "30d7d66c-c014-436f-9b1e-b836c3ef7b6c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Littelfuse"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "303c8acc-72a2-4c8a-84a6-d29aee8ff8fd")
 			(effects
 				(font
 					(size 1 1)
@@ -12900,6 +14915,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ISO7721DWVR"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6deb4a4d-c2b3-4ef5-af83-2708c7ff598e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6cea6c21-7452-4968-a3d8-d58a2ffb024a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "296-50304-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "77bf9504-8e7e-4347-b446-fd6111afd35b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -13224,6 +15278,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "71aaaedf-4ce4-470e-8ef3-71940e5252c6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7a3e57be-fd36-4544-ba85-73d438e4795e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "30dae814-2f45-4a69-8e0f-7d45a1fea98a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/65e73a1c-a317-5358-b010-b258019f4abe/e095a2e0-51a5-58e3-b609-3cf82978d954")
 		(sheetname "/Balancer 2/")
@@ -13378,6 +15471,32 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "490fe7da-a0fe-467f-911f-8af67b66e100")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0430450202"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "20758163-720c-41bf-b111-e2488f5dac92")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0b3a874b-7fde-463b-bd67-3994bcdeb907")
 			(effects
 				(font
 					(size 1 1)
@@ -13728,6 +15847,45 @@
 				)
 			)
 		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b3b1d18e-687a-434b-9034-f5cf0b79dd15")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8b36e891-b4e4-49d6-9ba3-4a0a616982c8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e676031f-51fa-41e3-bc12-6a62f083823e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/65e73a1c-a317-5358-b010-b258019f4abe/cb0891b9-620f-5837-a836-9a04e14caa84")
 		(sheetname "/Balancer 2/")
@@ -13873,6 +16031,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "08055C105KAT2A"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0ac8a8d9-a78b-4a63-8fd9-aeab61c2bfce")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "KYOCERA AVX"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fabc285d-37f0-4bda-be17-419367f3359f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "478-KGM21AR71H105KUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c79882a8-c956-4fb0-a6ef-fbabb2f3fd01")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -14024,6 +16221,45 @@
 				)
 			)
 		)
+		(property "MPN" "08055C105KAT2A"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7c78249c-05d2-46a8-ac06-d7594aa8f432")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "KYOCERA AVX"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ed16bc1d-21f4-41e4-bc45-adc99a54c929")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "478-KGM21AR71H105KUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c270cf5f-aef0-4fb7-a24e-b89b1941888f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/65e73a1c-a317-5358-b010-b258019f4abe/d845524f-a04e-5557-9b22-3a3919729d8b")
 		(sheetname "/Balancer 2/")
@@ -14169,6 +16405,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3e64a646-cc97-4e2f-8592-5f1768e1747e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b9553799-7bab-46d1-b28c-a2d3e681661e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad5fafc9-769c-4f69-8f8c-bf17d86d1e05")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -14320,6 +16595,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-071KL"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "249d445a-5215-40cf-85a6-672d52164f0e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6b9d239c-c961-404f-b453-a271bde9da49")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P1.0KDCT-ND"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2b9f6e76-53df-41d1-abba-f77f521075e2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/012c92d1-7bfb-52d1-b672-86adfa41e261/ee16d423-fc53-5a42-84d6-36ff716ecc57")
 		(sheetname "/Temperatures/")
@@ -14465,6 +16779,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e327f3fd-4bc5-4a55-87f1-8032f0de6b2e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e41145fb-514d-4969-9003-98bb09402283")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f766609a-e42f-4da9-a3d2-0ecd2e14c30c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -14616,6 +16969,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b9e2c062-b1a2-4b71-a5ee-0e4ea000825f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "30674ff6-30e9-4dff-ae79-bbbcd1e16a08")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c68d7cd3-6f37-4801-b267-982a2d18e2c7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/5d8e78b5-243b-5345-98a1-611cfe935844/31b052c7-bd2a-5ce5-ae05-2c1716b3f8d7")
 		(sheetname "/BMCU/")
@@ -14764,6 +17156,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cf991103-4653-4c41-ac18-aaa5712d5f63")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c15281a1-dd08-4621-be7c-edb4850736ad")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "53d5095c-81c0-4e9b-a922-7a426036d705")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6587e2cf-bc14-5238-a45d-f1fb904d32b3/754620f6-bfb8-5c74-8f23-73d7d044c20c")
 		(sheetname "/Balancer 3/")
@@ -14909,6 +17340,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "08055C105KAT2A"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a5cb0827-7364-4a8a-90a9-3e124b527697")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "KYOCERA AVX"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6b8212a7-fc46-42bd-9f9a-c01521a59e46")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "478-KGM21AR71H105KUCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "21c2679e-255a-4089-b512-8486b3eafed0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -15472,6 +17942,32 @@
 				)
 			)
 		)
+		(property "MPN" "0ZCF0200AF2C"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1de66c1f-5a20-4607-858a-1d7451c006dc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Bel Fuse"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5c1f47e9-6ef6-418b-ae4d-e772ecc7abf8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*polyfuse* *PTC*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/e2d3864b-429a-43f5-98cf-1a99f9f39537")
 		(sheetname "/FANs/")
@@ -15617,6 +18113,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SM712.TCT"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e969b4c8-de8d-442d-9711-b754a51d32b3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Semtech"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "20e721ae-6e4b-402c-a518-3144b9afd6b9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "5399-SM712DCT-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e6389560-ee2d-4ff1-829e-9457970f566a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -15957,7 +18492,7 @@
 				)
 			)
 		)
-		(property "Value" "60.4 (DNP)"
+		(property "Value" "60.4"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(uuid "b7e6125e-f5ff-4f7f-98a8-38274422729a")
@@ -15987,6 +18522,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0760R4L"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4da70540-ac7b-4324-b14b-4fe59115f16d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3def0f06-1a6b-481b-84bf-3d7d236e81af")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "13-RC0805FR-1360R4LCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4e049571-7a4b-45c5-b263-91da1b14ce9f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -16138,6 +18712,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9929c509-768b-4962-b35a-fca9180808f8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "47e5d90b-1ec6-41e4-badd-fbb5a6044f00")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d1130764-3985-4f63-879f-71cdfebd95f1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/012c92d1-7bfb-52d1-b672-86adfa41e261/329d70d3-719f-5bbe-979c-2fbcfbaaae45")
 		(sheetname "/Temperatures/")
@@ -16283,6 +18896,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "APT2012SGC"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cdf73f7a-336b-49a3-8ffb-a0967d7bb476")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Kingbright"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "826feb1c-23f1-4039-9ed9-3984ae3b63f1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "754-1131-1-ND"
+			(at 0 0 225)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0b711226-c4ec-41ad-b53b-ecffae998457")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -16451,7 +19103,7 @@
 				)
 			)
 		)
-		(property "Value" "2N7002DW"
+		(property "Value" "2N7002BKS"
 			(at 0 1.8 90)
 			(layer "F.Fab")
 			(uuid "0881f28f-88aa-4f7c-9402-a37868ff7adb")
@@ -16462,7 +19114,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "2N7002DW"
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/2N7002BKS.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -16473,7 +19125,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Dual N-channel MOSFET, 60 V, 0.3 A, SOT-363"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -16481,6 +19133,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "2N7002BKS,115"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "10830cfa-9f2e-41ff-ba2b-93969b35d94b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Nexperia"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b6baf7d7-6e8a-4de6-a826-3c280bb1c759")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "1727-4786-1-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "74cacb72-b350-4c0c-8421-5f15866e178b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -16834,6 +19525,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3066abf5-bcda-413a-bf48-1fdba5fc01b0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c32fc803-6fbd-46f7-8b4e-1e36b7826f2b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "20942fc8-db1c-43eb-a02b-7dab18377440")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/5d8e78b5-243b-5345-98a1-611cfe935844/1b169d12-7c2d-5ce9-9f87-5d0d641d01af")
 		(sheetname "/BMCU/")
@@ -16947,7 +19677,7 @@
 				)
 			)
 		)
-		(property "Value" "60.4 (DNP)"
+		(property "Value" "60.4"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(uuid "0a90e0cb-3ae9-4466-960b-6c9e2d182401")
@@ -16977,6 +19707,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0760R4L"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0478e996-37ea-4948-a429-63144257f84f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e49921f8-6da3-47fe-86fb-11115113b649")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "13-RC0805FR-1360R4LCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e771b68d-00c5-47b8-85dd-c4f83360539d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -17125,6 +19894,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "UMK325BJ106MM-T"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bb43979f-baf0-48cd-b2e2-d8c28cdf8e07")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Taiyo Yuden"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dff885c9-344b-4e18-895b-be372653053d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "587-2225-1-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "02101a10-8ec2-4c8e-8ae0-c3ff41c2f7f7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -17289,6 +20097,32 @@
 				)
 			)
 		)
+		(property "MPN" "0ZCF0200AF2C"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef22457a-e1bf-445a-991f-629ded0e73ba")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Bel Fuse"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bb884e10-672a-4364-8916-81723c1a2312")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*polyfuse* *PTC*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/73096778-a6ee-4104-827a-a0ba16094d12")
 		(sheetname "/FANs/")
@@ -17437,6 +20271,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-07120RL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "87c11d4b-1c7b-4a76-8ae5-8435fac35200")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "87375afe-2469-4b70-bdf9-ca63146bbded")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "A129738CT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b7d3f45c-21e4-4ea7-9451-4a335a4d895f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/5d8e78b5-243b-5345-98a1-611cfe935844/bfbb09bc-fda3-54fb-8053-61e8dccc5c90")
 		(sheetname "/BMCU/")
@@ -17582,6 +20455,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "0430450400"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5ee99aff-2c82-49d8-a886-7ff5da0072a4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "50190f20-3bde-46f4-9266-776098accf8b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "WM1814-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e3964e44-bfef-40fd-b425-82e4473c81cf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -17900,14 +20812,14 @@
 			)
 		)
 	)
-	(footprint "Resistor_SMD:R_0805_2012Metric"
+	(footprint "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
 		(layer "F.Cu")
 		(uuid "bf4f071c-71cd-4b2b-880b-6a5cc8ea023c")
 		(at 92 99 -90)
-		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
-		(tags "resistor")
+		(descr "SMD Solder Jumper, 1x1.5mm Pads, 0.3mm gap, open")
+		(tags "solder jumper open")
 		(property "Reference" "R206"
-			(at 0 -1.65 90)
+			(at 0 -1.8 90)
 			(layer "F.SilkS")
 			(uuid "c4b6ee70-6510-46c9-87ca-52edb159eeb8")
 			(effects
@@ -17918,7 +20830,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 0 1.65 90)
+			(at 0 1.9 90)
 			(layer "F.Fab")
 			(uuid "68afdf30-42b9-4267-b99d-7f099c23af29")
 			(effects
@@ -17929,24 +20841,67 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 90)
+			(at 0 0 270)
+			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8c1a6134-1999-4c13-aefb-069775482ee3")
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Description" "Resistor"
-			(at 0 0 90)
+			(at 0 0 270)
+			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "f60939a0-d650-4975-95eb-156ea47d267a")
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "RC0805JR-070RL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "27a96eb8-cb06-4c31-be1d-4aecb69cc2a2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "36a55341-8dd8-45b9-ab4a-c99e3746e844")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "-"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d747730f-9d58-4b86-ac76-2cd9426c3831")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -17960,11 +20915,43 @@
 				(pins "1" "2")
 			)
 		)
-		(attr smd dnp)
+		(zone_connect 1)
+		(attr dnp allow_soldermask_bridges)
 		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -0.15 -0.75)
+			(end 0.15 0.75)
+			(stroke
+				(width 0)
+				(type default)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "39e94d54-8ff7-4271-b765-b1968385a60e")
+		)
 		(fp_line
-			(start -0.227064 0.735)
-			(end 0.227064 0.735)
+			(start -1.4 1)
+			(end -1.4 -1)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "412592c6-e5f0-4741-bcfc-ba0e9fb4b156")
+		)
+		(fp_line
+			(start 1.4 1)
+			(end -1.4 1)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "468b2553-596e-44df-9ef3-6fd5d804b45f")
+		)
+		(fp_line
+			(start -1.4 -1)
+			(end 1.4 -1)
 			(stroke
 				(width 0.12)
 				(type solid)
@@ -17973,80 +20960,72 @@
 			(uuid "b4b1cad0-8113-4555-a71e-2ee722f105ce")
 		)
 		(fp_line
-			(start -0.227064 -0.735)
-			(end 0.227064 -0.735)
+			(start 1.4 -1)
+			(end 1.4 1)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "412592c6-e5f0-4741-bcfc-ba0e9fb4b156")
+			(uuid "9a75fd9c-1cb3-4a49-a8ca-ecec50645d26")
 		)
-		(fp_poly
-			(pts
-				(xy -1.68 -0.95) (xy 1.68 -0.95) (xy 1.68 0.95) (xy -1.68 0.95)
-			)
+		(fp_line
+			(start 1.65 1.25)
+			(end -1.65 1.25)
 			(stroke
 				(width 0.05)
 				(type solid)
 			)
-			(fill no)
 			(layer "F.CrtYd")
-			(uuid "a6ccdfc1-864b-4df3-964c-75cd6e9c6180")
+			(uuid "1c62e261-bc81-40b0-b698-ae88777776f0")
 		)
-		(fp_poly
-			(pts
-				(xy -1 -0.625) (xy 1 -0.625) (xy 1 0.625) (xy -1 0.625)
-			)
+		(fp_line
+			(start 1.65 1.25)
+			(end 1.65 -1.25)
 			(stroke
-				(width 0.1)
+				(width 0.05)
 				(type solid)
 			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "4648f1ac-9403-4c4c-8379-95d0bb539d60")
+			(layer "F.CrtYd")
+			(uuid "8d8f2a9c-5171-4cf9-9471-252a058a18e6")
 		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 90)
-			(layer "F.Fab")
-			(uuid "af58e09f-cc7a-4f9c-953a-7a60385bf165")
-			(effects
-				(font
-					(size 0.5 0.5)
-					(thickness 0.08)
-				)
+		(fp_line
+			(start -1.65 -1.25)
+			(end -1.65 1.25)
+			(stroke
+				(width 0.05)
+				(type solid)
 			)
+			(layer "F.CrtYd")
+			(uuid "5127bdfd-70f5-4f8c-95f1-915c5522ad36")
 		)
-		(pad "1" smd roundrect
-			(at -0.9125 0 270)
-			(size 1.025 1.4)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.243902)
+		(fp_line
+			(start -1.65 -1.25)
+			(end 1.65 -1.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "c0bea4ed-c2bd-4ee9-b142-1e284be0bd02")
+		)
+		(pad "1" smd rect
+			(at -0.65 0 270)
+			(size 1 1.5)
+			(layers "F.Cu" "F.Mask")
 			(net "GND")
 			(pintype "passive")
 			(uuid "523e23da-bf6e-4fdc-bd9d-09e02c285490")
 		)
-		(pad "2" smd roundrect
-			(at 0.9125 0 270)
-			(size 1.025 1.4)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.243902)
+		(pad "2" smd rect
+			(at 0.65 0 270)
+			(size 1 1.5)
+			(layers "F.Cu" "F.Mask")
 			(net "GNDPWR")
 			(pintype "passive")
 			(uuid "fa384f91-e914-4503-8e27-72b297e27e9a")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
 	)
 	(footprint "Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical"
 		(layer "F.Cu")
@@ -18098,12 +21077,38 @@
 				)
 			)
 		)
-		(property "DigiKey" "ED1543-ND"
+		(property "DigiKey" "S9169-ND"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7bf0e9a4-139f-47b2-bc85-eef000f96289")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "N2510-6002-RB"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fd2ef8de-9aef-49a8-8658-96e0b2fb6802")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "3M"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0ff6f997-9d13-463a-aff8-9ca5b7ca95d2")
 			(effects
 				(font
 					(size 1 1)
@@ -18593,6 +21598,32 @@
 				)
 			)
 		)
+		(property "MPN" "0ZCF0200AF2C"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "20043e8e-cb05-4f50-b33e-ce1b479d0a17")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Bel Fuse"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f78d3033-f71a-449b-9041-5df41f5c3cab")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*polyfuse* *PTC*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/d76f23d2-3b0f-4920-9d17-09856dec9c4c")
 		(sheetname "/FANs/")
@@ -18738,6 +21769,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "ISO7721DWVR"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b619ec5a-2002-4aa1-a9ef-e6ca79eed628")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5ad1e323-7d22-455e-a68d-56844f9cf3ae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "296-50304-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3a09cc31-2734-44f3-9030-9fffb4777d78")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -19029,7 +22099,7 @@
 				)
 			)
 		)
-		(property "Value" "STM32G0B1KBT6"
+		(property "Value" "STM32G0B1KET6"
 			(at 0 5.88 135)
 			(layer "F.Fab")
 			(uuid "51ad25fb-453e-48c2-a575-ee6c764b751e")
@@ -19040,7 +22110,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32g0b1kb.pdf"
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32g0b1ce.pdf"
 			(at 0 0 135)
 			(layer "F.Fab")
 			(hide yes)
@@ -19051,7 +22121,7 @@
 				)
 			)
 		)
-		(property "Description" "STMicroelectronics Arm Cortex-M0+ MCU, 128KB flash, 144KB RAM, 64 MHz, 1.7-3.6V, 30 GPIO, LQFP32"
+		(property "Description" "ARM® Cortex®-M0+ STM32G0 Microcontroller IC 32-Bit 64MHz 512KB (512K x 8) FLASH 32-LQFP (7x7)"
 			(at 0 0 135)
 			(layer "F.Fab")
 			(hide yes)
@@ -19059,6 +22129,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "STM32G0B1KET6"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dcd01507-1120-4dbc-b0d6-24969472c443")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "STMicroelectronics"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5f8486de-51cc-42bd-b6fe-ab5b65918d97")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "STM32G0B1KET6"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "56400905-efbc-4f95-a738-714f47a19551")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -19775,6 +22884,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-07100RL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "47bf6335-a5a2-4779-87b4-6cf0b1967ffe")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f306edf3-fb28-4e4c-96f7-ff305b57f4ff")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "A106053CT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8301650c-3ba5-440d-bf3b-716306682f58")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/ab1114ba-8686-4db3-a205-cf2a62c89ddf")
 		(sheetname "/FANs/")
@@ -19920,6 +23068,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SM06B-GHS-TB(LF)(SN)"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ee5de77c-5151-4bbc-8da3-f40adac63846")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "JST"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "21b0196e-f068-4d41-8a38-04d727be5b7c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "455-1568-1-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dd16bfaf-1e55-4039-b55c-91be9f690598")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -20369,6 +23556,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-071KL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b82a5630-7613-491b-ae78-3a461d32fb5b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "779525e2-9a2d-4266-8237-d46787d4b8a5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P1.0KDCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "52e24af4-0d4f-4d3c-9d2e-ef0e925607fe")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/27dd7ea1-d2cb-5745-9327-d6b1887ff18a/cd962861-ce9d-5421-9206-e60d0e2fcd7b")
 		(sheetname "/Power/")
@@ -20517,6 +23743,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-071KL"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5f426ac8-c22d-410d-bf26-156c92284c98")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2e8e1e28-5530-4b1a-a137-69f70db8d33a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P1.0KDCT-ND"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "49a6c3c9-0ef0-48b5-9cb8-bccfdd7368c5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/012c92d1-7bfb-52d1-b672-86adfa41e261/1fc89785-79b3-5584-8452-711d7b3191e4")
 		(sheetname "/Temperatures/")
@@ -20662,6 +23927,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cade93f-d6ae-4b90-bf47-6b4d6074cbdb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e7afd178-6c42-4b24-91f1-8e386d5ef0e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0284763e-f0ae-4962-9450-a3e882c836a8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -20826,6 +24130,32 @@
 				)
 			)
 		)
+		(property "MPN" "0ZCF0200AF2C"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "917dcf77-298d-4a55-9a33-08b124f0a13d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Bel Fuse"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "413d9cee-a29a-4349-ba15-38d839a41c4c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*polyfuse* *PTC*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/89459e7d-ccd1-4314-84ac-6d73af09dbab")
 		(sheetname "/FANs/")
@@ -20971,6 +24301,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0710RL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "70f029fa-3ab4-48cb-96cb-2ac324984f53")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "75a38031-1d76-41a1-8a50-62823b4c499e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "311-10.0CRCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fc87b9a9-818d-44de-b0ff-88671d08f412")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -21128,6 +24497,32 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "87e094b2-ca9c-4db2-9ab4-619a6c3f6ebf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0430450202"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "22807de9-d617-4f32-9d46-50e923a58269")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "395daa8e-5035-4c7c-a194-f9761a8017de")
 			(effects
 				(font
 					(size 1 1)
@@ -21478,6 +24873,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710RL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2e17e960-38ab-490d-9fce-8c99113d7097")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8c45fb3d-d747-4db9-8e55-63f12d6672ec")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "311-10.0CRCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cde9839b-871d-4739-9f91-68349e0146ab")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/d96bff5c-e7fd-5be8-a1af-292688b99d3c/013443e2-32ce-53b0-ae39-e89f6502035c")
 		(sheetname "/Balancer 1/")
@@ -21623,6 +25057,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "25aec3d1-0bce-46ed-8cd4-be0c90c59ef5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "59bc3166-8ece-4e30-a160-26f13ebcf519")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 45)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ba08b4f0-ff17-47f5-ac14-02e1d423c9c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -21774,6 +25247,45 @@
 				)
 			)
 		)
+		(property "MPN" "08055C105KAT2A"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2b42346a-46d7-468a-a161-e8e75368423c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "KYOCERA AVX"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d9241273-8469-4356-9774-d9777684c4f7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "478-KGM21AR71H105KUCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c7bd7860-8cc3-4497-bb8d-9c44918ab78f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/27dd7ea1-d2cb-5745-9327-d6b1887ff18a/6541a2c0-f5f3-57b1-b260-b0726861ffe7")
 		(sheetname "/Power/")
@@ -21919,6 +25431,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "MCP2562-E/SN"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bb4e53d3-1287-4642-a2f2-9a7392b9e8a1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Microchip"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d16a91f7-6174-45bc-925f-22ab99bc5a44")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "MCP2562-E/SN-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "750eae74-06f1-4bc6-8eb6-2890b20507a1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -22292,6 +25843,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-07100KL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "46775f17-fe47-495a-a47e-aa9097376785")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "01e72aba-4be2-4ec8-a7aa-4fdf533d5919")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RMCF0805FG100KCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3fb27abc-b26d-4405-a666-2a2c2df0d5b3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/753050de-ebea-456a-9cfc-db5c9fe8c27f")
 		(sheetname "/FANs/")
@@ -22446,6 +26036,32 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5e38af43-098b-49b3-ba3c-7e1e6d1a517e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0430450202"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9e1f01ff-8b89-4fb5-8449-4c960ebf4145")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2f2354df-b5f4-4348-9994-2f552b68c14d")
 			(effects
 				(font
 					(size 1 1)
@@ -22796,6 +26412,45 @@
 				)
 			)
 		)
+		(property "MPN" "08055C105KAT2A"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "018fcbe3-c2f2-411b-82a7-4fb7282d6303")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "KYOCERA AVX"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b2873e1a-6b4e-464c-a49a-f1c27734cadd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "478-KGM21AR71H105KUCT-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4f8247f2-436a-4af5-8c65-18a1364a733b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/a7ee76c2-f67d-5875-9216-cda069e49d89/d845524f-a04e-5557-9b22-3a3919729d8b")
 		(sheetname "/Balancer 4/")
@@ -22944,6 +26599,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710RL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "94b4630e-ae5f-43d6-ac75-238001db83e9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "381fcad7-e9ed-4160-a5a7-5ba561ff4554")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "311-10.0CRCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a894a1cb-9fe6-4c5d-81e3-33285c776a34")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6587e2cf-bc14-5238-a45d-f1fb904d32b3/013443e2-32ce-53b0-ae39-e89f6502035c")
 		(sheetname "/Balancer 3/")
@@ -23059,7 +26753,7 @@
 				)
 			)
 		)
-		(property "Value" "AP2112K-3.3"
+		(property "Value" "TPS73633DBVR"
 			(at 0 2.4 90)
 			(layer "F.Fab")
 			(uuid "be534c6b-9faf-45dd-9b1f-063a73c358df")
@@ -23070,7 +26764,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP2112.pdf"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps736.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -23081,7 +26775,7 @@
 				)
 			)
 		)
-		(property "Description" "600mA low dropout linear regulator, with enable pin, 3.8V-6V input voltage range, 3.3V fixed positive output, SOT-23-5"
+		(property "Description" "400 mA low-dropout regulator, 3.3 V fixed output, SOT-23-5"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -23089,6 +26783,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPS73633DBVR"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dad8c597-3a0a-4457-8f16-2efad6cdc699")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bf2316a8-7434-4991-9343-de157c478ca0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "296-27064-1-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2f200843-8cf0-4ada-b088-2f374f6e6796")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -23449,7 +27182,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7nF (DNP)"
+		(property "Value" "4.7nF"
 			(at 0 1.679999 90)
 			(layer "F.Fab")
 			(uuid "eadffa0b-e818-4a11-bbc6-ca941f17e95b")
@@ -23479,6 +27212,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CL21B472KBANNNC"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "642ca37a-d7ad-4324-b4bd-81c801ffa13f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "608ee9a7-2173-47dc-acb0-a133499011de")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "311-1133-1-ND"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d10dad58-1250-41f9-b4d3-b2a72ddc1b0b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -23627,6 +27399,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "91a4c80e-0ead-48ed-8b15-ef90b8c680f0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "59a592d6-9893-4089-9392-b9ca3e3e252e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "399-C0805C104K5RACTUCT-ND"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "571dc263-fd87-4d7f-8d60-03344b13bacc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -23791,6 +27602,32 @@
 				)
 			)
 		)
+		(property "MPN" "0ZCF0200AF2C"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "60aae3c7-c0c1-4997-b26a-dda0723175d9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Bel Fuse"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "84e90468-379f-4ae8-aa6c-e54848b99a31")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*polyfuse* *PTC*")
 		(path "/1f141fbb-501a-4485-bf5d-2b7d6e34262d/6009131e-db8f-4d5e-b09d-c7fbac20ddd8")
 		(sheetname "/FANs/")
@@ -23936,6 +27773,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RC0805FR-0710RL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b89c1084-4548-4996-880c-7d95b5a30504")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d925ab51-d097-4a80-a9d7-e0537a13b1ff")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "311-10.0CRCT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1ca757ac-18f3-4ef7-952c-f5e68dbe25a6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -24087,6 +27963,45 @@
 				)
 			)
 		)
+		(property "MPN" "RC0805FR-0710KL"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8a344ad0-adc2-4b9c-a6e9-73ee2148784b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0d9a9614-48c4-4165-a1e1-ee225d3bae11")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "RR12P10.0KDCT-ND"
+			(at 0 0 135)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "017ea799-dec3-4327-91ff-1a63884506b8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/012c92d1-7bfb-52d1-b672-86adfa41e261/cc1a7cb2-297e-56eb-aabb-b1a8cd559471")
 		(sheetname "/Temperatures/")
@@ -24185,11 +28100,11 @@
 			)
 		)
 	)
-	(footprint "Capacitor_SMD:CP_Elec_6.3x7.7"
+	(footprint "Capacitor_SMD:CP_Elec_6.3x5.8"
 		(layer "F.Cu")
 		(uuid "f797100f-3bf3-4771-9c21-89e0169c0923")
 		(at 78 73 90)
-		(descr "SMD capacitor, aluminum electrolytic, Nichicon, 6.3x7.7mm")
+		(descr "SMD capacitor, aluminum electrolytic, Nichicon, 6.3x5.8mm")
 		(tags "capacitor electrolytic")
 		(property "Reference" "C1"
 			(at 0 -4.35 90)
@@ -24232,6 +28147,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "EEE-FK1V470P"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "065cee84-c672-4437-8add-d44228784236")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Panasonic"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "975b7e70-cb36-4409-b951-080d6d767d95")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "PCE3842CT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e8ec7169-4f0f-4cd7-9aa3-1c3159590b23")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -24608,7 +28562,7 @@
 			(uuid "5f0bd9fb-a2c8-49a5-ace9-400600ea72a1")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/CP_Elec_6.3x7.7.step"
+		(model "${KICAD10_3DMODEL_DIR}/Capacitor_SMD.3dshapes/CP_Elec_6.3x5.8.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -24637,7 +28591,7 @@
 				)
 			)
 		)
-		(property "Value" "Molex 26013143"
+		(property "Value" "Molex 0039301060"
 			(at 4.2 8.55 0)
 			(layer "F.Fab")
 			(uuid "7d28019f-31b2-46fb-aca3-bb37a778e1f9")
@@ -24670,12 +28624,38 @@
 				)
 			)
 		)
-		(property "DigiKey" "0026013143-ND"
+		(property "DigiKey" "WM1353-ND"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "952d671c-b967-460f-b6f5-0b087cc48967")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "0039301060"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "19e65479-8849-4346-9ecd-16a57be50b03")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "64acd322-9d42-4f9c-9b20-2eea89422998")
 			(effects
 				(font
 					(size 1 1)
@@ -25069,6 +29049,45 @@
 				)
 			)
 		)
+		(property "MPN" "1812L050/30PR"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "889c0f7d-1cc3-46fc-8e01-42971e59914d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Littelfuse"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "021f77ce-66d9-48f4-ba8c-0a6213dc1af8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "F4159CT-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "31f9cac2-4157-4b54-a26b-a30bf890513d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "*polyfuse* *PTC*")
 		(path "/27dd7ea1-d2cb-5745-9327-d6b1887ff18a/c96a6321-3498-5f48-8b63-c121b606dff2")
 		(sheetname "/Power/")
@@ -25214,6 +29233,45 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "BAV99-E3-08"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "97174c1f-5bf1-41d1-8080-1b28e842f773")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b4eb265a-694b-4f04-b84e-ab4b99c58c2d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey" "BAV99-FDICT-ND"
+			(at 0 0 315)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e749ba4f-ea94-4abc-ae60-254690fbbbfe")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -25589,6 +29647,48 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "MPN" "0015247040"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "61d6504d-19d8-4e38-9fdf-2c4da2880186")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Manufacturer" "Molex"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "72b5863a-b70c-49f7-aa14-a979078047d0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "DigiKey" "WM17600-ND"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "0040db27-d30f-4e5a-880e-6c682c42f2b2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
 				)
 				(justify mirror)
 			)
