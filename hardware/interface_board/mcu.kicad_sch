@@ -2657,7 +2657,7 @@
 		)
 		(uuid "c68d80d9-ca61-5060-94c3-bed010f58a1a")
 	)
-	(text "STM32G0B1KBT6 (LQFP-32, 0.8 mm). Check the pin mapping in STM32CubeMX before layout."
+	(text "STM32G0B1KBT6 (LQFP-32, 0.8 mm)"
 		(exclude_from_sim no)
 		(at 25 25 0)
 		(effects
@@ -2690,13 +2690,15 @@
 		)
 		(uuid "f62f4f1c-23e9-569f-b038-297c73a0c58b")
 	)
+	(junction
+		(at 71.12 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "13269d7a-6d63-488a-aa58-ba386d9a53f2")
+	)
 	(no_connect
 		(at 234.95 102.87)
 		(uuid "1fa575db-2251-4f20-9675-055121df7504")
-	)
-	(no_connect
-		(at 63.5 100.33)
-		(uuid "31e65516-3f01-4f9c-8e75-5e1d7a237035")
 	)
 	(no_connect
 		(at 222.25 102.87)
@@ -2733,6 +2735,26 @@
 	(no_connect
 		(at 115.57 102.87)
 		(uuid "e214cfd3-fffb-5826-89ad-8ac20648b80e")
+	)
+	(wire
+		(pts
+			(xy 63.5 92.71) (xy 63.5 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0467c499-0652-4053-b8a7-c9932500a1d3")
+	)
+	(wire
+		(pts
+			(xy 71.12 116.84) (xy 71.12 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f6a220c-f414-428e-ad38-a01a79668476")
 	)
 	(wire
 		(pts
@@ -2843,6 +2865,16 @@
 			(type default)
 		)
 		(uuid "5ccaed45-31f9-54c6-a9ed-d0be534dbdfa")
+	)
+	(wire
+		(pts
+			(xy 71.12 92.71) (xy 63.5 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "650d6e21-3a74-4a9e-94ef-338d868a043f")
 	)
 	(wire
 		(pts
@@ -4306,23 +4338,25 @@
 		(fields_autoplaced yes)
 		(uuid "23a33782-6111-4f5c-b3d9-6f481b306582")
 		(property "Reference" "X1"
-			(at 54.61 93.4593 0)
+			(at 73.2633 107.95 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Value" "ASE-8.000MHZ-LC-T"
-			(at 54.61 95.9993 0)
+			(at 73.2633 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Oscillator:Oscillator_SMD_Abracon_ASE-4Pin_3.2x2.5mm_HandSoldering"
@@ -4358,13 +4392,14 @@
 			)
 		)
 		(property "DigiKey" "535-9558-1-ND"
-			(at 54.61 98.5393 0)
+			(at 73.2633 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(pin "1"
@@ -4822,7 +4857,7 @@
 	(symbol
 		(lib_name "GND_1")
 		(lib_id "power:GND")
-		(at 71.12 107.95 0)
+		(at 71.12 116.84 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4833,7 +4868,7 @@
 		(fields_autoplaced yes)
 		(uuid "7a70ffd5-5853-44b0-b264-13ba4a383ef5")
 		(property "Reference" "#PWR04"
-			(at 71.12 114.3 0)
+			(at 71.12 123.19 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4844,7 +4879,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 71.12 113.03 0)
+			(at 71.12 121.92 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4854,7 +4889,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 71.12 107.95 0)
+			(at 71.12 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4865,7 +4900,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 71.12 107.95 0)
+			(at 71.12 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4876,7 +4911,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 71.12 107.95 0)
+			(at 71.12 116.84 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects

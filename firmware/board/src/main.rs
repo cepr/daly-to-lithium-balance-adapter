@@ -335,13 +335,13 @@ async fn main(spawner: Spawner) {
     spawner.spawn(bmcu(bmcu_uart, settings).unwrap());
     spawner.spawn(store_settings(flash).unwrap());
 
-    // Balancers #1…#4: USART1 (PB6/PB7), USART3 (PB2/PB0), USART5 (PB3/PB4), USART6 (PA4/PA5).
+    // Balancers #1…#4: USART1 (PB6/PB7), USART5 (PB3/PB4), USART3 (PB2/PB0), USART6 (PA4/PA5).
     let (tx, rx) = buffers!(16, 256);
     let b1 = BufferedUart::new(p.USART1, p.PB7, p.PB6, tx, rx, Irqs, uart_config(9_600)).expect("USART1 config");
     let (tx, rx) = buffers!(16, 256);
-    let b2 = BufferedUart::new(p.USART3, p.PB0, p.PB2, tx, rx, Irqs, uart_config(9_600)).expect("USART3 config");
+    let b2 = BufferedUart::new(p.USART5, p.PB4, p.PB3, tx, rx, Irqs, uart_config(9_600)).expect("USART5 config");
     let (tx, rx) = buffers!(16, 256);
-    let b3 = BufferedUart::new(p.USART5, p.PB4, p.PB3, tx, rx, Irqs, uart_config(9_600)).expect("USART5 config");
+    let b3 = BufferedUart::new(p.USART3, p.PB0, p.PB2, tx, rx, Irqs, uart_config(9_600)).expect("USART3 config");
     // On the Nucleo, PA5 drives the user LED, so balancer #4 uses USART6 on PC0 (TX) / PC1 (RX).
     #[cfg(feature = "board")]
     let (b4_rx, b4_tx, led) = (p.PA5, p.PA4, p.PB5);

@@ -43,7 +43,7 @@ PC and `board` for the STM32 without passing `--target` by hand.
 4. Optional: `cargo install cargo-binutils` for `just size`; in VS Code, the
    *rust-analyzer* and *probe-rs* (debugger) extensions.
 
-`just` is already installed. The interface board's programming header J201 takes an
+`just` is already installed. The interface board's programming header J11 takes an
 **ST-LINK/V2 clone USB dongle** and its 10-wire ribbon cable. See [Programming header](../README.md#programming-header)
 in the main README for the pinout. A Nucleo's on-board ST-LINK also works, through jumper wires (see
 [below](#using-a-nucleos-st-link-for-the-interface-board)).
@@ -99,8 +99,8 @@ are printed on the board.
 |---|---|---|
 | BMCU bus (USART2) | PA2 / PA3 | Nothing: already on the ST-LINK virtual COM port (`/dev/ttyACM0`). PA1 (DE) toggles but is unused. |
 | Balancer #1 (USART1) | PB6 TX, PB7 RX | Adapter RX ← PB6, adapter TX → PB7, GND ↔ GND |
-| Balancer #2 (USART3) | PB2 TX, PB0 RX | the same way |
-| Balancer #3 (USART5) | PB3 TX, PB4 RX | the same way |
+| Balancer #2 (USART5) | PB3 TX, PB4 RX | the same way |
+| Balancer #3 (USART3) | PB2 TX, PB0 RX | the same way |
 | Balancer #4 (USART6) | PC0 TX, PC1 RX | the same way (on the interface board this is PA4/PA5) |
 | T1…T4 | PA0, PA6, PA7, PB1 | Each: 10 kΩ to 3V3 and 10 kΩ (or the NTC) to GND. Two 10 kΩ resistors read 25 °C. |
 
@@ -146,17 +146,17 @@ connect their 5 V or 3.3 V pins to the Nucleo.
 
 ### Using a Nucleo's ST-LINK for the interface board
 
-The usual programmer is the ST-LINK/V2 clone dongle on J201 (see above). The ST-LINK half of
+The usual programmer is the ST-LINK/V2 clone dongle on J11 (see above). The ST-LINK half of
 the Nucleo can be used instead. Set its jumpers for an external target as described in the
-user manual, and wire its SWD header (CN4) to J201:
+user manual, and wire its SWD header (CN4) to J11:
 
-| Nucleo CN4 | J201 pin |
+| Nucleo CN4 | J11 pin |
 |---|---|
 | 2 SWCLK | 2 |
 | 3 GND | 5 or 6 |
 | 4 SWDIO | 4 |
 | 5 NRST | 1 |
-| 1 VDD_TARGET (voltage sense) | not on J201: take 3.3 V from the board, or leave it open if the ST-LINK runs without it |
+| 1 VDD_TARGET (voltage sense) | not on J11: take 3.3 V from the board, or leave it open if the ST-LINK runs without it |
 
 Power the interface board from its own 12 V input, and use `just run`.
 

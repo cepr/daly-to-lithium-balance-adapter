@@ -1,6 +1,6 @@
 # DALY Smart Active Balancer (mini, red PCB) — UART Protocol
 
-> **Status:** compiled reference, **not yet validated on hardware**.
+> **Status:** compiled reference, **partly validated on hardware** (settings registers, see §4.9).
 > DALY has not published a protocol document for the active balance module. This file
 > brings together DALY's official BMS UART spec, the official balancer manual and
 > community reverse-engineering of the DALY "Modbus" (0xD2) protocol. Every table marks
@@ -11,6 +11,7 @@
 > | **[OFFICIAL]** | Taken from a DALY document |
 > | **[COMMUNITY]** | Reverse-engineered on DALY BMS units and used in working open-source code |
 > | **[INFERRED]** | Expected to apply to the balancer, but not yet confirmed on one |
+> | **[VERIFIED]** | Read back from a real balancer over D2 (see §4.9) |
 >
 > Before writing to any register, check it against a capture from your own unit (see §8).
 
@@ -164,15 +165,15 @@ are expected to read as 0 or a fixed value.
 | `0x0082` | Acquisition-board count | |
 | `0x0083`–`0x0085` | Cells per board 1–3 | **Set to the real string count** |
 | `0x0086`–`0x0088` | Temp sensors per board 1–3 | |
-| `0x0089` | Battery type | 0 LFP, 1 NMC, 2 LTO (unconfirmed) |
-| `0x008A` | **Sleep wait time** | s. `65535` = never sleep (matches balancer manual) |
+| `0x0089` | Battery type | 0 LFP, 1 NMC, 2 LTO. **[VERIFIED]**: reads 1 on an NMC pack (LFP/LTO codes still unconfirmed) |
+| `0x008A` | **Sleep wait time** | s. `65535` = never sleep (matches balancer manual). **[VERIFIED]**: reads 3600, write echoed |
 | `0x008B`–`0x009E` | Warning/alarm thresholds (cell/pack V, I, T) | BMS only, not used by balancer |
-| `0x00A3` | **Balance start (activation) voltage** | mV (default 3300 on balancer) |
-| `0x00A4` | **Balance start voltage difference** | mV (default 20 on balancer) |
+| `0x00A3` | **Balance start (activation) voltage** | mV (default 3300 on balancer). **[VERIFIED]**: reads 3300 |
+| `0x00A4` | **Balance start voltage difference** | mV (default 20 on balancer). **[VERIFIED]**: reads 20 |
 | `0x00A5` | Charge MOS switch | BMS only |
 | `0x00A6` | Discharge MOS switch | BMS only |
 | `0x00A7` | SOC setting | |
-| `0x00A8` | MOS over-temperature alarm | |
+| `0x00A8` | MOS over-temperature alarm | Answers on the balancer (raw 87, scaling unknown) but is not shown in the DALY PC software; treat as unused |
 
 ### 4.7 Other registers — [COMMUNITY]
 
@@ -196,6 +197,23 @@ are expected to read as 0 or a fixed value.
 | Disable sleep (65535) | `D2 06 00 8A FF FF BA 33` |
 
 Example response header for the 62-register read: `D2 03 7C …124 data bytes… CRC_L CRC_H` (129 bytes total).
+
+### 4.9 Hardware validation log
+
+Readings from the connected balancer (NMC pack) over the UART port at 9600 8N1, D2 address `0xD2`,
+one register per read (function `0x03`, count 1), 100 ms between requests. Every request was answered
+with a valid CRC on the first try.
+
+| Reg | Raw | Meaning |
+|---|---|---|
+| `0x0089` | 1 | NMC, matches the pack chemistry |
+| `0x008A` | 3600 | 3600 s sleep time (factory default) |
+| `0x00A3` | 3300 | 3.3 V balance start voltage (factory default) |
+| `0x00A4` | 20 | 20 mV balance start difference (factory default) |
+| `0x00A8` | 87 | Not shown in the DALY PC software; meaning unconfirmed |
+
+Write (function `0x06`) tested on `0x008A`: the device echoes the 8-byte request, as described in §4.3.
+Writes to the other registers have not been tested yet.
 
 ---
 

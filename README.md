@@ -120,7 +120,7 @@ Value coding (see [s-BMS protocol §7.2](LithiumBalance_sBMS_RS485_Protocol.md))
 | [`slave_sim/`](slave_sim/) | Python/Tkinter simulator of up to 32 s-BMS slave boards, plus a BMCU emulator and tests. Use it to check the protocol against the real BMCU before the interface board exists. See [`slave_sim/README.md`](slave_sim/README.md). |
 | [`daly/`](daly/) | DALY balancer tooling. `fake_balancer.py` emulates a balancer (D2 protocol) on a USB-TTL adapter, for testing the firmware; see [Testing on the NUCLEO-G0B1RE](firmware/README.md#testing-on-the-nucleo-g0b1re). |
 | [`docs/`](docs/) | Images used by this README (`system_overview.svg`). |
-| [`hardware/interface_board/`](hardware/interface_board/) | KiCad 10 schematic of the interface board (draft, ERC clean): root sheet plus Power, MCU, RS485 BMCU, CAN, Temperatures, and one isolated balancer channel sheet used 4 times. Footprints are assigned; no PCB yet. |
+| [`hardware/interface_board/`](hardware/interface_board/) | KiCad 10 project of the interface board (draft): root sheet plus Power, MCU, BMCU (RS485), CAN, Temperatures, FANs, and one isolated balancer channel sheet used 4 times. PCB routed (first pass). Custom symbols are in `local.kicad_sym`, custom footprints in `lithium_balance.pretty` and `Molex.pretty`. |
 | [`firmware/`](firmware/) | Interface board firmware in Rust (Embassy): s-BMS slave emulation, DALY polling, cell and temperature mapping. Compiles and is unit-tested on the PC; not yet run on hardware. See [`firmware/README.md`](firmware/README.md). |
 
 ## Protocol summary
@@ -173,7 +173,7 @@ shares the bike's 12 V / chassis ground.
 ```
 12 V ─► protection ─► buck 5 V ─► LDO 3.3 V ─► MCU (STM32G0B1KBT6) ◄── 8 MHz oscillator
                                                 │
-                 BMCU ◄── RS485 transceiver ◄───┤ USART2            (12 V / chassis domain)
+            BMCU (J3) ◄── RS485 transceiver ◄───┤ USART2            (12 V / chassis domain)
                   CAN ◄── CAN transceiver   ◄───┤ FDCAN1
           4 × NTC ──► filter / clamp       ───►─┤ ADC1 ×4
               8 × fan ◄── Q2 driver        ◄────┤ TIM1_CH1 PWM 25 kHz
@@ -187,41 +187,63 @@ shares the bike's 12 V / chassis ground.
 | Function | Qty | Part | Notes |
 |---|---|---|---|
 | MCU | 1 | **STM32G0B1KBT6** (LQFP-32, 0.8 mm pitch) | Cortex-M0+ 64 MHz, 128 KB flash, 144 KB RAM. In 32 pins it still has one USART per balancer (no multiplexer), a USART with hardware RS485 DE, FDCAN, enough ADC inputs and timers. See [Pin assignment](#pin-assignment). Develop on a NUCLEO-G0B1RE (same chip family). Use the plain KBT6, not the "…TxN" variants. |
-| Clock | 1 | **Abracon ASE-8.000MHZ-LC-T** (8 MHz, 3.3 V CMOS output, ±50 ppm, −40…+85 °C, 3.2 × 2.5 mm) | Output to PC14 (OSC_IN); the firmware uses HSE bypass mode and the PLL to run at 64 MHz. The LQFP-32 has no OSC_OUT pin, so a passive crystal can't be used. Gives CAN the clock accuracy it needs (the internal HSI16 is only ±1 %). Tie pin 1 (enable) to 3.3 V and put 100 nF next to pin 4 (VDD). |
-| Balancer isolator | 4 | **TI ISO7721DWV** (wide-body SOIC-8, 5 kVrms reinforced) | 2 channels, one each way. Each side runs from 2.25–5.5 V, so it works whether the DALY supply is 3.3 V or 5 V. The balancer side is powered from the DALY UART connector. Equivalents: Si8621 (5 kV grade), ADuM1201. |
-| DALY TX pull-up | 4 | 4.7 kΩ to DALY VCC | DALY TX is open-collector. |
-| Balancer-side decoupling | 4 | 100 nF + 10 Ω (or ferrite) in series on VCC | Isolates the isolator from the long harness. |
-| BMCU RS485 transceiver | 1 | **TI THVD1450** (3.3 V, ±18 kV ESD) or SN65HVD72 | Half duplex. DE driven by USART2's hardware DE output, /RE tied to DE (or to GND to hear its own echo). More robust option: SN65HVD1781-Q1 (automotive, ±70 V fault protection; needs 5 V). |
-| RS485 protection | 1 | SM712 TVS on A/B | |
-| RS485 termination | 1 | 120 Ω, footprint only | Fit it only if the BMCU end needs it. Add fail-safe bias resistors if the transceiver has no built-in fail-safe. |
-| CAN transceiver | 1 | **MCP2562** or TJA1051T/3 (SOIC-8) | 5 V supply, logic-side supply pin (VIO) on 3.3 V. |
-| CAN protection | 1 | NUP2105L (or PESD2CAN) | ESD on CANH/CANL. |
-| CAN termination | 1 | 2 × 60 Ω + 4.7 nF split termination, footprint only | Fit it only if this node is at the end of the bus. |
-| NTC front end | 4 | 10 kΩ pull-up to 3.3 V, 1 kΩ series + 100 nF to the ADC pin, BAV99 clamp | For 10 kΩ NTC sensors. The sensors must be insulated from the cells and rated for the pack voltage: these inputs are on the 12 V side. |
-| Programming header | 1 | 2×5 shrouded box header, 2.54 mm (IDC) | Pinout of the common ST-LINK/V2 clone USB dongle, so it connects with the dongle's 10-wire ribbon cable. See [Programming header](#programming-header). |
-| Input fuse | 1 | Polyfuse or fuse, about 0.5 A | Electronics only: the fans have their own input (see [Fans](#fans)). |
-| Reverse-polarity protection | 1 | P-MOSFET or Schottky diode | |
-| Input TVS | 1 | SMBJ24A or SMCJ24A | Load dump on the bike's 12 V. |
-| Fan power input | 1 | J12, Molex Mini-Fit Jr 2×2 (0015247040): 1, 3 GND; 2, 4 +12 V. 16 AWG wire | 8 A for 8 fans, 2 pins per polarity. Fused at the bike end with a 10 A blade fuse. |
+| Clock | 1 | X1, **Abracon ASE-8.000MHZ-LC-T** (8 MHz, 3.3 V CMOS output, ±50 ppm, −40…+85 °C, 3.2 × 2.5 mm) | Output to PC14 (OSC_IN); the firmware uses HSE bypass mode and the PLL to run at 64 MHz. The LQFP-32 has no OSC_OUT pin, so a passive crystal can't be used. Gives CAN the clock accuracy it needs (the internal HSI16 is only ±1 %). Pin 1 (enable) tied to 3.3 V. No capacitor of its own: C201 (100 nF), placed between X1 and the MCU's pin 4, decouples both. |
+| MCU decoupling | 3 | C201 100 nF and C202 4.7 µF on VDD/VDDA (pin 4); C203 100 nF on NRST | |
+| Status LED | 1 | D201 + R201 1 kΩ, on PB5 | |
+| Balancer isolator | 4 | U601, U701, U801, U901: **TI ISO7721DWV** (wide-body SOIC-8, 5 kVrms reinforced) | 2 channels, one each way. Each side runs from 2.25–5.5 V, so it works whether the DALY supply is 3.3 V or 5 V. The balancer side is powered from the DALY UART connector. Equivalents: Si8621 (5 kV grade), ADuM1201. |
+| MCU TX pull-up | 4 | R601, R701, R801, R901: 10 kΩ to 3.3 V | Holds each isolator input high (UART idle) while the MCU is in reset. |
+| DALY TX pull-up | 4 | R603–R606: 10 kΩ to DALY VCC | DALY TX is open-collector. |
+| Balancer-side decoupling | 4 | R602/R702/R802/R902 10 Ω in series on VCC, then C602/C702/C802/C902 100 nF + C603/C703/C803/C903 1 µF | Isolates the isolator from the long harness. Isolator side 1 has 100 nF (C601, C701, C801, C901). |
+| BMCU RS485 transceiver | 1 | U301, **TI THVD1450D** (3.3 V, ±18 kV ESD, SOIC-8) | Half duplex. DE driven by USART2's hardware DE output, /RE tied to DE. R301 10 kΩ pulls DE low (driver off during reset); R303 10 kΩ pulls RO high (RX idle while the receiver is off). More robust option: SN65HVD1781-Q1 (automotive, ±70 V fault protection; needs 5 V). |
+| RS485 protection | 1 | D301, SM712 TVS on A/B | |
+| RS485 termination | 1 | R302, 120 Ω, **fitted** | Remove it if the BMCU end already terminates the bus. The THVD1450 has built-in fail-safe, so there are no bias resistors. |
+| CAN transceiver | 1 | U401, **MCP2562-E/SN** (SOIC-8) | 5 V supply, logic-side supply pin (VIO) on 3.3 V. R401 10 kΩ pulls STBY high. |
+| CAN protection | 1 | D401, NUP2105L | ESD on CANH/CANL. |
+| CAN termination | 1 | R402, R403 2 × 60.4 Ω + C403 4.7 nF split termination, **DNP** | Fit it only if this node is at the end of the bus. |
+| NTC front end | 4 | R501/R503/R505/R507 10 kΩ 1 % pull-up to 3.3 V, R502/R504/R506/R508 1 kΩ series + C501–C504 100 nF to the ADC pin, D501–D504 BAV99 clamp | For 10 kΩ NTC sensors. The sensors must be insulated from the cells and rated for the pack voltage: these inputs are on the 12 V side. |
+| Programming header | 1 | J11, 2×5 shrouded box header, 2.54 mm (IDC) | Pinout of the common ST-LINK/V2 clone USB dongle, so it connects with the dongle's 10-wire ribbon cable. See [Programming header](#programming-header). |
+| Debug header | 1 | J202, 1×2 pin header, 2.54 mm: 1 TX (PC6), 2 GND | LPUART2 debug console, TX only. |
+| Input fuse | 1 | F101, polyfuse 0.5 A hold, 30 V (1812) | Electronics only: the fans have their own input (see [Fans](#fans)). |
+| Reverse-polarity protection | 1 | D102, SS34 Schottky (3 A, SMA), in series after the fuse | |
+| Input TVS | 1 | D101, **SMBJ24CA** (bidirectional), after the fuse | Load dump on the bike's 12 V. |
+| Input decoupling | 2 | C101 10 µF 50 V (1210), C102 100 nF 50 V on +12 V | |
+| Power LED | 1 | D103 (green) + R101 1 kΩ, on 3.3 V | |
+| Fan power input | 1 | J18, Molex Mini-Fit Jr 2×3 right-angle (5569-06A2): 1, 4 GND; 2, 5 +12 V; 3, 6 not connected. 16 AWG wire | 8 A for 8 fans, 2 pins per polarity. Fused at the bike end with a 10 A blade fuse. Same part as the fan connectors. |
 | Fan connectors | 4 | J14–J17, Molex Mini-Fit Jr 2×3 right-angle (5569-06A2) | 2 fans per connector, see [Fans](#fans) for the pinout. The fans' own 4-pin plugs connect through a short adapter harness; their tach wire isn't used. |
 | Fan fuses | 8 | F102–F109, **Bel Fuse 0ZCF0200AF2C** (polyfuse, 2.0 A hold, 4.0 A trip, 24 V, 2920) | One per fan, so one shorted or stalled fan can't take down the others. The 2.0 A hold keeps margin over the 1 A fan as the hold current drops at high ambient temperature. |
-| Fan rail capacitors | 2 | C1, C2, 47 µF 35 V electrolytic (6.3 × 7.7 mm SMD) | In parallel (94 µF); two small cans instead of one 100 µF for layout. Near J12 / along the fan power trace, grounded to the fan ground path. They only see the fans' motor commutation current, so a general-purpose series (≥ 150 mA ripple each) is enough. |
+| Fan rail capacitors | 2 | C1, C2, 47 µF 35 V electrolytic (6.3 × 7.7 mm SMD) | In parallel (94 µF); two small cans instead of one 100 µF for layout. Near J18 / along the fan power trace, grounded to the fan ground path. They only see the fans' motor commutation current, so a general-purpose series (≥ 150 mA ripple each) is enough. |
 | Fan input TVS | 1 | D104, **SMBJ18A** (unidirectional), cathode on +12 V | Clamps spikes on the fan rail, e.g. from unplugging the fans under 8 A, to about 29 V, below C1/C2's 35 V rating. That is above the fuses' 24 V rating, but only for the microseconds of a spike; a fuse only has the supply voltage across it once it has tripped, and 12 V is well within 24 V. |
 | Fan PWM driver | 1 | Q2, 2N7002DW (dual N-MOSFET, SOT-363) | See [Fans](#fans). Plus R202 100 Ω (gate series), R203 100 kΩ (gate pull-down) and R204/R205 10 kΩ (gate divider from the fan 12 V). |
-| 5 V buck | 1 | **Recom R-78E5.0-0.5** (7–28 V in) | Or TI LMR36015 (60 V, automotive). The load is about 100 mA, mostly the CAN transceiver while it is transmitting. |
-| 3.3 V LDO | 1 | TLV75533 or AP2112K-3.3 | |
+| Fan ground link | 1 | R206, 0 Ω (0805), **DNP** | Joins `GNDPWR` to `GND` on the board. Not fitted: the grounds are joined in the harness, see [Fan ground](#fan-ground). |
+| 5 V buck | 1 | U101, **Recom R-78E5.0-0.5** (7–28 V in, SIP3) | C103 10 µF and C104 1 µF on the output. The load is about 100 mA, mostly the CAN transceiver while it is transmitting. |
+| 3.3 V LDO | 1 | U102, AP2112K-3.3 (SOT-23-5) | EN tied to VIN (always on). C105 1 µF on the output. |
+
+### Connectors
+
+| Ref | Function | Part | Pinout |
+|---|---|---|---|
+| J3 | BMCU: 12 V supply and RS485 slave bus | Molex Mini-Fit Jr 2×2 (0015247040) | 1 GND, 2 +12 V in, 3 RS485 A, 4 RS485 B |
+| J1, J2, J5, J6 | DALY UART, balancers #1, #2, #3, #4 (isolated) | JST-GH 6-pin, right-angle (SM06B-GHS-TB) | 1 to DALY RX (command), 2 from DALY TX (response), 3–4 not connected, 5 DALY VCC, 6 DALY GND (B−) |
+| J13 | CAN | Molex Micro-Fit 3.0 2×2 right-angle (43045-0400) | 1 CANH, 2 CANL, 3–4 GND |
+| J19–J22 | NTC T1–T4 | Molex Micro-Fit 3.0 2-pin right-angle (43045-0200) | 1 NTC, 2 GND |
+| J18 | Fan power input | Molex Mini-Fit Jr 2×3 right-angle (5569-06A2) | 1, 4 GND; 2, 5 +12 V; 3, 6 not connected |
+| J14–J17 | Fans, 2 per connector | Molex Mini-Fit Jr 2×3 right-angle (5569-06A2) | See [Fans](#fans) |
+| J11 | Programming (SWD) | 2×5 IDC box header, 2.54 mm | See [Programming header](#programming-header) |
+| J202 | Debug console | 1×2 pin header, 2.54 mm | 1 TX (PC6), 2 GND |
+
+The BMCU sheet also holds a drawing of the BMCU board (U1) and its connector J4 (Mini-Fit, 0015286042), for the 3D view only: neither is in the BOM nor fitted on the board.
 
 ### Pin assignment
 
-Checked against the `STM32G0B1KBTx` symbol in the KiCad library. Check it again in
-STM32CubeMX before the PCB layout.
+As wired in the schematic (`mcu.kicad_sch`), checked against the `STM32G0B1KBTx` symbol in the
+KiCad library. Check it again in STM32CubeMX.
 
 | Function | Peripheral | Pins (LQFP-32 pin no.) |
 |---|---|---|
 | BMCU RS485 | USART2 TX / RX / DE (hardware driver enable) | PA2 (9), PA3 (10), PA1 (8) |
 | Balancer #1 | USART1 TX / RX | PB6 (30), PB7 (31) |
-| Balancer #2 | USART3 TX / RX | PB2 (17), PB0 (15) |
-| Balancer #3 | USART5 TX / RX | PB3 (27), PB4 (28) |
+| Balancer #2 | USART5 TX / RX | PB3 (27), PB4 (28) |
+| Balancer #3 | USART3 TX / RX | PB2 (17), PB0 (15) |
 | Balancer #4 | USART6 TX / RX | PA4 (11), PA5 (12) |
 | CAN | FDCAN1 RX / TX, transceiver STBY | PB8 (32), PB9 (1), PA15 (26) |
 | Temperatures 1–4 | ADC1_IN0, IN6, IN7, IN9 | PA0 (7), PA6 (13), PA7 (14), PB1 (16) |
@@ -234,7 +256,7 @@ STM32CubeMX before the PCB layout.
 
 ### Programming header
 
-J201 is a 2×5, 2.54 mm shrouded box header with the pinout of the cheap **ST-LINK/V2 clone USB
+J11 is a 2×5, 2.54 mm shrouded box header with the pinout of the cheap **ST-LINK/V2 clone USB
 dongles**: the aluminium USB-stick ST-LINKs. This is the clones' own pinout, not an ST or ARM standard. The
 dongle's 10-wire IDC ribbon cable plugs straight in.
 
@@ -295,11 +317,13 @@ So the PWM duty cycle at PA8 is the fan speed: 0 % stops the fans, 100 % is full
 - **Q2B's gate** comes from the R204/R205 divider on the fan 12 V: about 6 V normally, and about
   15 V at the TVS clamp voltage. That's within the 2N7002's ±20 V gate rating. Q2B only has to sink the fans'
   pull-up current, at most about 5 mA per fan, 40 mA in total.
-- **Fan power** doesn't go through the electronics' 12 V input. It has its own input (J12), a TVS
+- **Fan power** doesn't go through the electronics' 12 V input. It has its own input (J18), a TVS
   (D104), 2 × 47 µF capacitors (C1, C2) and a polyfuse per fan. 8 A needs about 6 mm of trace width
-  on 1 oz copper (about 10 °C rise), a copper pour, or 2 oz copper. Bring the fan ground back to J12 on its own
-  path and join it to the logic ground at one point.
-- **Fan input J12** (Mini-Fit Jr 2×2): pins 1 and 3 GND, pins 2 and 4 +12 V.
+  on 1 oz copper (about 10 °C rise), a copper pour, or 2 oz copper. The fan ground is its own net
+  (`GNDPWR`) and returns to J18 on its own path. Q2, R203 and R205 are on `GNDPWR` too. See
+  [Fan ground](#fan-ground).
+- **Fan input J18** (Mini-Fit Jr 2×3, same part as the fan connectors): pins 1 and 4 GND, pins 2 and 5
+  +12 V, pins 3 and 6 not connected.
 - **Fan connectors J14–J17:** Mini-Fit Jr 2×3, 2 fans each (1 A per pin, well within the
   Mini-Fit Jr rating). Each fan's +12 V comes through its own polyfuse.
 
@@ -317,16 +341,45 @@ So the PWM duty cycle at PA8 is the fan speed: 0 % stops the fans, 100 % is full
   temperature, and a faulty sensor runs the fans at full speed. See
   [`firmware/README.md`](firmware/README.md#fans).
 
+#### Fan ground
+
+The fan ground (`GNDPWR`, J18 pins 1/4) and the logic ground (`GND`, J3 pin 1) are **joined in
+the harness, not on the board**, so the fans' 8 A return current never flows through the board's
+signal ground (MCU, ADC, RS485 and CAN reference).
+
+- **Where to join them:** at the bike's ground point, not at the BMCU. J3's GND is also the BMCU's
+  ground and the RS485 reference; joining the fan ground there would send the fan current through
+  it.
+- **Q2A gate drive** is the only signal that crosses the two grounds: PA8 is referenced to `GND`,
+  Q2A's source to `GNDPWR`. At the board, `GNDPWR` sits above `GND` by the drop on the fan return
+  wire, about 0.25 V at 8 A for 1.5 m of 16 AWG plus contacts (about 0.5 V at start-up). Q2A then gets
+  2.8–3.0 V of gate drive. That's enough for a typical 2N7002, since Q2A only sinks about 1.2 mA,
+  but marginal for a worst-case part (Vgs(th) up to 2.5 V). Keep the fan ground wire short and
+  heavy, or fit a lower-threshold dual N-MOSFET in the same SOT-363 footprint (Vgs(th) ≤ 1.5 V).
+- **Broken wire:** with the fan ground open, the fans stop and `GNDPWR` floats towards 12 V; the
+  only path to the logic side is R203 + R202 into PA8 (under 0.1 mA into its protection diode). With
+  the logic ground open, the board loses its supply return. Neither damages anything.
+- **Fallback:** R206 (0 Ω, DNP), near J18, joins the two grounds on the board. Fit it only if the
+  harness join causes trouble; the fan ground wire must then still go back to the bike ground.
+
 ### PCB layout
 
-Keep at least 6–8 mm creepage across each isolation barrier, cut a slot under each
-isolator, and keep the 4 isolated domains apart from each other as well (#1 and #4 are about
-250 V apart).
+2-layer board, 160 × 100 mm. Target: at least 6–8 mm creepage across each isolation barrier, a
+slot under each isolator, and the 4 isolated domains kept apart from each other as well (#1 and #4
+are about 250 V apart; balancer #4's domain is up to about 336 V from the 12 V side).
+
+As routed (first pass):
+
+- **Slots:** a 4.5 × 10.6 mm routed slot (Edge.Cuts) runs under each isolator (U601, U701, U801,
+  U901), along the barrier.
+- **Clearance, isolated domain to the 12 V side** (copper to copper, either layer): balancer #1
+  8.05 mm, #2 8.05 mm, #3 7.43 mm, #4 7.93 mm. The closest points are `GND_BAL` to `GND` tracks.
+- **Clearance between isolated domains:** at least 12.9 mm.
 
 **Isolator fallback:** if the DALY connector supply turns out to be unusable: **TI ISOW7821**, a 2-channel
 isolator with a built-in isolated DC/DC converter, fed from 5 V on the board side (about 70–100 mA
-each). It has a different footprint, so decide before the PCB layout, or add a small isolated
-DC/DC footprint next to each ISO7721.
+each). It has a different footprint and needs the 5 V rail at each isolator, so it means a board
+revision.
 
 ### DALY UART connector checklist
 
@@ -346,6 +399,16 @@ The UART connector also powers the DALY Bluetooth dongle, so it should provide a
 
 ### Open points
 
+- **Fan ground:** check on the bike that the fans run at the commanded speed with the grounds
+  joined in the harness (Q2A gate margin, see [Fan ground](#fan-ground)).
+- **Input TVS vs buck:** D101 (SMBJ24CA) clamps a load dump at about 39 V, above the R-78E's 28 V
+  input rating.
+- **ERC:** 2 errors and 11 warnings are left: J1 pins 3/4 without no-connect flags, two dangling
+  wire stubs at the CANH/CANL labels on the CAN sheet, J6 pin 4 off-grid, X1 and GND symbols out
+  of date with the library, and Q2's pins of type "unspecified".
+- **DRC:** clean except one schematic-parity warning: the BMCU outline footprint U1 (3D view only)
+  is on the board while its symbol is marked "not on board". The silkscreen checks are set to
+  "ignore" in the board setup; turn them back on for a last check before ordering.
 - **Temperatures:** confirm on a real balancer that DALY register `0x0043` is its PCB
   temperature (see [Temperature mapping](#temperature-mapping)).
 - **CAN:** not used yet. The 8 MHz oscillator is fitted for it (FDCAN can be clocked straight from it). Before connecting it to the bike's bus, find out the bitrate and which
@@ -373,7 +436,8 @@ python3 -m slave_sim.fake_master --selftest       # BMCU emulator <-> simulator 
 - [ ] Inter-module balancing through the overlap verified
 - [ ] DALY UART connector checked (see [checklist](#daly-uart-connector-checklist))
 - [x] Interface board schematic drafted ([`hardware/interface_board/`](hardware/interface_board/))
-- [ ] Interface board schematic reviewed, PCB layout
+- [x] Interface board PCB routed (first pass)
+- [ ] Interface board schematic and PCB reviewed
 - [x] Interface board firmware skeleton ([`firmware/`](firmware/)): compiles, logic unit-tested
 - [ ] Firmware tested against the BMCU emulator and the real BMCU
 - [ ] Test in the bike
