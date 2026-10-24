@@ -15,6 +15,10 @@ build:
 run:
     cd board && cargo run --release
 
+# Attach to the running board (no flash, no reset) and show the defmt log
+log:
+    cd board && probe-rs attach --chip STM32G0B1KBTx target/thumbv6m-none-eabi/release/interface-board
+
 # Build the firmware for the NUCLEO-G0B1RE dev board
 build-nucleo:
     cd board && cargo build --release --no-default-features --features nucleo
