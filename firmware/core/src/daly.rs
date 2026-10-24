@@ -10,7 +10,7 @@ pub const FN_READ: u8 = 0x03;
 pub const FN_WRITE: u8 = 0x06;
 
 /// Real-time block: 80 registers from 0x0000 (DALY doc §4.5), the longer of the two
-/// documented reads, so that it includes the board temperature at 0x0043.
+/// documented reads (it also contains 0x0043, which a BMS uses for its board temperature).
 pub const REALTIME_REGS: u16 = 80;
 /// Reply length for the real-time read: header 3 + 160 data + CRC 2.
 pub const REALTIME_REPLY_LEN: usize = 3 + 2 * REALTIME_REGS as usize + 2;
@@ -18,8 +18,9 @@ pub const REALTIME_REPLY_LEN: usize = 3 + 2 * REALTIME_REGS as usize + 2;
 const REG_CELL_COUNT: usize = 0x31;
 const REG_BALANCER_STATE: usize = 0x34;
 const REG_CELL_DELTA: usize = 0x38;
-/// Balancer PCB temperature, raw − 40 → °C. [INFERRED] for a balancer: check on a capture.
-const REG_BOARD_TEMP: usize = 0x43;
+/// Balancer PCB temperature, raw − 40 → °C: "Temperature 1", the balancer's only sensor
+/// (0x0032 = 1). Checked on a real balancer: 0x0043 (board temperature on a BMS) reads 0.
+const REG_BOARD_TEMP: usize = 0x20;
 const TEMP_OFFSET: i16 = 40;
 
 /// Sleep wait time register; 65535 = never sleep (DALY doc §4.6).
@@ -133,6 +134,7 @@ mod tests {
         regs[REG_BALANCER_STATE] = 2;
         regs[REG_CELL_DELTA] = 23;
         regs[REG_BOARD_TEMP] = 40 + 31;
+        regs[0x43] = 0; // as on a real balancer
         let mut f = vec![ADDR, FN_READ, 2 * REALTIME_REGS as u8];
         for r in regs {
             f.extend_from_slice(&r.to_be_bytes());

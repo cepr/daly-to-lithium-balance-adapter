@@ -176,7 +176,7 @@ LED stays dark. Check X1 first if that happens.
 | Task | Peripheral | Behaviour |
 |---|---|---|
 | `bmcu` | USART2, PA2/PA3, hardware DE on PA1, 38400 8N1 | Parses every frame on the bus and answers `i` (enumeration), `q` and `w` for addresses `01`…`0A`, from the BMCU (`SRC 00`) or forwarded from the diagnostic PC (`SRC FE`); replies go to the sender. Bad CRC → silent (the BMCU retries). 1 ms turnaround before replying. |
-| `balancer` ×4 | USART1/3/5/6, 9600 8N1 | Every 500 ms sends `D2 03 0000 0050` and parses the 165-byte reply (cells, string count, PCB temperature at `0x0043`). Checks the reported string count (24/24/24/20). |
+| `balancer` ×4 | USART1/3/5/6, 9600 8N1 | Every 500 ms sends `D2 03 0000 0050` and parses the 165-byte reply (cells, string count, PCB temperature at `0x0020`). Checks the reported string count (24/24/24/20). |
 | `temperatures` | ADC1 IN0/6/7/9 | Every 500 ms, 8 samples per input, converted with a 10 kΩ B3950 NTC table. |
 | `fans` | TIM1_CH1 on PA8, 25 kHz | Every 1 s sets the fan speed from the hottest module temperature (see [Fans](#fans)). |
 | `store_settings` | Flash, page at `0x0801F800` | Saves the LMU settings 2 s after the diagnostic software's last write. |
@@ -236,5 +236,5 @@ watchdog (open point below) will make a panic reset the MCU and so stop the fans
       commented out in `clock_config` in `board/src/main.rs`).
 - [ ] Choose the fan temperature thresholds for the real modules (`core/src/fan.rs`).
 - [ ] LPUART2 debug output (PC6): pin reserved, no code.
-- [ ] Confirm that DALY register `0x0043` is the balancer PCB temperature, and that the
+- [x] Confirm the balancer PCB temperature register (`0x0020`; `0x0043` reads 0) and that the
       balancer answers the 80-register read (DALY doc §8).

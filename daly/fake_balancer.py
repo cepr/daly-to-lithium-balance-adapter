@@ -19,7 +19,7 @@ import time
 REG_CELL_COUNT = 0x31
 REG_BALANCER_STATE = 0x34
 REG_CELL_DELTA = 0x38
-REG_BOARD_TEMP = 0x43  # raw - 40 = degC
+REG_BOARD_TEMP = 0x20  # Temperature 1, raw - 40 = degC (0x43 reads 0 on a real balancer)
 
 
 def crc16(data: bytes) -> int:

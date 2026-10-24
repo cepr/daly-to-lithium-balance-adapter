@@ -129,7 +129,7 @@ are expected to read as 0 or a fixed value.
 | Reg | Field | Scaling |
 |---|---|---|
 | `0x0000`–`0x001F` | Cell voltage 1 … 32 | mV |
-| `0x0020`–`0x0027` | Temperature 1 … 8 | raw − 40 → °C |
+| `0x0020`–`0x0027` | Temperature 1 … 8 | raw − 40 → °C. **[TESTED]** on a 24-cell balancer: only Temperature 1 (`0x0020`) is used, its PCB sensor (`0x0032` = 1, max/min = `0x0020`); 2–6 read 0 |
 | `0x0028` | Total voltage | × 0.1 V |
 | `0x0029` | Current | (raw − 30000) × 0.1 A |
 | `0x002A` | SOC | × 0.1 % |
@@ -153,8 +153,8 @@ are expected to read as 0 or a fixed value.
 | `0x003F` | **Balancing bitmask cells 17–32** | bit n = cell n+17 |
 | `0x0040` | **Balance current** | (raw − 30000) × 0.001 A, signed via offset |
 | `0x0041` | unknown | — |
-| `0x0042` | MOSFET / power-stage temperature | raw − 40 → °C |
-| `0x0043` | Board temperature | raw − 40 → °C |
+| `0x0042` | MOSFET / power-stage temperature | raw − 40 → °C on a BMS. Reads 65535 on a balancer |
+| `0x0043` | Board temperature | raw − 40 → °C on a BMS. **[TESTED]** reads 0 on a balancer: use `0x0020` |
 
 ### 4.6 Settings block (`0x0080`, read 41 registers) — [COMMUNITY] / [INFERRED for balancer]
 

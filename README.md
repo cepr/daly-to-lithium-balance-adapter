@@ -80,7 +80,7 @@ four temperature registers like a real LMU (protocol doc §7.2):
 
 | Register | Real LMU | Interface board |
 |---|---|---|
-| `0x7E5` | Pcb 1 | Balancer PCB temperature (DALY register `0x0043`) |
+| `0x7E5` | Pcb 1 | Balancer PCB temperature (DALY register `0x0020`) |
 | `0x7E6` | Pcb 2 | Not fitted (`0x7A`) |
 | `0x7E7` | Bat 1, NTC on L-J2 | Module NTC |
 | `0x7E8` | Bat 2, optional NTC on L-J6 | Not fitted (`0x7A`) |
@@ -413,8 +413,6 @@ The UART connector also powers the DALY Bluetooth dongle, so it should provide a
 - **DRC:** clean except one schematic-parity warning: the BMCU outline footprint U1 (3D view only)
   is on the board while its symbol is marked "not on board". The silkscreen checks are set to
   "ignore" in the board setup; turn them back on for a last check before ordering.
-- **Temperatures:** confirm on a real balancer that DALY register `0x0043` is its PCB
-  temperature (see [Temperature mapping](#temperature-mapping)).
 - **CAN:** not used yet. The 8 MHz oscillator is fitted for it (FDCAN can be clocked straight from it). Before connecting it to the bike's bus, find out the bitrate and which
   IDs are in use, and keep the node silent (listen-only) until then.
 - **Standby drain:** each isolator draws a few mA from its module through the balancer's
