@@ -28,7 +28,7 @@ compile_error!("enable one of the features `board` or `nucleo`");
 use core::cell::RefCell;
 
 use bridge_core::{cells, daly, fan, lmu, sbms, storage, temps, CELLS_PER_LMU, MAX_CHANNELS, N_BALANCERS, N_LMU};
-use defmt::{info, warn};
+use defmt::{debug, info, warn};
 use embassy_executor::Spawner;
 use embassy_stm32::adc::{Adc, AdcChannel, AnyAdcChannel, SampleTime};
 use embassy_stm32::flash::{Blocking, Flash};
@@ -147,7 +147,8 @@ async fn bmcu(mut uart: BufferedUart<'static>, mut settings: [lmu::Settings; N_L
             SETTINGS_CHANGED.signal(settings);
         }
         match event {
-            lmu::Event::Ignored | lmu::Event::Read { .. } => {}
+            lmu::Event::Ignored => {}
+            e @ lmu::Event::Read { .. } => debug!("bmcu: {}", e),
             e => info!("bmcu: {}", e),
         }
         if let Some(mut reply) = reply {

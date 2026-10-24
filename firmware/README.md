@@ -71,6 +71,8 @@ off), the LED blinks slowly, and the log prints a `SIMULATION` warning at start-
 `SIM_CELL_MV` and `SIM_TEMP_C` in `board/src/main.rs`.
 
 The log level is set by `DEFMT_LOG` in `board/.cargo/config.toml` (`info` by default).
+Set it to `"info,interface_board=debug"` to also log every BMCU read (about 12 lines a second);
+the rest stays at `info`, as Embassy is noisy at `debug`.
 
 ### Build targets
 
