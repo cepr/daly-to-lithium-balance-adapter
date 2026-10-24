@@ -138,7 +138,7 @@ connect their 5 V or 3.3 V pins to the Nucleo.
 | Test | How | Expected |
 |---|---|---|
 | Cell mapping | All 4 emulators, base 3600 | LMU 3 = #1 ch 17–20 (3616…3619) + #2 ch 1–4 (3600…3603), and so on as in the README table |
-| Balancer lost | Stop one emulator | After 2 s its cells read `16384`; the LED blinks fast |
+| Balancer lost | Stop one emulator | After 5 s its cells read `16384`; the LED blinks fast |
 | Overlap check | Start #1 with `--offset 21=80` | LMU 3, cell 5 (global cell 21) reads `36368` (bit 15 set + 3600 mV) |
 | Wrong string count | Start #4 with `--cells 24` | Log warns `reports 24 cells, expected 20`; its cells read `16384` |
 | Fans | Swap one NTC input's lower 10 kΩ for 4.7 kΩ (about 43 °C) or 3.3 kΩ (about 52 °C) | Log shows `fans: 86%`, then `fans: 100%`. Check PA8 with a scope or LED: 25 kHz |
@@ -184,7 +184,7 @@ LED stays dark. Check X1 first if that happens.
 
 Behaviour towards the BMCU:
 
-- **Missing data:** a balancer that hasn't answered for 2 s makes all cells it owns read
+- **Missing data:** a balancer that hasn't answered for 5 s makes all cells it owns read
   `0x4000` (cell fault) and its PCB temperature read "open" (`0xD7`). The NTC temperatures
   read "open" until the first ADC pass.
 - **Overlap check:** when the two readings of an overlap cell differ by more than 50 mV, the cell

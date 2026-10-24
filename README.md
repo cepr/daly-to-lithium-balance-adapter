@@ -98,7 +98,7 @@ A fault on either side wins over the mean.
 | 8 | 3 + 4 | (T3 + T4) / 2 | (#3 + #4) / 2 |
 | 9, 10 | 4 | T4 | #4 |
 
-A balancer that hasn't answered for 2 s reports its PCB sensor as open (`0xD7`), on top of
+A balancer that hasn't answered for 5 s reports its PCB sensor as open (`0xD7`), on top of
 the cell faults.
 
 Value coding (see [s-BMS protocol §7.2](LithiumBalance_sBMS_RS485_Protocol.md)):

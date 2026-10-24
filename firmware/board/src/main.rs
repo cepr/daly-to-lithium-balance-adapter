@@ -56,9 +56,12 @@ bind_interrupts!(struct Irqs {
 const EXPECTED_CELLS: [u16; N_BALANCERS] = [24, 24, 24, 20];
 /// Time between two polls of the same balancer. A real-time reply takes about 135 ms.
 const BALANCER_POLL: Duration = Duration::from_millis(500);
-const BALANCER_TIMEOUT: Duration = Duration::from_millis(300);
-/// Balancer data older than this is reported to the BMCU as a cell fault.
-const STALE_AFTER: Duration = Duration::from_millis(2000);
+/// Measured on a real balancer: the reply ends up to 510 ms after the request (it answers on
+/// its own ~1 s cycle), so with the poll above each balancer is read about once a second.
+const BALANCER_TIMEOUT: Duration = Duration::from_millis(1000);
+/// Balancer data older than this is reported to the BMCU as a cell fault. Several polls, so a
+/// single lost reply is not a fault.
+const STALE_AFTER: Duration = Duration::from_millis(5000);
 /// Pause between the end of a BMCU request and our reply, so its driver is released.
 const TURNAROUND: Duration = Duration::from_millis(1);
 /// Write "never sleep" to every balancer at start-up. Leave off until register 0x008A has
