@@ -55,9 +55,11 @@ bridged by balancer #3.
 
 The BMCU numbers cells by slave: global cell = (slave − 1) × 8 + index + 1. Each cell is
 read from the balancer that owns its module (the **primary** reading). Cells in an overlap
-zone are measured by a second balancer too, and the interface board compares the two
-readings as a plausibility check. A large disagreement points to a sense-wire or
-balancer fault.
+zone are measured by a second balancer too: each time the BMCU reads an LMU's cells, its
+overlap cells switch between the two readings, so the BMCU and the diagnostic software see
+both. The switch happens after the BMCU's temperature read, so the cells and temperatures of
+one scan always come from the same balancer (primary first). A sense-wire or balancer fault shows as a cell whose value jumps between reads. A
+missing reading is reported as a cell fault on its turn, even when the other one is valid.
 
 | LMU (slave addr) | Global cells | Primary reading | Second reading |
 |---|---|---|---|
@@ -86,16 +88,17 @@ four temperature registers like a real LMU (protocol doc §7.2):
 | `0x7E8` | Bat 2, optional NTC on L-J6 | Not fitted (`0x7A`) |
 
 The BMCU ignores "not fitted" and uses the other two for its min/max/average. LMUs 3 and 8 span
-a module boundary, so they report the mean of the two modules' values, rounded to the nearest °C.
-A fault on either side wins over the mean.
+a module boundary: like the overlap cells, each time the BMCU reads their temperatures they
+switch between the two modules' values, in step with the overlap cells: upper module (#2 / #4,
+the overlap cells' primary balancer) first, then the lower one. A fault shows on its own turn.
 
 | LMU | Module(s) | Bat 1 (`0x7E7`) | Pcb 1 (`0x7E5`) |
 |---|---|---|---|
 | 1, 2 | 1 | T1 | Balancer #1 |
-| 3 | 1 + 2 | (T1 + T2) / 2 | (#1 + #2) / 2 |
+| 3 | 1 + 2 | T1, T2 in turn | #1, #2 in turn |
 | 4, 5 | 2 | T2 | #2 |
 | 6, 7 | 3 | T3 | #3 |
-| 8 | 3 + 4 | (T3 + T4) / 2 | (#3 + #4) / 2 |
+| 8 | 3 + 4 | T3, T4 in turn | #3, #4 in turn |
 | 9, 10 | 4 | T4 | #4 |
 
 A balancer that hasn't answered for 5 s reports its PCB sensor as open (`0xD7`), on top of
@@ -143,7 +146,7 @@ On the s-BMS side the interface board has to:
 3. Report missing or stale DALY data as a fault (for example `0x4000` for the affected cells, or no reply),
    so the BMCU's protection logic still works.
 4. Build each LMU's 8 cells from the right balancer channels (see [Cell mapping](#cell-mapping)),
-   and flag a cell as faulty when its two readings in an overlap zone disagree.
+   and report the two readings of an overlap cell in turn.
 
 See the two protocol documents for the details.
 

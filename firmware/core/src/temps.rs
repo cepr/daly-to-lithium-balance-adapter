@@ -91,29 +91,20 @@ pub fn code(t: Temp) -> u8 {
     }
 }
 
-/// Mean of two readings, rounded half away from zero. A faulty input wins.
-fn mean(a: Temp, b: Temp) -> Temp {
-    match (a, b) {
-        (Temp::Ok(a), Temp::Ok(b)) => {
-            let s = a as i16 + b as i16;
-            Temp::Ok((if s >= 0 { (s + 1) / 2 } else { (s - 1) / 2 }) as i8)
-        }
-        (Temp::Ok(_), fault) => fault,
-        (fault, _) => fault,
-    }
-}
-
 /// Register byte of each LMU from one reading per module (module NTCs, or the PCB
-/// sensors of the balancers): an LMU that spans two modules gets their mean.
-pub fn lmu_temps(t: [Temp; 4]) -> [u8; N_LMU] {
-    let per_lmu = [t[0], t[0], mean(t[0], t[1]), t[1], t[1], t[2], t[2], mean(t[2], t[3]), t[3], t[3]];
+/// sensors of the balancers). LMUs 3 and 8 span two modules: `lower[l]` selects the lower
+/// module's reading instead of the upper one (the module of their overlap cells' primary
+/// balancer, see `cells::cell_word`); the other LMUs ignore it.
+pub fn lmu_temps(t: [Temp; 4], lower: &[bool; N_LMU]) -> [u8; N_LMU] {
+    let pick = |lo: usize, l: usize| if lower[l] { t[lo] } else { t[lo + 1] };
+    let per_lmu = [t[0], t[0], pick(0, 2), t[1], t[1], t[2], t[2], pick(2, 7), t[3], t[3]];
     per_lmu.map(code)
 }
 
 /// Registers 0x7E5–0x7E8 (T1…T4) of each LMU from the 4 balancer PCB temperatures and the
-/// 4 module NTCs.
-pub fn lmu_temp_regs(pcb: [Temp; 4], ntc: [Temp; 4]) -> [[u8; 4]; N_LMU] {
-    let (pcb, ntc) = (lmu_temps(pcb), lmu_temps(ntc));
+/// 4 module NTCs (`lower`: see [`lmu_temps`]).
+pub fn lmu_temp_regs(pcb: [Temp; 4], ntc: [Temp; 4], lower: &[bool; N_LMU]) -> [[u8; 4]; N_LMU] {
+    let (pcb, ntc) = (lmu_temps(pcb, lower), lmu_temps(ntc, lower));
     core::array::from_fn(|l| [pcb[l], CODE_NOT_FITTED, ntc[l], CODE_NOT_FITTED])
 }
 
@@ -145,17 +136,25 @@ mod tests {
         assert_eq!(code(Temp::Ok(-40)), 0xD8);
     }
 
+    const UPPER: [bool; N_LMU] = [false; N_LMU];
+    const LOWER: [bool; N_LMU] = [true; N_LMU];
+
     #[test]
     fn mapping() {
-        let t = lmu_temps([Temp::Ok(20), Temp::Ok(25), Temp::Ok(-3), Temp::Ok(-6)]);
-        assert_eq!(t, [20, 20, 23, 25, 25, (-3i8) as u8, (-3i8) as u8, (-5i8) as u8, (-6i8) as u8, (-6i8) as u8]);
+        let t = [Temp::Ok(20), Temp::Ok(25), Temp::Ok(-3), Temp::Ok(-6)];
+        let n = |c: i8| c as u8;
+        assert_eq!(lmu_temps(t, &LOWER), [20, 20, 20, 25, 25, n(-3), n(-3), n(-3), n(-6), n(-6)]);
+        assert_eq!(lmu_temps(t, &UPPER), [20, 20, 25, 25, 25, n(-3), n(-3), n(-6), n(-6), n(-6)]);
+        let mut lower = UPPER;
+        lower[7] = true;
+        assert_eq!(lmu_temps(t, &lower)[2..8], [25, 25, 25, n(-3), n(-3), n(-3)]); // only LMU 8 switched
     }
 
     #[test]
     fn register_layout() {
         let pcb = [Temp::Ok(30), Temp::Ok(31), Temp::Ok(32), Temp::Open];
         let ntc = [Temp::Ok(20), Temp::Ok(21), Temp::Ok(22), Temp::Ok(23)];
-        let r = lmu_temp_regs(pcb, ntc);
+        let r = lmu_temp_regs(pcb, ntc, &LOWER);
         assert_eq!(r[0], [30, CODE_NOT_FITTED, 20, CODE_NOT_FITTED]);
         assert_eq!(r[9], [CODE_OPEN, CODE_NOT_FITTED, 23, CODE_NOT_FITTED]);
         assert_eq!(from_celsius(-50), Temp::Ok(-40));
@@ -163,11 +162,11 @@ mod tests {
     }
 
     #[test]
-    fn fault_not_hidden_by_mean() {
-        let t = lmu_temps([Temp::Ok(20), Temp::Open, Temp::Short, Temp::Ok(30)]);
-        assert_eq!(t[2], CODE_OPEN);
-        assert_eq!(t[7], CODE_SHORT);
-        assert_eq!(t[0], 20);
-        assert_eq!(t[9], 30);
+    fn fault_on_its_turn() {
+        let t = [Temp::Ok(20), Temp::Open, Temp::Short, Temp::Ok(30)];
+        let (lower, upper) = (lmu_temps(t, &LOWER), lmu_temps(t, &UPPER));
+        assert_eq!((lower[2], upper[2]), (20, CODE_OPEN));
+        assert_eq!((lower[7], upper[7]), (CODE_SHORT, 30));
+        assert_eq!((lower[0], upper[9]), (20, 30));
     }
 }

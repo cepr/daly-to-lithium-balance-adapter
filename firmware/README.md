@@ -15,7 +15,7 @@ DALY balancers and the 4 module NTCs. See the [main README](../README.md) for th
 | `core/src/sbms.rs` | s-BMS framing, CRC-16 (0xAC9A), streaming receiver, frame builder. |
 | `core/src/lmu.rs` | The 10 emulated LMUs: enumeration, register reads, settings registers. |
 | `core/src/daly.rs` | DALY D2 requests, CRC-16/Modbus, real-time reply parser. |
-| `core/src/cells.rs` | Balancer channels → LMU cells, overlap plausibility check. |
+| `core/src/cells.rs` | Balancer channels → LMU cells, the two readings of overlap cells. |
 | `core/src/temps.rs` | NTC conversion and the LMU temperature mapping (balancer PCB + module NTC). |
 | `core/src/storage.rs` | Flash record of the LMU settings. |
 | [`board/`](board/) | `interface-board`: the STM32 binary (tasks, pins, peripherals). |
@@ -150,10 +150,10 @@ connect their 5 V or 3.3 V pins to the Nucleo.
 |---|---|---|
 | Cell mapping | All 4 emulators, base 3600 | LMU 3 = #1 ch 17–20 (3616…3619) + #2 ch 1–4 (3600…3603), and so on as in the README table |
 | Balancer lost | Stop one emulator | After 5 s its cells read `16384`; the LED blinks fast |
-| Overlap check | Start #1 with `--offset 21=80` | LMU 3, cell 5 (global cell 21) reads `36368` (bit 15 set + 3600 mV) |
+| Overlap cells | All 4 emulators, base 3600 | LMU 3, cell 5 (global cell 21) alternates between 3600 (#2 ch 1) and 3620 (#1 ch 21) on successive reads |
 | Wrong string count | Start #4 with `--cells 24` | Log warns `reports 24 cells, expected 20`; its cells read `16384` |
 | Fans | Swap one NTC input's lower 10 kΩ for 4.7 kΩ (about 43 °C) or 3.3 kΩ (about 52 °C) | Log shows `fans: 86%`, then `fans: 100%`. Check PA8 with a scope or LED: 25 kHz |
-| Temperatures | Change a resistor, or open or short an input | Value follows; open reads `-41` (`0xD7`), shorted reads `121` (`0x79`); LMUs 3 and 8 show the fault if either of their sensors has one |
+| Temperatures | Change a resistor, or open or short an input | Value follows; open reads `-41` (`0xD7`), shorted reads `121` (`0x79`); LMUs 3 and 8 alternate between their two modules, so they show it every other read |
 
 ### Using a Nucleo's ST-LINK for the interface board
 
@@ -198,8 +198,10 @@ Behaviour towards the BMCU:
 - **Missing data:** a balancer that hasn't answered for 5 s makes all cells it owns read
   `0x4000` (cell fault) and its PCB temperature read "open" (`0xD7`). The NTC temperatures
   read "open" until the first ADC pass.
-- **Overlap check:** when the two readings of an overlap cell differ by more than 50 mV, the cell
-  is reported with bit 15 set (BMCU fault, value still shown).
+- **Overlap cells:** after each read of an LMU's temperatures, its overlap cells switch to the
+  other balancer's reading (primary, second, primary…), and LMUs 3 and 8 switch their
+  temperatures to the matching module. A missing or stale reading reads `0x4000` on
+  its turn, even when the other balancer is fine.
 - **Addresses:** 1…10 are answered even before enumeration, so a reset of the interface board
   while the bike is on doesn't drop the LMUs from the BMCU.
 - **Settings (diagnostic software, Local cell settings tab):** registers `0x046`–`0x055` (cell

@@ -104,10 +104,13 @@ static SHARED: Mutex<CriticalSectionRawMutex, RefCell<Shared>> = Mutex::new(RefC
     temps: [temps::Temp::Open; 4],
 }));
 
-fn snapshot() -> lmu::Snapshot {
+/// `lower[l]`: LMU `l` reports the readings of the lower balancer and module instead of the
+/// upper ones, for its overlap cells (`cells::cell_word`) and temperatures (`temps::lmu_temps`).
+fn snapshot(lower: &[bool; N_LMU]) -> lmu::Snapshot {
     if SIMULATE {
         let t = [temps::from_celsius(SIM_TEMP_C); 4];
-        return lmu::Snapshot { cells: [[SIM_CELL_MV; CELLS_PER_LMU]; N_LMU], temps: temps::lmu_temp_regs(t, t) };
+        let cells = [[SIM_CELL_MV; CELLS_PER_LMU]; N_LMU];
+        return lmu::Snapshot { cells, temps: temps::lmu_temp_regs(t, t, lower) };
     }
     let now = Instant::now();
     SHARED.lock(|s| {
@@ -116,7 +119,7 @@ fn snapshot() -> lmu::Snapshot {
         let bal: cells::Balancers = fresh.map(|b| b.map(|b| b.cells));
         // A missing balancer reports its PCB sensor as open, like an NTC before the first ADC pass.
         let pcb = fresh.map(|b| b.map_or(temps::Temp::Open, |b| temps::from_celsius(b.board_temp_c)));
-        lmu::Snapshot { cells: cells::lmu_cells(&bal), temps: temps::lmu_temp_regs(pcb, s.temps) }
+        lmu::Snapshot { cells: cells::lmu_cells(&bal, lower), temps: temps::lmu_temp_regs(pcb, s.temps, lower) }
     })
 }
 
@@ -135,6 +138,10 @@ static SETTINGS_CHANGED: Signal<CriticalSectionRawMutex, [lmu::Settings; N_LMU]>
 async fn bmcu(mut uart: BufferedUart<'static>, mut settings: [lmu::Settings; N_LMU]) {
     let mut rx = sbms::Receiver::new();
     let mut byte = [0u8; 1];
+    // LMUs spanning two balancers report their readings in turn. The BMCU reads each LMU's
+    // cells, then its temperatures: switching after the temperatures keeps both from the
+    // same balancer within one scan.
+    let mut lower = [false; N_LMU];
     loop {
         if uart.read_exact(&mut byte).await.is_err() {
             continue; // framing / noise error: the receiver resyncs on the next command letter
@@ -142,9 +149,12 @@ async fn bmcu(mut uart: BufferedUart<'static>, mut settings: [lmu::Settings; N_L
         let Some(raw) = rx.push(byte[0]) else { continue };
         let Some(frame) = sbms::parse(raw) else { continue };
         let before = settings;
-        let (event, reply) = lmu::handle(&frame, &snapshot(), &mut settings);
+        let (event, reply) = lmu::handle(&frame, &snapshot(&lower), &mut settings);
         if settings != before {
             SETTINGS_CHANGED.signal(settings);
+        }
+        if let lmu::Event::Read { addr, reg: lmu::REG_TEMPS } = event {
+            lower[addr as usize - 1] ^= true;
         }
         match event {
             lmu::Event::Ignored => {}

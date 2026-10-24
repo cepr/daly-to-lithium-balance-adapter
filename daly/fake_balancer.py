@@ -101,7 +101,7 @@ def main():
     ap.add_argument("--cells", type=int, default=24, help="string count reported (24 for #1-#3, 20 for #4)")
     ap.add_argument("--base", type=int, default=3600, help="cell 1 voltage in mV")
     ap.add_argument("--offset", action="append", default=[], metavar="CH=MV",
-                    help="add MV to channel CH, e.g. 21=80 to trigger the overlap check")
+                    help="add MV to channel CH, e.g. 21=80 to tell the two readings of an overlap cell apart")
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("-v", "--verbose", action="store_true")
     a = ap.parse_args()
