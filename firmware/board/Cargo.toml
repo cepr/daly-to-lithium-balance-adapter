@@ -28,6 +28,8 @@ panic-probe = { version = "1.0", features = ["print-defmt"] }
 default = ["board"]
 board = ["embassy-stm32/stm32g0b1kb"]
 nucleo = ["embassy-stm32/stm32g0b1re"]
+# Ignore the balancers and NTCs: report 3.9 V per cell and 25 °C, to test the BMCU link alone.
+simulate = []
 
 [profile.dev]
 opt-level = "s"

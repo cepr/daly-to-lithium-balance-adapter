@@ -19,6 +19,14 @@ run:
 log:
     cd board && probe-rs attach --chip STM32G0B1KBTx target/thumbv6m-none-eabi/release/interface-board
 
+# Build with simulated cells (3.9 V) and temperatures (25 °C), balancers ignored
+build-sim:
+    cd board && cargo build --release --features simulate
+
+# Flash the simulation build and show the defmt log
+run-sim:
+    cd board && cargo run --release --features simulate
+
 # Build the firmware for the NUCLEO-G0B1RE dev board
 build-nucleo:
     cd board && cargo build --release --no-default-features --features nucleo
@@ -31,6 +39,7 @@ run-nucleo:
 lint:
     cd core && cargo clippy --all-targets -- -D warnings
     cd board && cargo clippy --release -- -D warnings
+    cd board && cargo clippy --release --features simulate -- -D warnings
     cd board && cargo clippy --release --no-default-features --features nucleo -- -D warnings
 
 # Flash and RAM usage

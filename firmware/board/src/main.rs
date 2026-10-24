@@ -14,6 +14,9 @@
 //! With the `nucleo` feature the same firmware runs on a NUCLEO-G0B1RE: balancer #4 moves
 //! to PC0/PC1, the status LED to the green user LED on PA5, and the clock runs from the
 //! internal HSI16 instead of the 8 MHz oscillator (see `firmware/README.md`).
+//!
+//! With the `simulate` feature the balancers and NTCs are ignored: every cell reads 3.9 V and
+//! every temperature 25 °C, to test the BMCU link alone.
 #![no_std]
 #![no_main]
 
@@ -24,7 +27,7 @@ compile_error!("enable one of the features `board` or `nucleo`");
 
 use core::cell::RefCell;
 
-use bridge_core::{cells, daly, fan, lmu, sbms, storage, temps, MAX_CHANNELS, N_BALANCERS, N_LMU};
+use bridge_core::{cells, daly, fan, lmu, sbms, storage, temps, CELLS_PER_LMU, MAX_CHANNELS, N_BALANCERS, N_LMU};
 use defmt::{info, warn};
 use embassy_executor::Spawner;
 use embassy_stm32::adc::{Adc, AdcChannel, AnyAdcChannel, SampleTime};
@@ -75,6 +78,11 @@ const SETTINGS_PAGE: u32 = 2 * 1024;
 /// Save the settings once the diagnostic software has stopped writing for this long: one Write
 /// click writes all 10 LMUs in about 3 s, and is saved with a single page erase.
 const SETTINGS_SAVE_DELAY: Duration = Duration::from_secs(2);
+/// `simulate` feature: the balancer and temperature tasks don't run, and the BMCU reads
+/// `SIM_CELL_MV` on every cell and `SIM_TEMP_C` on every temperature (fans stay off).
+const SIMULATE: bool = cfg!(feature = "simulate");
+const SIM_CELL_MV: u16 = 3900;
+const SIM_TEMP_C: i16 = 25;
 
 /// Latest data from one balancer.
 #[derive(Clone, Copy)]
@@ -97,6 +105,10 @@ static SHARED: Mutex<CriticalSectionRawMutex, RefCell<Shared>> = Mutex::new(RefC
 }));
 
 fn snapshot() -> lmu::Snapshot {
+    if SIMULATE {
+        let t = [temps::from_celsius(SIM_TEMP_C); 4];
+        return lmu::Snapshot { cells: [[SIM_CELL_MV; CELLS_PER_LMU]; N_LMU], temps: temps::lmu_temp_regs(t, t) };
+    }
     let now = Instant::now();
     SHARED.lock(|s| {
         let s = s.borrow();
@@ -109,6 +121,9 @@ fn snapshot() -> lmu::Snapshot {
 }
 
 fn all_balancers_fresh() -> bool {
+    if SIMULATE {
+        return true;
+    }
     let now = Instant::now();
     SHARED.lock(|s| s.borrow().balancers.iter().all(|b| matches!(b, Some(b) if now - b.at < STALE_AFTER)))
 }
@@ -316,6 +331,11 @@ fn uart_config(baud: u32) -> usart::Config {
 async fn main(spawner: Spawner) {
     let p = embassy_stm32::init(clock_config());
     info!("interface board start");
+    if SIMULATE {
+        warn!("SIMULATION: balancers and NTCs ignored, cells {} mV, temperatures {} C", SIM_CELL_MV, SIM_TEMP_C);
+        // Read by the fans task: keeps the fans off.
+        SHARED.lock(|s| s.borrow_mut().temps = [temps::from_celsius(SIM_TEMP_C); 4]);
+    }
 
     // CAN transceiver stays in standby (STBY high) until CAN is implemented.
     // Leaked so the pin keeps driving after `main` returns.
@@ -352,14 +372,18 @@ async fn main(spawner: Spawner) {
     let (b4_rx, b4_tx, led) = (p.PC1, p.PC0, p.PA5);
     let (tx, rx) = buffers!(16, 256);
     let b4 = BufferedUart::new(p.USART6, b4_rx, b4_tx, tx, rx, Irqs, uart_config(9_600)).expect("USART6 config");
-    for (i, uart) in [b1, b2, b3, b4].into_iter().enumerate() {
-        spawner.spawn(balancer(i, uart).unwrap());
+    if !SIMULATE {
+        for (i, uart) in [b1, b2, b3, b4].into_iter().enumerate() {
+            spawner.spawn(balancer(i, uart).unwrap());
+        }
     }
 
     // NTC inputs T1…T4: PA0, PA6, PA7, PB1.
     let adc = Adc::new(p.ADC1);
     let inputs = [p.PA0.degrade_adc(), p.PA6.degrade_adc(), p.PA7.degrade_adc(), p.PB1.degrade_adc()];
-    spawner.spawn(temperatures(adc, inputs).unwrap());
+    if !SIMULATE {
+        spawner.spawn(temperatures(adc, inputs).unwrap());
+    }
 
     spawner.spawn(status(Output::new(led, Level::Low, Speed::Low)).unwrap());
 

@@ -19,7 +19,7 @@ DALY balancers and the 4 module NTCs. See the [main README](../README.md) for th
 | `core/src/temps.rs` | NTC conversion and the LMU temperature mapping (balancer PCB + module NTC). |
 | `core/src/storage.rs` | Flash record of the LMU settings. |
 | [`board/`](board/) | `interface-board`: the STM32 binary (tasks, pins, peripherals). |
-| `justfile` | `just test`, `just build`, `just run`, `just build-nucleo`, `just run-nucleo`, `just lint`, `just size`. |
+| `justfile` | `just test`, `just build`, `just run`, `just build-nucleo`, `just run-nucleo`, `just build-sim`, `just run-sim`, `just lint`, `just size`. |
 | `rust-toolchain.toml` | Stable Rust with the `thumbv6m-none-eabi` target (Cortex-M0+). |
 
 The two crates are separate Cargo projects (not a workspace) so that `core` builds for the
@@ -59,7 +59,16 @@ just build         # firmware → board/target/thumbv6m-none-eabi/release/interf
 just run           # flash the interface board and show the log (chip STM32G0B1KBTx)
 just build-nucleo  # same firmware for the NUCLEO-G0B1RE dev board
 just run-nucleo    # flash the Nucleo and show the log (chip STM32G0B1RETx)
+just run-sim       # interface board, simulated cells and temperatures (see below)
 ```
+
+### Simulation (`simulate` feature)
+
+To test the RS485 link to the BMCU without balancers or NTCs, build with `--features simulate`
+(`just build-sim` / `just run-sim`, or add it to the Nucleo command). The balancer and
+temperature tasks don't run. Every cell reads 3900 mV and every temperature reads 25 °C (fans
+off), the LED blinks slowly, and the log prints a `SIMULATION` warning at start-up. The values are
+`SIM_CELL_MV` and `SIM_TEMP_C` in `board/src/main.rs`.
 
 The log level is set by `DEFMT_LOG` in `board/.cargo/config.toml` (`info` by default).
 
