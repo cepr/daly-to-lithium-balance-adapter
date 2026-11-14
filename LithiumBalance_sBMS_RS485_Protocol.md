@@ -117,7 +117,7 @@ def build(cmd: str, dest: int, src: int, payload: str = "") -> bytes:
 |---|---|
 | `0x00` | BMCU (master). All master frames use `SRC = 00`. Slaves reply to `DEST = 00`. |
 | `0x01`–`0x20` | Slave boards (cell monitors), up to **32**, assigned at start-up (§6) |
-| `0x21` | A special pack-level device on the bus, polled separately (Appendix B) [I] |
+| `0x21` | The pack voltage / current measurement unit **on the BMCU board itself**, polled separately (Appendix B). Not a slave board: a replacement for the LMUs must not answer it. |
 | `0xF0` | "Unaddressed slave", the address a module answers to before it gets its number |
 | `0xFE` | Diagnostic PC tool. The BMCU broadcasts `p` status frames to it. |
 | `0xFF` | Broadcast (the BMCU accepts it as addressed to itself) |
@@ -226,7 +226,8 @@ Example (address 1 of 4; address 4 = last, so it is sent as `84`):
 
 ### 6.2 Cyclic polling
 
-Each pass of the BMCU main loop polls **one slave** (round-robin 1…N), plus device 0x21:
+Each pass of the BMCU main loop polls **one slave** (round-robin 1…N), plus the on-board pack
+voltage / current unit `0x21` (Appendix B):
 
 | Order | Request | Reply data | On failure |
 |---|---|---|---|
@@ -435,27 +436,50 @@ Selected by a BMCU mode variable. Not part of normal operation.
 | Enumeration | `0xE1B6` |
 | Per-slave poll | `0xC40E` |
 | Charge counter: start-up read of slave 1 `7E0` / periodic update and write / SoC set (§7.6) | `0xCE62` / `0x8B6E` / `0xEF98` |
+| Device `0x21` (on-board pack voltage / current): cyclic read / charge counters / output and status (Appendix B) | `0xBE5C` / `0x8894` / `0x5DE2` |
 
-## Appendix B — Device 0x21 (not a cell-monitor slave)  [I]
+## Appendix B — Device 0x21: pack voltage and current unit on the BMCU board
 
-The BMCU also polls one device at address `0x21` with the same protocol. It looks like a
-pack-level measurement unit (the master assembles multi-byte counters from it). Requests seen:
+Address `0x21` is the pack voltage and current measurement of the BMCU board itself (a separate
+Lithium Balance module on the same protocol and bootloader as the LMUs). It is not on the slave
+harness, so a replacement for the LMUs must stay silent on `0x21`. The BMCU takes pack voltage,
+pack current and the input of its charge counter from it, not from the cells. [C] unless marked.
 
-| Request | Use |
-|---|---|
-| `q 21 00 7D0 7` | 8 bytes, polled every main-loop pass |
-| `q 21 00 7D6 0` | 1 byte |
-| `q 21 00 7DA 1`, `q 21 00 7DC 1` | 2 bytes each (read) |
-| `w 21 00 7DE 1 …`, `w 21 00 7E0 1 …` | 2 bytes each, written back with values read from `7DA` / `7DC` |
-| `w 21 00 002 0 AC` | Bootloader entry |
+**Every main-loop pass** (`0xBE5C`, phase 0 of the main loop): `q 21 00 7D0 7`, 8 bytes.
 
-The diagnostic PC also accesses `0x21` through the BMCU (`SRC = FE`). No reply was seen, because
-the simulator doesn't emulate `0x21`. [V] traffic only:
+| Register | Content | Use in the BMCU |
+|---|---|---|
+| `7D0`–`7D1` | **Pack voltage**, uint16 big-endian | × gain in % (EEPROM `0xB6`, applied if 1…200 and ≠ 100), stored in identifier **2008** (`Pack_Voltage` on CAN) |
+| `7D2`–`7D5` | **Pack current**, int32 big-endian, signed | ÷ 100, stored in identifier **2010** (`Pack_Current` on CAN). Checked against the charge / discharge current limits (EEPROM `0x17C` / `0x17E`), and used for the C-rate (identifier 2028) |
+| `7D6` | Status byte (see the start-up sequence below) | Not used by this read |
+| `7D7` | ? | Copied to RAM `0x2B4` (use not traced) |
+
+No reply after 3 attempts: error `0x11` sub 3, fault flag `0x29F`.
+
+**Charge counters, about every 4 s** (`0x8894`–`0x8B6E`, the routine that updates the charge
+counter of §7.6):
+
+1. `q 21 00 7DC 1` (2 bytes), then the same 2 bytes are written back with `w 21 00 7E0 1`.
+2. `q 21 00 7DA 1` (2 bytes), then written back with `w 21 00 7DE 1`.
+3. The `7DA` value, scaled, is added to the coulomb-counter accumulator, whose whole units go
+   to the remaining charge kept in slave 1 (§7.6).
+
+[I] `7DA` / `7DC` are charge counters accumulated by the unit, and the write-back to `7DE` /
+`7E0` acknowledges what was read, so no charge is counted twice. Units not verified.
+
+**Start-up / output sequence** (`0x5DE2`–`0x5F30`): `w 21 00 7E9 1 <EEPROM 0xDA> <00 or 64>`
+(an output switched off / on at 100 %, depending on the state and configuration), then
+`q 21 00 7D6 0` until the status byte reads 0. No reply: retried, error `0x11` sub 4.
+
+**Firmware update:** `w 21 00 002 0 AC` (bootloader entry, §8).
+
+**Diagnostic PC** (`SRC = FE`, through the BMCU). [V] traffic only, the replies were not seen
+on the slave harness:
 
 | When | Requests |
 |---|---|
 | Shortly after BMCU start-up, PC connected | `q 21 FE` reads at `000`, `006`, `064`, `068`, `069`, `06e`, `072`, `07a` (1–4 bytes each) |
 | Write on Local cell settings | `w 21 FE 0643 00000000`, `w 21 FE 0693 00000000`, `w 21 FE 06e3 00FA0000`, `w 21 FE 07a0 00` |
 
-After sending to `0x21`, the BMCU keeps RC1 asserted. This suggests `0x21` sits on a
-different bus segment than the cell-monitor slaves.
+After sending to `0x21`, the BMCU keeps RC1 asserted: the unit sits on its own segment of the
+bus on the BMCU board (§1.1).
