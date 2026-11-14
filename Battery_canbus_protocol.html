@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Energica Ego Battery CAN Protocol</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; color: #222; line-height: 1.4; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  h2 code { font-size: 1.05em; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  th, td { border: 1px solid #ccc; padding: 4px 8px; text-align: left; }
+  th { background: #f0f0f0; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.const td, tr.disabled td { color: #888; }
+  .note { background: #fffbe6; border-left: 3px solid #e0c060; padding: .5rem .75rem; font-size: .9rem; }
+  .meta { color: #555; }
+  nav a { margin-right: .75rem; }
+</style>
+</head>
+<body>
+<h1>2018 Energica Ego — Battery CAN bus messages (Lithium Balance BMCU)</h1>
+<nav><a href="#summary">Transmitted by the BMCU</a><a href="#received">Received by the BMCU</a><a href="#postproc">Post processor</a></nav>
+<p class="meta">Only enabled signals are listed; the BMCU config's unused slots (disabled rows with placeholder values) are omitted.
+Bit positions are 0–63 within the 8-byte payload. "Intel" = little-endian; otherwise Motorola (big-endian).
+Rows with data type <em>Constant</em> are shown in grey. Descriptions ending in "…" were truncated in the original screenshot.</p>
+
+<h2 id="summary">Messages transmitted by the BMCU — summary</h2>
+<table>
+<thead><tr><th>ID (hex)</th><th>Interval (ms)</th><th>Signals</th></tr></thead>
+<tbody>
+<tr><td><a href="#id200"><code>0x200</code></a></td><td class="num">50</td><td>Pack_Temp_Low, SoC, SoH, Pack_Temp_High, Pack_Voltage, Pack_Current</td></tr>
+<tr><td><a href="#id201"><code>0x201</code></a></td><td class="num">100</td><td>System_State, Error_Flags</td></tr>
+<tr><td><a href="#id202"><code>0x202</code></a></td><td class="num">100</td><td>Allowed_disch_current, Allowed_regen_current</td></tr>
+<tr><td><a href="#id203"><code>0x203</code></a></td><td class="num">50</td><td>Average_Cell_Voltage, Cell_with_lowest_vol…, Cell_with_highest_vo…, Cell_Voltage_Min, Cell_Voltage_Max</td></tr>
+<tr><td><a href="#id204"><code>0x204</code></a></td><td class="num">1000</td><td>Remaining_Charge_…, Pack_C_Rate, Charger_Max_DC_I</td></tr>
+<tr><td><a href="#id205"><code>0x205</code></a></td><td class="num">1000</td><td>Remaining_Energy, Deviation_Voltage, Amp_H_Sum, Cells_Connected</td></tr>
+<tr><td><a href="#id206"><code>0x206</code></a></td><td class="num">1000</td><td>Pack_resistance, LMU_Comm_Warnings, IO_State, Pack_Temp_Low</td></tr>
+<tr><td><a href="#id2FF"><code>0x2FF</code></a></td><td class="num">100</td><td>Charger_Enabled, Post_Processor_1, Charger_Max_DC_V, Charger_Max_DC_I</td></tr>
+<tr><td><a href="#id207"><code>0x207</code></a></td><td class="num">100</td><td>Cell_Voltage_Sum</td></tr>
+</tbody>
+</table>
+
+<h2 id="id200">ID <code>0x200</code> — every 50 ms</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data type</th><th>Data identifier</th><th>Bit offset</th><th>Intel format</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">8</td><td>Direct</td><td class="num">2005</td><td class="num">0</td><td>No</td><td>Pack_Temp_Low</td></tr>
+<tr><td class="num">8</td><td class="num">8</td><td>Direct</td><td class="num">2021</td><td class="num">0</td><td>No</td><td>SoC</td></tr>
+<tr><td class="num">16</td><td class="num">8</td><td>Direct</td><td class="num">2020</td><td class="num">0</td><td>No</td><td>SoH</td></tr>
+<tr><td class="num">24</td><td class="num">8</td><td>Direct</td><td class="num">2004</td><td class="num">0</td><td>No</td><td>Pack_Temp_High</td></tr>
+<tr><td class="num">32</td><td class="num">16</td><td>Direct</td><td class="num">2008</td><td class="num">0</td><td>No</td><td>Pack_Voltage</td></tr>
+<tr><td class="num">48</td><td class="num">16</td><td>Direct</td><td class="num">2010</td><td class="num">0</td><td>No</td><td>Pack_Current</td></tr>
+</tbody>
+</table>
+
+<h2 id="id201">ID <code>0x201</code> — every 100 ms</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data type</th><th>Data identifier</th><th>Bit offset</th><th>Intel format</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">8</td><td>Direct</td><td class="num">2006</td><td class="num">0</td><td>No</td><td>System_State</td></tr>
+<tr><td class="num">8</td><td class="num">32</td><td>Direct</td><td class="num">2012</td><td class="num">0</td><td>No</td><td>Error_Flags</td></tr>
+<tr><td class="num">40</td><td class="num">24</td><td>Direct</td><td class="num">2017</td><td class="num">0</td><td>No</td><td>No_Description</td></tr>
+</tbody>
+</table>
+
+<h2 id="id202">ID <code>0x202</code> — every 100 ms</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data type</th><th>Data identifier</th><th>Bit offset</th><th>Intel format</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="const"><td class="num">0</td><td class="num">8</td><td>Constant</td><td class="num">2006</td><td class="num">0</td><td>No</td><td>No_Description</td></tr>
+<tr class="const"><td class="num">8</td><td class="num">8</td><td>Constant</td><td class="num">2012</td><td class="num">0</td><td>No</td><td>No_Description</td></tr>
+<tr class="const"><td class="num">16</td><td class="num">8</td><td>Constant</td><td class="num">0</td><td class="num">0</td><td>No</td><td>No_Description</td></tr>
+<tr class="const"><td class="num">24</td><td class="num">8</td><td>Constant</td><td class="num">2016</td><td class="num">0</td><td>No</td><td>No_Description</td></tr>
+<tr><td class="num">32</td><td class="num">16</td><td>Direct</td><td class="num">2030</td><td class="num">0</td><td>No</td><td>Allowed_disch_current</td></tr>
+<tr><td class="num">48</td><td class="num">16</td><td>Direct</td><td class="num">2032</td><td class="num">0</td><td>No</td><td>Allowed_regen_current</td></tr>
+</tbody>
+</table>
+
+<h2 id="id203">ID <code>0x203</code> — every 50 ms</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data type</th><th>Data identifier</th><th>Bit offset</th><th>Intel format</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">16</td><td>Direct</td><td class="num">2061</td><td class="num">0</td><td>No</td><td>Average_Cell_Voltage</td></tr>
+<tr><td class="num">16</td><td class="num">8</td><td>Direct</td><td class="num">2025</td><td class="num">0</td><td>No</td><td>Cell_with_lowest_vol…</td></tr>
+<tr><td class="num">24</td><td class="num">8</td><td>Direct</td><td class="num">2024</td><td class="num">0</td><td>No</td><td>Cell_with_highest_vo…</td></tr>
+<tr><td class="num">32</td><td class="num">16</td><td>Direct</td><td class="num">2002</td><td class="num">0</td><td>No</td><td>Cell_Voltage_Min</td></tr>
+<tr><td class="num">48</td><td class="num">16</td><td>Direct</td><td class="num">2000</td><td class="num">0</td><td>No</td><td>Cell_Voltage_Max</td></tr>
+</tbody>
+</table>
+
+<h2 id="id204">ID <code>0x204</code> — every 1000 ms</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data type</th><th>Data identifier</th><th>Bit offset</th><th>Intel format</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">24</td><td>Direct</td><td class="num">2067</td><td class="num">0</td><td>No</td><td>Remaining_Charge_…</td></tr>
+<tr><td class="num">24</td><td class="num">16</td><td>Direct</td><td class="num">2028</td><td class="num">0</td><td>No</td><td>Pack_C_Rate</td></tr>
+<tr><td class="num">40</td><td class="num">8</td><td>Direct</td><td class="num">2043</td><td class="num">0</td><td>No</td><td>No_Description (last SoC set command received in <a href="#id119"><code>0x119</code></a>)</td></tr>
+<tr><td class="num">48</td><td class="num">16</td><td>Direct</td><td class="num">2117</td><td class="num">0</td><td>No</td><td>Charger_Max_DC_I</td></tr>
+</tbody>
+</table>
+
+<h2 id="id205">ID <code>0x205</code> — every 1000 ms</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data type</th><th>Data identifier</th><th>Bit offset</th><th>Intel format</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">16</td><td>Direct</td><td class="num">2065</td><td class="num">0</td><td>No</td><td>Remaining_Energy</td></tr>
+<tr><td class="num">16</td><td class="num">16</td><td>Direct</td><td class="num">2063</td><td class="num">0</td><td>No</td><td>Deviation_Voltage</td></tr>
+<tr><td class="num">32</td><td class="num">16</td><td>Direct</td><td class="num">2022</td><td class="num">0</td><td>No</td><td>Amp_H_Sum</td></tr>
+<tr><td class="num">48</td><td class="num">16</td><td>Direct</td><td class="num">2034</td><td class="num">0</td><td>No</td><td>Cells_Connected</td></tr>
+</tbody>
+</table>
+
+<h2 id="id206">ID <code>0x206</code> — every 1000 ms</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data type</th><th>Data identifier</th><th>Bit offset</th><th>Intel format</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">16</td><td>Direct</td><td class="num">2036</td><td class="num">0</td><td>No</td><td>Pack_resistance</td></tr>
+<tr><td class="num">16</td><td class="num">32</td><td>Direct</td><td class="num">2046</td><td class="num">0</td><td>No</td><td>LMU_Comm_Warnings</td></tr>
+<tr><td class="num">48</td><td class="num">8</td><td>Direct</td><td class="num">2007</td><td class="num">0</td><td>No</td><td>IO_State</td></tr>
+<tr><td class="num">56</td><td class="num">8</td><td>Direct</td><td class="num">2005</td><td class="num">0</td><td>No</td><td>Pack_Temp_Low</td></tr>
+</tbody>
+</table>
+
+<h2 id="id2FF">ID <code>0x2FF</code> — every 100 ms</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data type</th><th>Data identifier</th><th>Bit offset</th><th>Intel format</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">8</td><td>Direct</td><td class="num">2119</td><td class="num">0</td><td>Yes</td><td>Charger_Enabled</td></tr>
+<tr><td class="num">8</td><td class="num">10</td><td>Direct</td><td class="num">2070</td><td class="num">0</td><td>Yes</td><td>Post_Processor_1 (post processor Output1 = 10 × byte 7 of <a href="#id10A"><code>0x10A</code></a>)</td></tr>
+<tr class="const"><td class="num">18</td><td class="num">6</td><td>Constant</td><td class="num">0</td><td class="num">0</td><td>No</td><td>No_Description</td></tr>
+<tr><td class="num">24</td><td class="num">16</td><td>Direct</td><td class="num">2112</td><td class="num">0</td><td>Yes</td><td>Charger_Max_DC_V</td></tr>
+<tr><td class="num">40</td><td class="num">16</td><td>Direct</td><td class="num">2117</td><td class="num">0</td><td>Yes</td><td>Charger_Max_DC_I</td></tr>
+<tr class="const"><td class="num">56</td><td class="num">8</td><td>Constant</td><td class="num">0</td><td class="num">0</td><td>No</td><td>No_Description</td></tr>
+</tbody>
+</table>
+
+<h2 id="id207">ID <code>0x207</code> — every 100 ms</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data type</th><th>Data identifier</th><th>Bit offset</th><th>Intel format</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">16</td><td>Direct</td><td class="num">2053</td><td class="num">0</td><td>Yes</td><td>No_Description</td></tr>
+<tr><td class="num">16</td><td class="num">16</td><td>Direct</td><td class="num">2055</td><td class="num">0</td><td>Yes</td><td>No_Description</td></tr>
+<tr><td class="num">32</td><td class="num">16</td><td>Direct</td><td class="num">2057</td><td class="num">0</td><td>Yes</td><td>No_Description</td></tr>
+<tr><td class="num">48</td><td class="num">16</td><td>Direct</td><td class="num">2110</td><td class="num">0</td><td>Yes</td><td>Cell_Voltage_Sum</td></tr>
+</tbody>
+</table>
+
+<h2 id="received" style="margin-top:3rem; border-top:2px solid #ccc; padding-top:1rem;">Messages received by the BMCU</h2>
+
+<table>
+<thead><tr><th>ID (hex)</th><th>Interval (ms)</th><th>Signals</th></tr></thead>
+<tbody>
+<tr><td><a href="#id10A"><code>0x10A</code></a></td><td class="num">—</td><td>2072: unnamed value; × 10 is forwarded in <a href="#id2FF"><code>0x2FF</code></a></td></tr>
+<tr><td><a href="#id119"><code>0x119</code></a></td><td class="num">—</td><td>2043: SoC set command (also sent back in <a href="#id204"><code>0x204</code></a>)</td></tr>
+<tr><td><a href="#id605"><code>0x605</code></a></td><td class="num">—</td><td>2122: contactor-open request, with timeout</td></tr>
+</tbody>
+</table>
+
+<h2 id="id10A">ID <code>0x10A</code> — received</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data identifier</th><th>Byte count</th><th>Intel format</th></tr></thead>
+<tbody>
+<tr><td class="num">56</td><td class="num">8</td><td class="num">2072</td><td class="num">2</td><td>No</td></tr>
+</tbody>
+</table>
+<p class="note"><strong>From the firmware (6.18.0):</strong> the BMCU stores byte 7 of the frame as data identifier 2072 and nothing else in the firmware reads it by name.
+It is only used by the <a href="#postproc">post processor</a> (rows 1 and 2): row 2 multiplies it by 10 and sends the result in <a href="#id2FF"><code>0x2FF</code></a> as <code>Post_Processor_1</code>. Its meaning has to come from the sender of <code>0x10A</code>.</p>
+
+<h2 id="id119">ID <code>0x119</code> — received</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data identifier</th><th>Byte count</th><th>Intel format</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">8</td><td class="num">2043</td><td class="num">1</td><td>No</td></tr>
+</tbody>
+</table>
+<p class="note"><strong>From the firmware (6.18.0): SoC set command.</strong> Byte 0 is a state of charge in %. When a frame arrives and the value is below 100,
+the BMCU overwrites its SoC (data identifier 2021, sent in <a href="#id200"><code>0x200</code></a>) with it and recalculates the remaining charge from the capacity setting.
+It then ignores further SoC commands for about 25 s (a 250-count timer decremented every 100 ms). Values of 100 or more are ignored.
+The last received value is sent back out in <a href="#id204"><code>0x204</code></a> bits 40–47.</p>
+
+<h2 id="id605">ID <code>0x605</code> — received</h2>
+<table>
+<thead><tr><th>Start bit</th><th>Bit count</th><th>Data identifier</th><th>Byte count</th><th>Intel format</th></tr></thead>
+<tbody>
+<tr><td class="num">56</td><td class="num">8</td><td class="num">2122</td><td class="num">1</td><td>No</td></tr>
+</tbody>
+</table>
+<p class="note"><strong>From the firmware (6.18.0): contactor-open request.</strong> While 2122 is non-zero, the BMCU's contactor logic switches off both contactor outputs (PORTD bits 1 and 2, the precharge and main drive pins) and goes to its open state; while it is zero, the BMCU may close them as usual.
+Each frame with a non-zero byte 7 restarts a timeout: the BMCU loads a counter from configuration parameter 559 (in 100 ms steps, minimum 3 = 300 ms). If no new non-zero frame arrives before it runs out, the BMCU sets 2122 back to 0 by itself.
+So the sender must repeat the request to keep the contactors open.</p>
+
+<h2 id="postproc" style="margin-top:3rem; border-top:2px solid #ccc; padding-top:1rem;">Post processor</h2>
+<p class="meta">BMCU config section; its purpose is not yet confirmed. Row 3 is disabled but has non-default values, so it is shown in grey. Rows 4–8 are disabled placeholders and omitted.</p>
+<table>
+<thead><tr><th>Row</th><th>Enabled</th><th>Bytes</th><th>Operand type 1</th><th>Operand 1</th><th>Operator</th><th>Operand type 2</th><th>Operand 2</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td>Yes</td><td class="num">2</td><td>Direct</td><td class="num">2072</td><td>AND_bitwise</td><td>Constant</td><td class="num">255</td><td>Output2</td></tr>
+<tr><td class="num">2</td><td>Yes</td><td class="num">2</td><td>Constant</td><td class="num">10</td><td>Multiply</td><td>Direct</td><td class="num">2072</td><td>Output1</td></tr>
+<tr class="disabled"><td class="num">3</td><td>No</td><td class="num">4</td><td>Direct</td><td class="num">2016</td><td>Divide</td><td>Constant</td><td class="num">256</td><td>Output3</td></tr>
+</tbody>
+</table>
+<p class="note"><strong>From the firmware (6.18.0), routine at 0xB16C:</strong> the post processor runs up to 23 rows in order. Each row computes
+<em>Operand 1 &lt;operator&gt; Operand 2</em>, where "Direct" reads a data identifier and "Constant" is a literal, and writes the result to a <strong>data identifier</strong>, not to a pin:
+OutputN is data identifier <strong>2070 + 2 × (N − 1)</strong>, so Output1 = 2070, Output2 = 2072, Output3 = 2074 (up to Output20 = 2108).</p>
+<ul class="note" style="margin-top:0">
+<li>Row 1: [2072] = [2072] AND 0xFF. It writes back into 2072 itself, keeping only the low byte of the value received in <a href="#id10A"><code>0x10A</code></a>.</li>
+<li>Row 2: [2070] = 10 × [2072]. Data identifier 2070 is the <code>Post_Processor_1</code> signal sent in <a href="#id2FF"><code>0x2FF</code></a> bits 8–17.</li>
+<li>Row 3 (disabled): [2074] = [2016] ÷ 256.</li>
+</ul>
+<p class="note">So byte 7 of <code>0x10A</code>, multiplied by 10, is forwarded in the charger message <code>0x2FF</code>.
+The s-BMS User Manual v2.01 (§5.8.6) also calls the B-J3 pins IO 6/7/8 "User selectable output 1/2/3", but the post processor does not drive them: the firmware sets those pins from separate on/off flags, and no code reads data identifiers 2070–2074 except through the generic CAN/post-processor tables. Identifier 2016 appears as a constant in <a href="#id202"><code>0x202</code></a>.</p>
+</body>
+</html>
