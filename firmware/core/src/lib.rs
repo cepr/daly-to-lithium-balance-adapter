@@ -11,9 +11,11 @@
 //! - [`temps`]: NTC inputs and balancer PCB sensors → LMU temperatures (README "Temperature mapping").
 //! - [`fan`]: fan speed from the module temperatures (README "Fans").
 //! - [`storage`]: flash record of the LMU settings.
+//! - [`charge`]: the BMCU's charge counter kept in LMU 1, and its flash log.
 #![cfg_attr(not(test), no_std)]
 
 pub mod cells;
+pub mod charge;
 pub mod daly;
 pub mod fan;
 pub mod lmu;

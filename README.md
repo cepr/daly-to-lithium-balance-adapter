@@ -142,11 +142,13 @@ On the s-BMS side the interface board has to:
 1. Take part in the start-up enumeration. Each emulated LMU answers address `F0` in
    daisy-chain order and accepts its address `01`…`0A`.
 2. Answer `q` reads of register `0x7D0` (8 cell voltages, uint16 big-endian, mV) and
-   `0x7E5` (4 temperatures, int8 °C, see [Temperature mapping](#temperature-mapping)), and the
-   one-time `0x7E0` read from slave 1.
-3. Report missing or stale DALY data as a fault (for example `0x4000` for the affected cells, or no reply),
+   `0x7E5` (4 temperatures, int8 °C, see [Temperature mapping](#temperature-mapping)).
+3. Keep the BMCU's charge counter: the BMCU writes it to registers `0x7E0`–`0x7E3` of slave 1
+   every few seconds and reads it back at start-up to restore its SoC. The board must store it
+   across power cycles (protocol doc §7.6).
+4. Report missing or stale DALY data as a fault (for example `0x4000` for the affected cells, or no reply),
    so the BMCU's protection logic still works.
-4. Build each LMU's 8 cells from the right balancer channels (see [Cell mapping](#cell-mapping)),
+5. Build each LMU's 8 cells from the right balancer channels (see [Cell mapping](#cell-mapping)),
    and report the two readings of an overlap cell in turn.
 
 See the two protocol documents for the details.

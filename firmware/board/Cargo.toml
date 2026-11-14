@@ -12,6 +12,7 @@ embassy-stm32 = { version = "0.6", features = ["defmt", "time-driver-any", "unst
 embassy-executor = { version = "0.10", features = ["defmt", "platform-cortex-m", "executor-thread"] }
 embassy-time = { version = "0.5", features = ["defmt", "defmt-timestamp-uptime"] }
 embassy-sync = { version = "0.8", features = ["defmt"] }
+embassy-futures = "0.1"
 embedded-io-async = "0.7"
 
 cortex-m = { version = "0.7", features = ["inline-asm", "critical-section-single-core"] }

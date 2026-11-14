@@ -7,7 +7,8 @@
 //! - `temperatures`: ADC1, the 4 NTC inputs.
 //! - `fans`: TIM1_CH1 on PA8, 25 kHz PWM for the 8 fans.
 //! - `status`: status LED.
-//! - `store_settings`: saves the LMU settings to flash after the diagnostic software writes them.
+//! - `storage`: saves to flash the LMU settings after the diagnostic software writes them, and
+//!   the BMCU's charge counter (registers 0x7E0–0x7E3 of LMU 1) when the BMCU updates it.
 //!
 //! Pin assignment: README "Hardware" section and `hardware/interface_board/`.
 //!
@@ -27,9 +28,10 @@ compile_error!("enable one of the features `board` or `nucleo`");
 
 use core::cell::RefCell;
 
-use bridge_core::{cells, daly, fan, lmu, sbms, storage, temps, CELLS_PER_LMU, MAX_CHANNELS, N_BALANCERS, N_LMU};
+use bridge_core::{cells, charge, daly, fan, lmu, sbms, storage, temps, CELLS_PER_LMU, MAX_CHANNELS, N_BALANCERS, N_LMU};
 use defmt::{debug, info, warn};
 use embassy_executor::Spawner;
+use embassy_futures::select::{Either, select};
 use embassy_stm32::adc::{Adc, AdcChannel, AnyAdcChannel, SampleTime};
 use embassy_stm32::flash::{Blocking, Flash};
 use embassy_stm32::gpio::{Level, Output, Speed};
@@ -78,6 +80,12 @@ const SETTINGS_PAGE: u32 = 2 * 1024;
 /// Save the settings once the diagnostic software has stopped writing for this long: one Write
 /// click writes all 10 LMUs in about 3 s, and is saved with a single page erase.
 const SETTINGS_SAVE_DELAY: Duration = Duration::from_secs(2);
+/// Flash log of the BMCU's charge counter: 8 pages (16 KB) below the settings page.
+/// `memory.x` keeps the program out of it.
+const CHARGE_OFFSET: u32 = 110 * 1024;
+/// A change of the charge counter's remainder alone is saved at most this often (a change of the
+/// remaining charge is saved at once, see `charge::needs_save`).
+const REMAINDER_SAVE_INTERVAL: Duration = Duration::from_secs(600);
 /// `simulate` feature: the balancer and temperature tasks don't run, and the BMCU reads
 /// `SIM_CELL_MV` on every cell and `SIM_TEMP_C` on every temperature (fans stay off).
 const SIMULATE: bool = cfg!(feature = "simulate");
@@ -131,11 +139,13 @@ fn all_balancers_fresh() -> bool {
     SHARED.lock(|s| s.borrow().balancers.iter().all(|b| matches!(b, Some(b) if now - b.at < STALE_AFTER)))
 }
 
-/// Settings changed by the diagnostic software, for `store_settings`.
+/// Settings changed by the diagnostic software, for `storage`.
 static SETTINGS_CHANGED: Signal<CriticalSectionRawMutex, [lmu::Settings; N_LMU]> = Signal::new();
+/// Charge counter after each BMCU write to it, for `storage`.
+static CHARGE_WRITTEN: Signal<CriticalSectionRawMutex, charge::Charge> = Signal::new();
 
 #[embassy_executor::task]
-async fn bmcu(mut uart: BufferedUart<'static>, mut settings: [lmu::Settings; N_LMU]) {
+async fn bmcu(mut uart: BufferedUart<'static>, mut settings: [lmu::Settings; N_LMU], mut charge: charge::Charge) {
     let mut rx = sbms::Receiver::new();
     let mut byte = [0u8; 1];
     // LMUs spanning two balancers report their readings in turn. The BMCU reads each LMU's
@@ -149,9 +159,16 @@ async fn bmcu(mut uart: BufferedUart<'static>, mut settings: [lmu::Settings; N_L
         let Some(raw) = rx.push(byte[0]) else { continue };
         let Some(frame) = sbms::parse(raw) else { continue };
         let before = settings;
-        let (event, reply) = lmu::handle(&frame, &snapshot(&lower), &mut settings);
+        let (event, reply) = lmu::handle(&frame, &snapshot(&lower), &mut settings, &mut charge);
         if settings != before {
             SETTINGS_CHANGED.signal(settings);
+        }
+        // Every write, changed or not: `storage` decides from the last saved value.
+        if let lmu::Event::Write { addr: 1, reg, len } = event
+            && reg < lmu::REG_CHARGE + 4
+            && reg + len > lmu::REG_CHARGE
+        {
+            CHARGE_WRITTEN.signal(charge);
         }
         if let lmu::Event::Read { addr, reg: lmu::REG_TEMPS } = event {
             lower[addr as usize - 1] ^= true;
@@ -183,22 +200,76 @@ fn load_settings(flash: &mut Flash<'static, Blocking>) -> [lmu::Settings; N_LMU]
     }
 }
 
-#[embassy_executor::task]
-async fn store_settings(mut flash: Flash<'static, Blocking>) {
-    loop {
-        let mut settings = SETTINGS_CHANGED.wait().await;
-        // Wait until the writes stop, keeping the latest settings.
-        while let Ok(s) = with_timeout(SETTINGS_SAVE_DELAY, SETTINGS_CHANGED.wait()).await {
-            settings = s;
+/// Read the charge-counter log, and erase the pages a power loss left behind.
+fn load_charge(flash: &mut Flash<'static, Blocking>) -> (charge::Charge, charge::Log) {
+    let boot = charge::scan(|page, slot| {
+        let mut r = [0xFF; charge::RECORD_LEN];
+        let offset = CHARGE_OFFSET + (page * charge::PAGE_SIZE + slot * charge::RECORD_LEN) as u32;
+        if flash.blocking_read(offset, &mut r).is_err() {
+            r = [0; charge::RECORD_LEN]; // unreadable: neither blank nor valid
         }
-        // The CPU stalls for the page erase (about 40 ms): the BMCU may miss a reply and retry.
-        let record = storage::encode(&settings);
-        let ok = flash.blocking_erase(SETTINGS_OFFSET, SETTINGS_OFFSET + SETTINGS_PAGE).is_ok()
-            && flash.blocking_write(SETTINGS_OFFSET, &record).is_ok();
-        if ok {
-            info!("settings: saved to flash");
-        } else {
-            warn!("settings: flash write FAILED");
+        r
+    });
+    for (page, _) in boot.erase.iter().enumerate().filter(|&(_, &e)| e) {
+        erase_charge_page(flash, page);
+    }
+    match boot.charge {
+        Some(c) => {
+            info!("charge: loaded {=[u8]:02X} from flash", c);
+            (c, boot.log)
+        }
+        None => {
+            info!("charge: none in flash, LMU 1 reports 0 until the BMCU writes it");
+            (charge::NONE, boot.log)
+        }
+    }
+}
+
+/// The CPU stalls for the erase (about 40 ms): the BMCU may miss a reply and retry.
+fn erase_charge_page(flash: &mut Flash<'static, Blocking>, page: usize) {
+    let from = CHARGE_OFFSET + (page * charge::PAGE_SIZE) as u32;
+    if flash.blocking_erase(from, from + charge::PAGE_SIZE as u32).is_err() {
+        warn!("charge: erase of log page {} FAILED", page);
+    }
+}
+
+#[embassy_executor::task]
+async fn storage(mut flash: Flash<'static, Blocking>, mut saved: charge::Charge, mut log: charge::Log) {
+    let mut saved_at = Instant::now();
+    loop {
+        match select(SETTINGS_CHANGED.wait(), CHARGE_WRITTEN.wait()).await {
+            Either::First(mut settings) => {
+                // Wait until the writes stop, keeping the latest settings.
+                while let Ok(s) = with_timeout(SETTINGS_SAVE_DELAY, SETTINGS_CHANGED.wait()).await {
+                    settings = s;
+                }
+                // The CPU stalls for the page erase (about 40 ms): the BMCU may miss a reply and retry.
+                let record = storage::encode(&settings);
+                let ok = flash.blocking_erase(SETTINGS_OFFSET, SETTINGS_OFFSET + SETTINGS_PAGE).is_ok()
+                    && flash.blocking_write(SETTINGS_OFFSET, &record).is_ok();
+                if ok {
+                    info!("settings: saved to flash");
+                } else {
+                    warn!("settings: flash write FAILED");
+                }
+            }
+            Either::Second(c) => {
+                if !charge::needs_save(&saved, &c, saved_at.elapsed() >= REMAINDER_SAVE_INTERVAL) {
+                    continue;
+                }
+                let a = log.append(&c);
+                if flash.blocking_write(CHARGE_OFFSET + a.offset() as u32, &a.record).is_ok() {
+                    debug!("charge: saved {=[u8]:02X}", c);
+                } else {
+                    warn!("charge: flash write FAILED");
+                }
+                if let Some(page) = a.erase {
+                    erase_charge_page(&mut flash, page);
+                }
+                // Also after a failed write: retrying every few seconds would not help.
+                saved = c;
+                saved_at = Instant::now();
+            }
         }
     }
 }
@@ -366,8 +437,9 @@ async fn main(spawner: Spawner) {
         .expect("USART2 config");
     let mut flash = Flash::new_blocking(p.FLASH);
     let settings = load_settings(&mut flash);
-    spawner.spawn(bmcu(bmcu_uart, settings).unwrap());
-    spawner.spawn(store_settings(flash).unwrap());
+    let (charge, charge_log) = load_charge(&mut flash);
+    spawner.spawn(bmcu(bmcu_uart, settings, charge).unwrap());
+    spawner.spawn(storage(flash, charge, charge_log).unwrap());
 
     // Balancers #1…#4: USART1 (PB6/PB7), USART5 (PB3/PB4), USART3 (PB2/PB0), USART6 (PA4/PA5).
     let (tx, rx) = buffers!(16, 256);

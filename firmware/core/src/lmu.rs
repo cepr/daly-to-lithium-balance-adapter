@@ -2,9 +2,11 @@
 //!
 //! Measurement registers are computed from a [`Snapshot`] of the latest balancer and
 //! temperature data each time they are read. The only stored state is the [`Settings`] that the
-//! diagnostic software reads and writes on its "Local cell settings" tab (§7.5). The PC's
+//! diagnostic software reads and writes on its "Local cell settings" tab (§7.5), and the BMCU's
+//! charge counter in registers 0x7E0–0x7E3 of LMU 1 (§7.6, [`charge`](crate::charge)). The PC's
 //! requests reach the bus through the BMCU with `SRC = FE`, and replies go back to the sender.
 
+use crate::charge::Charge;
 use crate::sbms::{self, FrameBuf};
 use crate::{CELLS_PER_LMU, N_LMU};
 
@@ -12,7 +14,9 @@ pub const MASTER: u8 = 0x00;
 pub const UNADDRESSED: u8 = 0xF0;
 
 pub const REG_CELLS: u16 = 0x7D0;
-pub const REG_INFO: u16 = 0x7E0;
+/// 0x7E0–0x7E3 of LMU 1: the BMCU's charge counter (remaining charge, remainder; int16 LE).
+pub const REG_CHARGE: u16 = 0x7E0;
+const CHARGE_LMU: usize = 0;
 pub const REG_TEMPS: u16 = 0x7E5;
 const REG_SPACE: u16 = 0x1000;
 
@@ -61,8 +65,16 @@ pub struct Snapshot {
     pub temps: [[u8; 4]; N_LMU],
 }
 
+/// Index into [`Charge`] if register `reg` of LMU `index` is part of the charge counter.
+fn charge_byte(index: usize, reg: u16) -> Option<usize> {
+    (index == CHARGE_LMU && (REG_CHARGE..REG_CHARGE + 4).contains(&reg)).then(|| (reg - REG_CHARGE) as usize)
+}
+
 /// Byte at register `reg` of LMU `index` (0-based).
-pub fn register(snap: &Snapshot, settings: &Settings, index: usize, reg: u16) -> u8 {
+pub fn register(snap: &Snapshot, settings: &Settings, charge: &Charge, index: usize, reg: u16) -> u8 {
+    if let Some(i) = charge_byte(index, reg) {
+        return charge[i];
+    }
     match reg {
         REG_BOOT_VERSION => BOOT_VERSION,
         0x004..=0x009 => FW_VERSION[(reg - REG_FW_VERSION) as usize],
@@ -73,7 +85,7 @@ pub fn register(snap: &Snapshot, settings: &Settings, index: usize, reg: u16) ->
             let v = snap.cells[index][off / 2];
             if off.is_multiple_of(2) { (v >> 8) as u8 } else { v as u8 }
         }
-        // 0x7E0–0x7E3: two int16 of unknown meaning, read once from slave 1. Report 0.
+        // 0x7E0–0x7E3 of LMUs 2…10: never used by the BMCU.
         0x7E5..=0x7E8 => snap.temps[index][(reg - REG_TEMPS) as usize],
         _ => 0,
     }
@@ -105,8 +117,14 @@ fn lmu_index(addr: u8) -> Option<usize> {
 
 /// Handle one frame from the bus. Returns the event and, when the board must answer,
 /// the reply frame (without the CR the BMCU puts in front of its own frames).
-/// `settings` holds the stored settings of the 10 LMUs, updated by `w` requests.
-pub fn handle(frame: &sbms::Frame, snap: &Snapshot, settings: &mut [Settings; N_LMU]) -> (Event, Option<FrameBuf>) {
+/// `settings` holds the stored settings of the 10 LMUs and `charge` the BMCU's charge counter,
+/// both updated by `w` requests.
+pub fn handle(
+    frame: &sbms::Frame,
+    snap: &Snapshot,
+    settings: &mut [Settings; N_LMU],
+    charge: &mut Charge,
+) -> (Event, Option<FrameBuf>) {
     let p = frame.payload;
 
     // Start-up enumeration. The real LMUs pass the token down a daisy chain; here every
@@ -166,11 +184,13 @@ pub fn handle(frame: &sbms::Frame, snap: &Snapshot, settings: &mut [Settings; N_
             };
             *b = v as u8;
         }
-        // Store what falls in the settings range. Other writes (the bootloader entry at
-        // 0x002: there is no bootloader to enter) are acknowledged and ignored.
+        // Store what falls in the settings range or the charge counter. Other writes (the
+        // bootloader entry at 0x002: there is no bootloader to enter) are acknowledged and ignored.
         for (r, &b) in (reg..reg + n).zip(&bytes) {
             if let Some(i) = r.checked_sub(REG_SETTINGS).filter(|&i| (i as usize) < SETTINGS_LEN) {
                 settings[index][i as usize] = b;
+            } else if let Some(i) = charge_byte(index, r) {
+                charge[i] = b;
             }
         }
         let mut f = FrameBuf::new(b'!', to, addr);
@@ -181,7 +201,7 @@ pub fn handle(frame: &sbms::Frame, snap: &Snapshot, settings: &mut [Settings; N_
     let mut f = FrameBuf::new(b'r', to, addr);
     f.push_str(&p[..4]);
     for r in reg..reg + n {
-        f.push_hex(register(snap, &settings[index], index, r));
+        f.push_hex(register(snap, &settings[index], charge, index, r));
     }
     (Event::Read { addr, reg }, Some(f))
 }
@@ -202,8 +222,13 @@ mod tests {
     }
 
     fn run_with(req: &[u8], settings: &mut [Settings; N_LMU]) -> (Event, Option<Vec<u8>>) {
+        let mut charge = crate::charge::NONE;
+        run_charge(req, settings, &mut charge)
+    }
+
+    fn run_charge(req: &[u8], settings: &mut [Settings; N_LMU], charge: &mut Charge) -> (Event, Option<Vec<u8>>) {
         let f = sbms::parse(req).unwrap();
-        let (e, r) = handle(&f, &snap(), settings);
+        let (e, r) = handle(&f, &snap(), settings, charge);
         (e, r.map(|mut r| r.finish().to_vec()))
     }
 
@@ -304,6 +329,38 @@ mod tests {
         assert_eq!(settings[1], DEFAULT_SETTINGS);
         let (_, r) = run_with(&pc(b'q', 1, b"046C"), &mut settings);
         assert_eq!(body(&r.unwrap()), b"rFE01046C01010101010101003C0A106832");
+    }
+
+    /// Frames from the BMCU (SRC 00).
+    fn bmcu(cmd: u8, addr: u8, payload: &[u8]) -> Vec<u8> {
+        let mut f = FrameBuf::new(cmd, addr, MASTER);
+        f.push_str(payload);
+        f.finish().to_vec()
+    }
+
+    #[test]
+    fn charge_counter_on_lmu_1() {
+        let mut settings = [DEFAULT_SETTINGS; N_LMU];
+        let mut charge = crate::charge::NONE;
+        // Start-up read before anything was stored: zeros.
+        let (_, r) = run_charge(&bmcu(b'q', 1, b"7E03"), &mut settings, &mut charge);
+        assert_eq!(body(&r.unwrap()), b"r00017E0300000000");
+        // Periodic write: remaining charge 0x0123, remainder -10.
+        let (e, r) = run_charge(&bmcu(b'w', 1, b"7E032301F6FF"), &mut settings, &mut charge);
+        assert_eq!(e, Event::Write { addr: 1, reg: 0x7E0, len: 4 });
+        assert_eq!(body(&r.unwrap()), b"!0001w");
+        assert_eq!(charge, [0x23, 0x01, 0xF6, 0xFF]);
+        let (_, r) = run_charge(&bmcu(b'q', 1, b"7E03"), &mut settings, &mut charge);
+        assert_eq!(body(&r.unwrap()), b"r00017E032301F6FF");
+        // Other LMUs don't hold it.
+        let (_, r) = run_charge(&bmcu(b'w', 2, b"7E0155AA"), &mut settings, &mut charge);
+        assert_eq!(body(&r.unwrap()), b"!0002w");
+        assert_eq!(charge, [0x23, 0x01, 0xF6, 0xFF]);
+        let (_, r) = run_charge(&bmcu(b'q', 2, b"7E03"), &mut settings, &mut charge);
+        assert_eq!(body(&r.unwrap()), b"r00027E0300000000");
+        // A partial write only changes its bytes.
+        run_charge(&bmcu(b'w', 1, b"7E21FFFF"), &mut settings, &mut charge);
+        assert_eq!(charge, [0x23, 0x01, 0xFF, 0xFF]);
     }
 
     #[test]

@@ -18,7 +18,7 @@ already running, click **Pre-address 1…N** instead.
 - 8 cell voltages (mV) + code: OK / not fitted (0x2000) / fault (0x4000) / flagged (bit 15)
 - 4 temperatures (°C) + code: OK / none (0x7A) / high fault (0x79) / low fault (0xD7). T4 (Bat 2) defaults to none.
 - online (off = never answers → BMCU comm fault), bad CRC, NAK, reply delay
-- 7E0: the two int16 values read from board 1 at start-up (meaning unknown)
+- 7E0: the BMCU's charge counter read from board 1 at start-up (remaining charge, remainder; protocol doc §7.6)
 - silent in boot: stop answering after the BMCU writes 0xAC to register 0x002
 
 ## LMU configuration (diagnostic software, "Local cell settings" tab)

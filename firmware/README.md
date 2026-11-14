@@ -18,6 +18,7 @@ DALY balancers and the 4 module NTCs. See the [main README](../README.md) for th
 | `core/src/cells.rs` | Balancer channels → LMU cells, the two readings of overlap cells. |
 | `core/src/temps.rs` | NTC conversion and the LMU temperature mapping (balancer PCB + module NTC). |
 | `core/src/storage.rs` | Flash record of the LMU settings. |
+| `core/src/charge.rs` | The BMCU's charge counter (LMU 1 registers `0x7E0`–`0x7E3`) and its wear-levelled flash log. |
 | [`board/`](board/) | `interface-board`: the STM32 binary (tasks, pins, peripherals). |
 | `justfile` | `just test`, `just build`, `just run`, `just build-nucleo`, `just run-nucleo`, `just build-sim`, `just run-sim`, `just lint`, `just size`. |
 | `rust-toolchain.toml` | Stable Rust with the `thumbv6m-none-eabi` target (Cortex-M0+). |
@@ -190,7 +191,7 @@ LED stays dark. Check X1 first if that happens.
 | `balancer` ×4 | USART1/3/5/6, 9600 8N1 | Every 500 ms sends `D2 03 0000 0050` and parses the 165-byte reply (cells, string count, PCB temperature at `0x0020`). Checks the reported string count (24/24/24/20). |
 | `temperatures` | ADC1 IN0/6/7/9 | Every 500 ms, 8 samples per input, converted with a 10 kΩ B3950 NTC table. |
 | `fans` | TIM1_CH1 on PA8, 25 kHz | Every 1 s sets the fan speed from the hottest module temperature (see [Fans](#fans)). |
-| `store_settings` | Flash, page at `0x0801F800` | Saves the LMU settings 2 s after the diagnostic software's last write. |
+| `storage` | Flash: settings page at `0x0801F800`, charge log `0x0801B800`–`0x0801F7FF` | Saves the LMU settings 2 s after the diagnostic software's last write, and the BMCU's charge counter when it changes (see below). |
 | `status` | PB5 LED | Blinks at 1 Hz when all 4 balancers answer, 5 Hz otherwise. |
 
 Behaviour towards the BMCU:
@@ -214,9 +215,20 @@ Behaviour towards the BMCU:
   The settings don't change what the board reports to the BMCU.
 - **Identity (read-only):** boot version 1, firmware version `00000 00.01.A.000`, serial number
   `IFB00-00000000nn` (nn = LMU address).
-- **Other writes:** acknowledged and ignored (the BMCU writes the bootloader entry at `0x002`,
-  and `0x7E0` on slave 1 every 4 s).
-- **Register `0x7E0`** (unknown meaning, read once from slave 1): reads as 0.
+- **Charge counter (LMU 1, `0x7E0`–`0x7E3`):** the BMCU keeps its coulomb counter here
+  (protocol doc §7.6): it writes it about every 4 s and reads it back at start-up to restore
+  the SoC. The board stores the 4 bytes and returns them, and logs them to 8 flash pages
+  (`0x0801B800`–`0x0801F7FF`) so they survive a power cycle. A record is saved when the
+  remaining charge (`7E0`) changes, or when only the remainder (`7E2`) changed and the last save
+  is more than 10 min old. Records are appended in a ring and a full page is erased only after
+  the next record is in the next page, so a power loss never loses more than the last update.
+  Wear: 2048 records per turn of the ring, 10 000 erase cycles per page, so about 20 million
+  records; even one record every 4 s around the clock lasts about 2.5 years. Until the BMCU has
+  written a value once (new board, or blank log), LMU 1 returns 0, so the BMCU starts at SoC
+  0 %: set the SoC once from outside after the first installation (the BMCU's SoC-set
+  command, protocol doc §7.6; the CAN doc lists a SoC-set message `0x119`).
+  The same registers on LMUs 2…10 read 0 and writes to them are ignored, as the BMCU never uses them.
+- **Other writes:** acknowledged and ignored (the BMCU writes the bootloader entry at `0x002`).
 
 ## Fans
 

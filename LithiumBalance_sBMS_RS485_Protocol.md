@@ -244,7 +244,7 @@ registers that only the diagnostic software reads are in §7.5.
 |---|---|---|---|---|
 | `0x002` | 1 | W | **Bootloader entry.** Writing `0xAC` makes the module jump to its bootloader (used before a firmware update) | [C] |
 | `0x7D0`–`0x7DF` | 16 | R | **Cell voltages 1–8**, 8 × uint16 **big-endian** (byte at the lower address = MSB) | [C] layout / [V] unit = mV |
-| `0x7E0`–`0x7E3` | 4 | R/W | Two int16 **little-endian** values, slave `01` only. **Read** once at start-up, right after a successful enumeration. **Written** about every 4 s with two frames: first `0000 xxFF` (`7E2`–`7E3` = a small negative int16, e.g. `F6FF` = −10), then `0000 0000`. In captures, the value written to `7E2` is the negative of the value the BMCU writes to device `0x21` register `7E0` just before. Meaning unknown. | [C] layout / [V] traffic |
+| `0x7E0`–`0x7E3` | 4 | R/W | **The BMCU's charge counter**, slave `01` only: `7E0` remaining charge, `7E2` coulomb-counter remainder, both int16 **little-endian**. **Read** once at start-up, right after a successful enumeration, to restore the SoC. **Written** about every 4 s. The slave must keep what was written and return it, also after a power cycle. See 7.6. | [C] |
 | `0x7E5`–`0x7E8` | 4 | R | **Temperatures T1–T4**, int8, °C: `7E5` = T1 Pcb 1, `7E6` = T2 Pcb 2, `7E7` = T3 Bat 1, `7E8` = T4 Bat 2 (see 7.2) | [C] layout / [V] unit |
 | `0x7E9` | 1 | R | Read as part of the 5-byte `7E5` request but not used | [C] |
 
@@ -367,6 +367,40 @@ fields Max 60 °C, Δ 10 °C, Max 4200 mV, Δ 50 mV:
 
 Just before the LMU writes, the PC also writes to device `0x21` (Appendix B).
 
+### 7.6 Charge counter stored in slave 1  [C]
+
+The BMCU has no non-volatile memory for its coulomb counter. It keeps it in registers
+`0x7E0`–`0x7E3` of slave `01`, rewrites it there every few seconds, and reads it back at
+start-up. A slave that returns zeros (or drops the writes) makes the BMCU start every power-up
+at 0 remaining charge, i.e. **SoC 0 %** on CAN and on the PC.
+
+| Register | Content | BMCU RAM |
+|---|---|---|
+| `7E0`–`7E1` | Remaining charge, int16 LE. Full = 10 × the capacity parameter (EEPROM `0xEC`), so probably 0.1 Ah if that parameter is in Ah. | `0x1CF` |
+| `7E2`–`7E3` | Coulomb-counter remainder (below one unit of remaining charge), int16 LE. One unit of remaining charge = 3600 counts. | `0x100` (32-bit accumulator, sign-extended) |
+
+**Start-up** (`0xCE62`, from the start-up sequence at `0x2542`):
+
+1. `q 01 00 7E0 3` (3 attempts).
+2. Remaining charge, clamped to 0 … 10 × capacity, is stored in identifier **2022**
+   (`Amp_H_Sum` on CAN). SoC = remaining ÷ capacity is stored in identifier **2021** (SoC).
+3. No reply: error `0x12` sub 3 for slave 1, remaining charge and SoC set to 0, and the read is
+   retried from the main loop (`0x3BAA`) until it succeeds.
+
+**Running** (`0x8B6E`–`0x8D00`): the current is added to the accumulator. Each time it passes
+±3600 the whole units move to the remaining charge and the rest stays in the accumulator. SoC
+is recalculated (capped at 99 %, 100 % once a full-charge flag is set) and stored in 2021, the
+remaining charge in 2022, and then the BMCU writes
+`w 01 00 7E0 3 <remaining LE> <remainder LE>`.
+
+**SoC set** (`0xEF98`): when the SoC is set from outside (0…100 %), the remaining charge becomes
+capacity × SoC and is written to slave 1 with the remainder 0.
+
+The captures with the slave simulator (which returned zeros) show writes `0000 xxFF`: remaining
+charge 0, remainder slightly negative from the discharge current. In those captures the value
+written to `7E2` is the negative of the value the BMCU writes to device `0x21` register `7E0`
+just before. [V]
+
 ---
 
 ## 8. Firmware-update / bridge mode (for completeness)  [C]
@@ -400,6 +434,7 @@ Selected by a BMCU mode variable. Not part of normal operation.
 | Generic master transaction (retries, timeout) | `0xE320` (request block at RAM `0x200`: retries, addr H/L, N, cmd, dest, data…) |
 | Enumeration | `0xE1B6` |
 | Per-slave poll | `0xC40E` |
+| Charge counter: start-up read of slave 1 `7E0` / periodic update and write / SoC set (§7.6) | `0xCE62` / `0x8B6E` / `0xEF98` |
 
 ## Appendix B — Device 0x21 (not a cell-monitor slave)  [I]
 
