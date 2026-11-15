@@ -201,7 +201,7 @@ fn load_settings(flash: &mut Flash<'static, Blocking>) -> [lmu::Settings; N_LMU]
 }
 
 /// Read the charge-counter log, and erase the pages a power loss left behind.
-fn load_charge(flash: &mut Flash<'static, Blocking>) -> (charge::Charge, charge::Log) {
+fn load_charge(flash: &mut Flash<'static, Blocking>) -> (Option<charge::Charge>, charge::Log) {
     let boot = charge::scan(|page, slot| {
         let mut r = [0xFF; charge::RECORD_LEN];
         let offset = CHARGE_OFFSET + (page * charge::PAGE_SIZE + slot * charge::RECORD_LEN) as u32;
@@ -214,15 +214,10 @@ fn load_charge(flash: &mut Flash<'static, Blocking>) -> (charge::Charge, charge:
         erase_charge_page(flash, page);
     }
     match boot.charge {
-        Some(c) => {
-            info!("charge: loaded {=[u8]:02X} from flash", c);
-            (c, boot.log)
-        }
-        None => {
-            info!("charge: none in flash, LMU 1 reports 0 until the BMCU writes it");
-            (charge::NONE, boot.log)
-        }
+        Some(c) => info!("charge: loaded {=[u8]:02X} from flash", c),
+        None => info!("charge: none in flash, LMU 1 reports 0 until the BMCU writes it"),
     }
+    (boot.charge, boot.log)
 }
 
 /// The CPU stalls for the erase (about 40 ms): the BMCU may miss a reply and retry.
@@ -234,7 +229,7 @@ fn erase_charge_page(flash: &mut Flash<'static, Blocking>, page: usize) {
 }
 
 #[embassy_executor::task]
-async fn storage(mut flash: Flash<'static, Blocking>, mut saved: charge::Charge, mut log: charge::Log) {
+async fn storage(mut flash: Flash<'static, Blocking>, mut saved: Option<charge::Charge>, mut log: charge::Log) {
     let mut saved_at = Instant::now();
     loop {
         match select(SETTINGS_CHANGED.wait(), CHARGE_WRITTEN.wait()).await {
@@ -254,12 +249,12 @@ async fn storage(mut flash: Flash<'static, Blocking>, mut saved: charge::Charge,
                 }
             }
             Either::Second(c) => {
-                if !charge::needs_save(&saved, &c, saved_at.elapsed() >= REMAINDER_SAVE_INTERVAL) {
+                if !charge::needs_save(saved.as_ref(), &c, saved_at.elapsed() >= REMAINDER_SAVE_INTERVAL) {
                     continue;
                 }
                 let a = log.append(&c);
                 if flash.blocking_write(CHARGE_OFFSET + a.offset() as u32, &a.record).is_ok() {
-                    debug!("charge: saved {=[u8]:02X}", c);
+                    info!("charge: saved {=[u8]:02X}", c);
                 } else {
                     warn!("charge: flash write FAILED");
                 }
@@ -267,7 +262,7 @@ async fn storage(mut flash: Flash<'static, Blocking>, mut saved: charge::Charge,
                     erase_charge_page(&mut flash, page);
                 }
                 // Also after a failed write: retrying every few seconds would not help.
-                saved = c;
+                saved = Some(c);
                 saved_at = Instant::now();
             }
         }
@@ -438,7 +433,7 @@ async fn main(spawner: Spawner) {
     let mut flash = Flash::new_blocking(p.FLASH);
     let settings = load_settings(&mut flash);
     let (charge, charge_log) = load_charge(&mut flash);
-    spawner.spawn(bmcu(bmcu_uart, settings, charge).unwrap());
+    spawner.spawn(bmcu(bmcu_uart, settings, charge.unwrap_or(charge::NONE)).unwrap());
     spawner.spawn(storage(flash, charge, charge_log).unwrap());
 
     // Balancers #1…#4: USART1 (PB6/PB7), USART5 (PB3/PB4), USART3 (PB2/PB0), USART6 (PA4/PA5).

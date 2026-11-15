@@ -136,11 +136,15 @@ impl Log {
     }
 }
 
-/// Whether a value written by the BMCU should be logged. The remaining charge (first word) is
-/// saved whenever it changes; a change of the remainder alone only once the last save is old
+/// Whether a value written by the BMCU should be logged. The first value is always saved (`saved`
+/// is `None` while the log is blank). After that the remaining charge (first word) is saved
+/// whenever it changes; a change of the remainder alone only once the last save is old
 /// (`saved_long_ago`), since losing it costs less than one unit of charge.
-pub fn needs_save(saved: &Charge, new: &Charge, saved_long_ago: bool) -> bool {
-    new[..2] != saved[..2] || (new != saved && saved_long_ago)
+pub fn needs_save(saved: Option<&Charge>, new: &Charge, saved_long_ago: bool) -> bool {
+    match saved {
+        None => true,
+        Some(saved) => new[..2] != saved[..2] || (new != saved && saved_long_ago),
+    }
 }
 
 #[cfg(test)]
@@ -261,9 +265,11 @@ mod tests {
     #[test]
     fn save_policy() {
         let saved = [0x10, 0x00, 0xF6, 0xFF];
-        assert!(!needs_save(&saved, &saved, true));
-        assert!(needs_save(&saved, &[0x11, 0x00, 0xF6, 0xFF], false));
-        assert!(!needs_save(&saved, &[0x10, 0x00, 0xF0, 0xFF], false));
-        assert!(needs_save(&saved, &[0x10, 0x00, 0xF0, 0xFF], true));
+        assert!(!needs_save(Some(&saved), &saved, true));
+        assert!(needs_save(Some(&saved), &[0x11, 0x00, 0xF6, 0xFF], false));
+        assert!(!needs_save(Some(&saved), &[0x10, 0x00, 0xF0, 0xFF], false));
+        assert!(needs_save(Some(&saved), &[0x10, 0x00, 0xF0, 0xFF], true));
+        // Blank log: the first value is saved, even if it equals `NONE`.
+        assert!(needs_save(None, &NONE, false));
     }
 }
